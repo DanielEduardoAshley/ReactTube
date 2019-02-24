@@ -1,9 +1,20 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import './navbar.css';
 
 class Navbar extends Component {
+
+    handleClick = (e) => {
+        console.log('here, this is props', this.props)
+        this.props.history.push(`/search/bubbles`);
+    }
+
+    onChange = (e) => {
+        console.log('this is input',e.target.value);
+    }
+
     render() {
+
         return (
             <>
                 <div className="header">
@@ -11,16 +22,17 @@ class Navbar extends Component {
                         <p className="navButton">PRYD</p>
                         <Link to='/home' className="navButton">Home</Link>
                         <Link to='/user' className="navButton">User</Link>
-                        <Link to='/feededitor' className="navButton">Feed Editor</Link>
+                        <Link to='/feededitor' className="navButton" >Feed Editor</Link>
                     </div>
                     <div className="searchBox">
-                        <input placeholder='Search' className='navInput'></input>
-                        <Link to='/search/:search_query' className="searchButton">Search</Link>
+                        <input placeholder='Search' className='navInput' onChange={this.onChange}></input>
+                        <button className="searchButton" onClick={this.handleClick}>Search</button>
                     </div>
-                </div>
+                        
+                    </div>
             </>
         );
     }
 }
 
-export default Navbar;
+export default withRouter(Navbar);
