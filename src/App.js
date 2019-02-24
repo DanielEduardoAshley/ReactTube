@@ -1,6 +1,15 @@
 import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
 import Navbar from './components/navbar/navbar';
+// import '/' here
+// import '/home' here
+// import '/video/:video_id' here
+// import '/search/:search_query' here
+// import '/user' here
+// import '/feededitor' here
+// extra import here
+// extra import here
+
 
 const Placeholder = (props) => {
   return (
@@ -24,6 +33,23 @@ class App extends Component {
         <Route path='/feededitor' exact component={Placeholder}/>
 
         {/* <Route path='/user/:user_id/history' exact component={Placeholder}/> */}
+        
+        {/* 
+        Pam's workspace
+         */}
+
+        {/* 
+        Daniel's workspace
+         */}
+
+        {/*         
+        Yun's workspace
+         */}
+        
+        {/*         
+        Rupa's workspace
+          */}
+
       </div>
     );
   }
