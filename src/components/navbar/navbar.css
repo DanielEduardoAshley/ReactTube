@@ -1,0 +1,37 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.header {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.navbar {
+    border: 1px solid black;
+    margin: 10px;
+    padding: 10px;
+    flex: 3;
+}
+
+.navButton {
+    display: inline;
+    margin: 10px;
+}
+
+.searchBox {
+    border: 1px solid black;
+    margin: 10px;
+    padding: 10px;
+    flex: 1;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+}
+
+.navInput {
+    margin-right: 10px;
+}
