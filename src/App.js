@@ -26,11 +26,11 @@ class App extends Component {
         <Navbar />
         
         <Route path='/' exact component={Placeholder}/>
-        <Route path='/home' exact component={Placeholder}/>
-        <Route path='/video/:video_id' exact component={Placeholder}/>
-        <Route path='/search/:search_query' exact component={Search}/>
-        <Route path='/user' exact component={Placeholder}/>
-        <Route path='/feededitor' exact component={Placeholder}/>
+        <Route path='/home' component={Placeholder}/>
+        <Route path='/video/:video_id' component={Placeholder}/>
+        <Route path='/search/:search' component={Search}/>
+        <Route path='/user' component={Placeholder}/>
+        <Route path='/feededitor' component={Placeholder}/>
 
         {/* <Route path='/user/:user_id/history' exact component={Placeholder}/> */}
         
