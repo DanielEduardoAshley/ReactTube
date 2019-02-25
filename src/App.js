@@ -5,7 +5,7 @@ import Navbar from './components/navbar/navbar';
 // import '/home' here
 // import '/video/:video_id' here
 // import '/search/:search_query' here
-// import '/user' here
+import User from './components/user/user';
 import Feed from './components/feed/feed';
 // extra import here
 // extra import here
@@ -29,10 +29,10 @@ class App extends Component {
         <Route path='/home' exact component={Placeholder}/>
         <Route path='/video/:video_id' exact component={Placeholder}/>
         <Route path='/search/:search_query' exact component={Placeholder}/>
-        <Route path='/user' exact component={Placeholder}/>
+        <Route path='/user' exact component={User}/>
         <Route path='/feededitor' exact component={Feed}/>
 
-        {/* <Route path='/user/:user_id/history' exact component={Placeholder}/> */}
+        {/* <Route path='/user/:usesr_id/history' exact component={Placeholder}/> */}
         
         {/* 
         Pam's workspace
