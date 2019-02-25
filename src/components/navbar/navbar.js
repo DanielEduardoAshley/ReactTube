@@ -20,7 +20,7 @@ class Navbar extends Component {
                 <div className="header">
                     <div className="navbar">
                         <p className="navButton">PRYD</p>
-                        <Link to='/home' className="navButton">Home</Link>
+                        <Link to='/' className="navButton">Home</Link>
                         <Link to='/user' className="navButton">User</Link>
                         <Link to='/feededitor' className="navButton" >Feed Editor</Link>
                     </div>

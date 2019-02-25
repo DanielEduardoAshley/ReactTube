@@ -26,7 +26,6 @@ class App extends Component {
         <Navbar />
         
         <Route path='/' exact component={Placeholder}/>
-        <Route path='/home' component={Placeholder}/>
         <Route path='/video/:video_id' component={Placeholder}/>
         <Route path='/search/:search' component={Search}/>
         <Route path='/user' component={Placeholder}/>
