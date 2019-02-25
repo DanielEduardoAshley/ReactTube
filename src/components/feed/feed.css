@@ -1,0 +1,44 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+
+.feed-wrapper{
+  display: flex;
+  justify-content: space-around;
+  margin: 10px;
+  padding: 20px;
+
+  
+}
+
+.input-field{
+  width:45%;
+}
+
+.feed-row{
+  width: 45%;
+}
+
+.header{
+  display: inline;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.list-group{
+  display: flex;
+  justify-content: space-around;
+
+}
+
+.list-group-item:hover{
+  background-color: #f4f4f4;
+
+}
+
+.checkbox{
+  justify-content: flex-end;
+}

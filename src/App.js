@@ -6,7 +6,7 @@ import Navbar from './components/navbar/navbar';
 // import '/video/:video_id' here
 // import '/search/:search_query' here
 // import '/user' here
-// import '/feededitor' here
+import Feed from './components/feed/feed';
 // extra import here
 // extra import here
 
@@ -30,7 +30,7 @@ class App extends Component {
         <Route path='/video/:video_id' exact component={Placeholder}/>
         <Route path='/search/:search_query' exact component={Placeholder}/>
         <Route path='/user' exact component={Placeholder}/>
-        <Route path='/feededitor' exact component={Placeholder}/>
+        <Route path='/feededitor' exact component={Feed}/>
 
         {/* <Route path='/user/:user_id/history' exact component={Placeholder}/> */}
         
