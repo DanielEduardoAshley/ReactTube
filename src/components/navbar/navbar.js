@@ -2,34 +2,14 @@ import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import './navbar.css';
 
+
+
+
 class Navbar extends Component {
-<<<<<<< HEAD
     state = {
         searchInput: '',
     }
 
-=======
-<<<<<<< danBranch
-  render() {
-    return (
-        <>
-            <div>
-                <Link to='/home'>Home</Link>
-                <Link to='/user'>User</Link>
-                <Link to='/feededitor'>Feed Editor</Link>
-
-                <input placeholder='Search'></input>
-                <Link to='/search/:search_query'>Search</Link>
-            </div>
-        </>
-    );
-  }
-=======
-    state = {
-        searchInput: '',
-    }
-
->>>>>>> danBranch
     handleClick = (e) => {
         this.props.history.push(`/search/${this.state.searchInput}`);
     }
@@ -51,7 +31,7 @@ class Navbar extends Component {
                 <div className="header">
                     <div className="navbar">
                         <p className="navButton">PRYD</p>
-                        <Link to='/' className="navButton">Home</Link>
+                        <Link to='/home' className="navButton">Home</Link>
                         <Link to='/user' className="navButton">User</Link>
                         <Link to='/feededitor' className="navButton" >Feed Editor</Link>
                     </div>
@@ -63,11 +43,8 @@ class Navbar extends Component {
                     </div>
             </>
         );
-    }
-<<<<<<< HEAD
-=======
->>>>>>> local
->>>>>>> danBranch
+
+}
 }
 
 export default withRouter(Navbar);

@@ -1,111 +1,122 @@
-import { React, Component } from 'react'
-import axios from 'axios'
+import  React, {  withRouter}  from 'react'
+// import axios from 'axios'
+import Homelayout from '../homelayout/homelayout'
+import  axiosFirstCall  from '../../services/axios'
 
 
 
-class Home extends Component {
 
-
-    /* 
-         Daniel's workspace
-          */
-   constructor(props){
-     super(props)
-     this.state={
-       videoArray : []
-     }
-   }
- 
- 
-    VideoPlayer = ({ id }) => {
-     const link = `https://www.youtube.com/embed/${id}?autoplay=1&fs=1&origin=http://localhost:3001`;
-   
-     return (
-       <iframe title='yt-video' type="text/html" width="640" height="360"
-     src={link} frameBorder="0"></iframe>
-     )
-     }
- 
- 
-   componentDidMount(){
-     axios({
-       method: 'get',
-       url: 'https://www.googleapis.com/youtube/v3/search',
-       params: {
-         part: 'snippet',
-         maxResults: 8,
-         videoDefinition: 'high',
-         type: 'video',
-         videoEmbeddable: 'true',
-         key: 'AIzaSyDk4Baz4ZsCIIY-zwzjEgOATbmVwjZVVpc',
-         q: 'orochimaru',
-         pageToken: ''
-       }
-     }).then(response=>{
-       console.log(response)
-       return response.data.items.map(e=>{
-         console.log(e.id.videoId)
- 
-        return  this.setState({
-           videoArray : (this.state.videoArray || []).concat([e.id.videoId]) 
-         })
-       })
-   
-       
-         
-       
-     })
-     .then(()=>{
-      const arr = []
-     console.log(this.state.videoArray)
-      this.state.videoArray.map((e)=>{
-       return axios({
-         method: 'get',
-         url: 'https://www.googleapis.com/youtube/v3/videos',
-         params: {
-           part: 'id,snippet,statistics',
-           key: 'AIzaSyDk4Baz4ZsCIIY-zwzjEgOATbmVwjZVVpc',
-           id: e,
-         }
-       }).then((response)=>{
-         arr.push(
-           
-           response.data.items[0].id)
-            
-               // obj.response.data.items[0].id
-           // snippet.publishedAt,
-           // snippet.channelId,
-           // snippet.title,
-           // snippet.description,
-           // thumbnails.maxres.url,
-           // thumbnails.maxres.width,
-           // thumbnails.maxres.url.height,
-           // channelTitle,
-           // tags,
-           // statistics.viewCount,
-           // statistics.likeCount,
-           // statistics.dislikeCount,
-           // statistics.favoriteCount,
-           // statistics.commentCount,
-       
-         console.log(arr)
- 
-       })
-       
-       
-     })
-     })
-        
-             
- 
-       }
+class Home extends React.Component {
+    constructor(props){
+        super(props)
+        this.state={
+               
+                Users : {
+                       Default : {
+                                
+                                feedlist: ['music', 'orochimaru'],
+                                movieInfo: [
+                                  {
+                                   feedTitle: 'music',
+                                   vidTitle : 'abba',
+                                   vidInfo : 'new Album',
+                                   vidImg  : 'jpg',
+                                   chanName : 'listeners',
+                                   TimePost : '4 hrs ago'
+                                  }
+                                 ]
+                    },         
+                       
+                       Pam  :  { 
+                        
+                                    feedlist: ['music', 'orochimaru'],
+                                    movieInfo: [
+                                  //   {
+                                  //  feedTitle: 'music',
+                                  //  title : 'abba',
+                                  //  description : 'new Album',
+                                  //  thumbnail  : 'jpg',
+                                  //  channelTitle : 'listeners',
+                                  //  publishedAt : '4 hrs ago',
+                                  //  nextPageToken: 'CAgQAA'
+                                  //   }
+                                   ]
+                    }
+                  },
+                        
+                activeUser : 'Pam',
+                showMore : {
+                                titleOfFeed : 'music',
+                                showMore    :  false
+                            }
+        }
     }
-    
+  
+  componentDidMount(){
+    const newArr = []
+   return axiosFirstCall('orochimaru').then((response)=>{
+     console.log('data',response)
+          response.data.items.map(e=>{
+            return newArr.push({
+                    feedTitle : 'orochimaru',
+                    id: e.id.videoId,
+                    title  : e.snippet.title,
+                    description: e.snippet.description,
+                    thumbnail: e.snippet.thumbnails.default,
+                    channelTitle: e.snippet.channelTitle,
+                    publishedAt : e.snippet.publishedAt,
+                    nextPageToken: e.nextPageToken,
+  
+  
+            })
+            
+          })
+            const addUserData = {...this.state}
+            const Pamela = addUserData.Users.Pam.movieInfo
+            const newPamela = (Pamela || []).concat(newArr)
+            addUserData.Users.Pam.movieInfo = newPamela
+            console.log(addUserData.Users)
+          this.setState({
+            Users : addUserData.Users
+          },()=>{
+            console.log(this.state.Users)
+            console.log(this.state.Users[`${this.state.activeUser}`].movieInfo)
+  
+  
+          })
+  
+  
+  
+   })
+  
+  
+  }
+  
+  
+ vidPage=(id)=>{
+     console.log(id)
+    console.log(this.props)
+    this.props.history.push(`video/${id}`)
 
+ }
 
-
-
-
-
-
-export default Home
+  render(){
+  return (
+      <>
+  <div>Home Page</div>
+  <Homelayout active={this.state.Users[`${this.state.activeUser}`].movieInfo} vidsPage={this.vidPage}/>
+  
+  </>
+  )
+  
+  
+  
+  }
+  
+  
+  
+  
+  
+  
+}
+export default Home;

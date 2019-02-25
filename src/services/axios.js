@@ -4,8 +4,8 @@ import axios from 'axios'
  
  
  
- const getHomeVids=()=>{
-    axios({
+ const axiosFirstCall=(query)=>{
+   return axios({
       method: 'get',
       url: 'https://www.googleapis.com/youtube/v3/search',
       params: {
@@ -28,21 +28,21 @@ import axios from 'axios'
 
 
 
-const getMoreVidInfo=()=>{
-    const arr = []
-    console.log(this.state.videoArray)
-     this.state.videoArray.map((e)=>{
-      return axios({
-        method: 'get',
-        url: 'https://www.googleapis.com/youtube/v3/videos',
-        params: {
-          part: 'id,snippet,statistics',
-          key: 'AIzaSyDk4Baz4ZsCIIY-zwzjEgOATbmVwjZVVpc',
-          id: e,
-        }
-      })
+// const getMoreVidInfo=()=>{
+//     const arr = []
+//     console.log(this.state.videoArray)
+//      this.state.videoArray.map((e)=>{
+//       return axios({
+//         method: 'get',
+//         url: 'https://www.googleapis.com/youtube/v3/videos',
+//         params: {
+//           part: 'id,snippet,statistics',
+//           key: 'AIzaSyDk4Baz4ZsCIIY-zwzjEgOATbmVwjZVVpc',
+//           id: e,
+//         }
+//       })
 
-  })
-}
+//   })
+// }
 
-export {  getMoreVidInfo, getHomeVids }
+export default axiosFirstCall;

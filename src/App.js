@@ -1,22 +1,30 @@
 import React, { Component } from 'react';
-import { Route } from 'react-router-dom';
+import './components/homelayout/homelayout.css'
+import { Route, withRouter } from 'react-router-dom';
 import Navbar from './components/navbar/navbar';
 // import '/' here
-import axios from 'axios'
+// import axios from 'axios'
 // import '/home' here
 // import '/video/:video_id' here
 import Search from './components/search/search';
+import VideoPlayer from './components/video/video';
+import Home from './components/home/home';
 // import '/user' here
 // import '/feededitor' here
 // extra import here
 // extra import here
 
 
-const Placeholder = (props) => {
+
+
+
+const Placeholder =(props) => {
+  // console.log('newprops',this.props)
   return (
       <h1>This is the placeholder for our components</h1>
   );
 }
+
 
 class App extends Component {
 
@@ -40,8 +48,8 @@ class App extends Component {
 
  <Navbar />
         
-        <Route path='/' exact component={Placeholder}/>
-        <Route path='/video/:video_id' component={Placeholder}/>
+        <Route path='/home' exact component={Home}/>
+        <Route path='/video/:video_id' render={()=><VideoPlayer id={'rZbFKKpYApc'}/>}/>
         <Route path='/search/:search' component={Search}/>
         <Route path='/user' component={Placeholder}/>
         <Route path='/feededitor' component={Placeholder}/>
