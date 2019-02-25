@@ -70,7 +70,6 @@ class App extends Component {
         
       
     })
-    
     .then(()=>{
      const arr = []
     console.log(this.state.videoArray)
