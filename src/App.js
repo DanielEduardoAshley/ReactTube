@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
 import Navbar from './components/navbar/navbar';
+import Home from './components/home/home'
 
 const Placeholder = (props) => {
   return (
