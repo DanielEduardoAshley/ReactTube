@@ -3,14 +3,22 @@ import { Link, withRouter } from 'react-router-dom';
 import './navbar.css';
 
 class Navbar extends Component {
+    state = {
+        searchInput: '',
+    }
 
     handleClick = (e) => {
-        console.log('here, this is props', this.props)
-        this.props.history.push(`/search/bubbles`);
+        this.props.history.push(`/search/${this.state.searchInput}`);
     }
 
     onChange = (e) => {
-        console.log('this is input',e.target.value);
+        this.setState({searchInput: e.target.value})
+    }
+
+    onKeyDown = (e) => {
+        if(e.key.toLowerCase() === 'enter'){
+            this.setState({searchInput: e.target.value})
+        }
     }
 
     render() {
@@ -25,7 +33,7 @@ class Navbar extends Component {
                         <Link to='/feededitor' className="navButton" >Feed Editor</Link>
                     </div>
                     <div className="searchBox">
-                        <input placeholder='Search' className='navInput' onChange={this.onChange}></input>
+                        <input placeholder='Search' className='navInput' onChange={this.onChange} onKeyDown={this.onKeyDown}></input>
                         <button className="searchButton" onClick={this.handleClick}>Search</button>
                     </div>
                         
