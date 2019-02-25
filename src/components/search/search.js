@@ -21,6 +21,7 @@ componentDidMount() {
         return;
     } else {
         Axios call with this.state.searchInput,
+        // inside of axio call, make sure to use moment to parse date object
         inside of .then, 
         setState with videoResults
         and do localStorage.setItem();
@@ -28,6 +29,24 @@ componentDidMount() {
 
     */
 }
+
+/*
+When click on thumbnail, use this function to go to video page
+ handleClick = (video_id) => {
+        this.props.history.push(`/video/${video_id}`);
+    }
+*/
+
+/*
+When click on showMore, use this function
+    showMoreClick = (pageToken) => {
+        Axios call with pageToken
+        setState with new videoResult array pushed to previous state videoResult array
+        and do localStorage.setItem();
+
+    }
+*/
+
 render() {
     // console.log(this.props.match.params.search)
     return (
