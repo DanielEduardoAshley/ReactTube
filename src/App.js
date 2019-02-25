@@ -29,6 +29,8 @@ class App extends Component {
       videoArray : []
     }
   }
+  
+  
   render() {
   //  const id = this.state.videoArray[0]
     return (
@@ -36,7 +38,7 @@ class App extends Component {
         <h1>React Tube</h1>
 
 
-        <Navbar />
+ <Navbar />
         
         <Route path='/' exact component={Placeholder}/>
         <Route path='/video/:video_id' component={Placeholder}/>
