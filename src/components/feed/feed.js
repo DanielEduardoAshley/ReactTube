@@ -34,7 +34,6 @@ class Feed extends React.Component {
               </div>
             </div>
         </div>
-
       </>
     );
   }
