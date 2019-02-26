@@ -1,36 +1,43 @@
 import React, { Component } from 'react';
-import { Route } from 'react-router-dom';
+import './components/homelayout/homelayout.css'
+import { Route, withRouter } from 'react-router-dom';
+import axios from 'axios';
 import Navbar from './components/navbar/navbar';
-// import '/' here
-// import '/home' here
-// import '/video/:video_id' here
 import Search from './components/search/search';
-// import '/user' here
-// import '/feededitor' here
+import VideoPlayer from './components/video/video';
+import Home from './components/home/home';
+import User from './components/user/user';
+import Feed from './components/feed/feed';
+
 // extra import here
 // extra import here
-
-
-const Placeholder = (props) => {
-  return (
-      <h1>This is the placeholder for our components</h1>
-  );
-}
 
 class App extends Component {
+
+   /* 
+        Daniel's workspace
+         */
+  constructor(props){
+    super(props)
+    this.state={
+      videoArray : []
+    }
+  }
+  
+  
   render() {
+  //  const id = this.state.videoArray[0]
     return (
       <div>
-
-        <Navbar />
+      <Navbar />
         
-        <Route path='/' exact component={Placeholder}/>
-        <Route path='/video/:video_id' component={Placeholder}/>
+        <Route path='/home' exact component={Home}/>
+        <Route path='/video/:video_id' render={()=><VideoPlayer id={'rZbFKKpYApc'}/>}/>
         <Route path='/search/:search' component={Search}/>
-        <Route path='/user' component={Placeholder}/>
-        <Route path='/feededitor' component={Placeholder}/>
+        <Route path='/user' component={User}/>
+        <Route path='/feededitor' component={Feed}/>
 
-        {/* <Route path='/user/:user_id/history' exact component={Placeholder}/> */}
+        {/* <Route path='/user/:usesr_id/history' exact component={Placeholder}/> */}
         
         {/* 
         Pam's workspace
@@ -38,7 +45,18 @@ class App extends Component {
 
         {/* 
         Daniel's workspace
+        
          */}
+
+        {
+          this.state.videoArray.map((e,i)=>{
+            console.log('this is e', typeof e)
+            const id = e
+            return <div key={i}>{this.VideoPlayer({ id })}</div>
+
+
+          })
+        }
 
         {/*         
         Yun's workspace
