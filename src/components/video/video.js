@@ -26,7 +26,7 @@ render(){
   
 return <div>{
      this.players( this.props.id )
-}) }</div>
+ }</div>
   
 
 }

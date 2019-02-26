@@ -30,7 +30,7 @@ class Home extends React.Component {
                        Pam  :  { 
                         
                                     feedlist: ['music', 'orochimaru'],
-                                    movieInfo: [
+                                    movieInfo: []
                                   //   {
                                   //  feedTitle: 'music',
                                   //  title : 'abba',
@@ -40,7 +40,7 @@ class Home extends React.Component {
                                   //  publishedAt : '4 hrs ago',
                                   //  nextPageToken: 'CAgQAA'
                                   //   }
-                                   ]
+                                    
                     }
                   },
                         
@@ -55,7 +55,9 @@ class Home extends React.Component {
   componentDidMount(){
     console.log('hello')
     const newArr = []
-   return axiosFirstCall('orochimaru').then((response)=>{
+    const newObj = {}
+    const query = 'orochimaru'
+   return axiosFirstCall(query).then((response)=>{
      console.log('data',response)
           response.data.items.map(e=>{
             return newArr.push({
@@ -72,11 +74,12 @@ class Home extends React.Component {
             })
             
           })
+            
             const addUserData = {...this.state}
             const Pamela = addUserData.Users.Pam.movieInfo
             const newPamela = (Pamela || []).concat(newArr)
             addUserData.Users.Pam.movieInfo = newPamela
-            console.log(addUserData.Users)
+            console.log('this',addUserData.Users)
           this.setState({
             Users : addUserData.Users
           },()=>{
@@ -101,11 +104,22 @@ class Home extends React.Component {
 
  }
 
+ loadmore=(feedTitle)=>{
+  //  console.log(feedTitle)
+   console.log(feedTitle)
+   return axiosFirstCall(feedTitle).then(()=>{
+
+
+   }
+   )
+ }
+
   render(){
+    console.log('these', this.props)
   return (
       <>
   <div>Home Page</div>
-  <Homelayout active={this.state.Users[`${this.state.activeUser}`].movieInfo} vidsPage={this.vidPage}/>
+  <Homelayout active={this.state.Users[`${this.state.activeUser}`].movieInfo} vidsPage={this.vidPage} loadmore={this.loadmore}/>
   
   </>
   )

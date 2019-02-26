@@ -3,6 +3,7 @@ import { Card, CardImg, CardText, CardBody,
   CardTitle, CardSubtitle } from 'reactstrap';
 
   const Homelayout = (props) => {
+    console.log('active',props.active)
     return (<>
     <div className='rowsss'>
         {props.active.map((e,i)=>{
@@ -16,6 +17,7 @@ import { Card, CardImg, CardText, CardBody,
               <CardText></CardText>
             </CardBody>
           </Card> 
+          <button onClick={()=>props.loadmore(e.feedTitle)}>Load More</button>
            </div>
         </div> 
   
