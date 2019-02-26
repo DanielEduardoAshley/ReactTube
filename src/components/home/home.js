@@ -60,25 +60,27 @@ class Home extends React.Component {
    return axiosFirstCall(query).then((response)=>{
      console.log('data',response)
           response.data.items.map(e=>{
+            
             return newArr.push({
-                    feedTitle : 'orochimaru',
-                    id: e.id.videoId,
-                    title  : e.snippet.title,
-                    description: e.snippet.description,
-                    thumbnail: e.snippet.thumbnails.default,
-                    channelTitle: e.snippet.channelTitle,
-                    publishedAt : e.snippet.publishedAt,
-                    nextPageToken: e.nextPageToken,
-  
-  
-            })
+              feedTitle : 'orochimaru',
+              id: e.id.videoId,
+              title  : e.snippet.title,
+              description: e.snippet.description,
+              thumbnail: e.snippet.thumbnails.default,
+              channelTitle: e.snippet.channelTitle,
+              publishedAt : e.snippet.publishedAt,
+              nextPageToken: e.nextPageToken,
+
+
+      }
+            )
             
           })
             
             const addUserData = {...this.state}
             const Pamela = addUserData.Users.Pam.movieInfo
             const newPamela = (Pamela || []).concat(newArr)
-            addUserData.Users.Pam.movieInfo = newPamela
+            addUserData.Users.Pam.movieInfo = newPamela 
             console.log('this',addUserData.Users)
           this.setState({
             Users : addUserData.Users
@@ -107,11 +109,11 @@ class Home extends React.Component {
  loadmore=(feedTitle)=>{
   //  console.log(feedTitle)
    console.log(feedTitle)
-   return axiosFirstCall(feedTitle).then(()=>{
+//    return axiosFirstCall(feedTitle).then((data)=>{
 
-
-   }
-   )
+// console.log(data)
+//    }
+//    )
  }
 
   render(){
