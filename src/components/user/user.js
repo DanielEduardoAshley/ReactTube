@@ -58,6 +58,12 @@ class User extends React.Component {
     localStorage.setItem('activeUser', JSON.stringify(newObj.users[i]));
   }
 
+  onKeyDown = (e) => {
+    if(e.key.toLowerCase() === 'enter'){
+      this.onClickAdd();
+    }
+  }
+
   componentDidMount() {
     const activeUser = JSON.parse(localStorage.getItem('activeUser'))
     const SavedUsers = JSON.parse(localStorage.getItem('users')) || [{
@@ -78,7 +84,7 @@ class User extends React.Component {
               <div>Create a New User </div>
             </div>
             <div className="input-group mb-3">
-              <input type="text" className="form-control" placeholder="User Name" aria-describedby="button-addon2" onChange={this.onChange}></input>
+              <input type="text" className="form-control" placeholder="User Name" aria-describedby="button-addon2" onKeyDown={this.onKeyDown} onChange={this.onChange}></input>
               <div className="input-group-append">
                 <button className="btn btn-outline-secondary" type="button" id="button-addon2" onClick={this.onClickAdd}>Add</button>
               </div>
