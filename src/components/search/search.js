@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './search.css';
 
 class Search extends Component {
 state = {
@@ -50,10 +51,12 @@ When click on showMore, use this function
 render() {
     // console.log(this.props.match.params.search)
     return (
+        <>
         <div>
             <p onClick={this.onClick}>Click me</p>
-            <p>Search Result Page</p>
+            <p>Search Results for {this.props.match.params.search}</p>
         </div>
+        </>
     )
 }
 }
