@@ -54,6 +54,7 @@ class User extends React.Component {
     }
     newObj.users[i].isActiveUser = true;
     this.setState(newObj);
+    localStorage.setItem('users', JSON.stringify(newObj.users));
     localStorage.setItem('activeUser', JSON.stringify(newObj.users[i]));
   }
 
@@ -64,10 +65,8 @@ class User extends React.Component {
       feedList: ['Naruto'], 
       isActiveUser: true,
    }]
-    
+
     this.setState({users: SavedUsers})
-
-
   }
 
   render() {
