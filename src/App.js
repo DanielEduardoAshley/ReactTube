@@ -1,30 +1,16 @@
 import React, { Component } from 'react';
 import './components/homelayout/homelayout.css'
 import { Route, withRouter } from 'react-router-dom';
+import axios from 'axios';
 import Navbar from './components/navbar/navbar';
-// import '/' here
-// import axios from 'axios'
-// import '/home' here
-// import '/video/:video_id' here
 import Search from './components/search/search';
 import VideoPlayer from './components/video/video';
 import Home from './components/home/home';
-// import '/user' here
-// import '/feededitor' here
+import User from './components/user/user';
+import Feed from './components/feed/feed';
+
 // extra import here
 // extra import here
-
-
-
-
-
-const Placeholder =(props) => {
-  // console.log('newprops',this.props)
-  return (
-      <h1>This is the placeholder for our components</h1>
-  );
-}
-
 
 class App extends Component {
 
@@ -43,18 +29,15 @@ class App extends Component {
   //  const id = this.state.videoArray[0]
     return (
       <div>
-        <h1>React Tube</h1>
-
-
- <Navbar />
+      <Navbar />
         
         <Route path='/home' exact component={Home}/>
         <Route path='/video/:video_id' render={()=><VideoPlayer id={'rZbFKKpYApc'}/>}/>
         <Route path='/search/:search' component={Search}/>
-        <Route path='/user' component={Placeholder}/>
-        <Route path='/feededitor' component={Placeholder}/>
+        <Route path='/user' component={User}/>
+        <Route path='/feededitor' component={Feed}/>
 
-        {/* <Route path='/user/:user_id/history' exact component={Placeholder}/> */}
+        {/* <Route path='/user/:usesr_id/history' exact component={Placeholder}/> */}
         
         {/* 
         Pam's workspace
@@ -74,12 +57,6 @@ class App extends Component {
 
           })
         }
-
-
-
-
-
-
 
         {/*         
         Yun's workspace
