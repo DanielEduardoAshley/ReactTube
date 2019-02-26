@@ -5,10 +5,11 @@ import React from 'react';
 class VideoPlayer extends React.Component{
     constructor(props){
         super(props)
+        
     }
 
-    players=({ props })=>{
-        const link = `https://www.youtube.com/embed/rZbFKKpYApc?autoplay=1&fs=1&origin=http://localhost:3000`;
+    players=( id )=>{
+        const link = `https://www.youtube.com/embed/${id}?autoplay=1&fs=1&origin=http://localhost:3000`;
     
         return (
           <iframe title='yt-video' type="text/html" width="640" height="360"
@@ -18,9 +19,14 @@ class VideoPlayer extends React.Component{
  
 
 render(){
-   const ids = 'rZbFKKpYApc'
+    let e =  'rZbFKKpYApc' 
+    console.log('props', this.props)
+ 
+ 
   
-return <div>{this.players(ids)}</div>
+return <div>{
+     this.players( this.props.id )
+}) }</div>
   
 
 }

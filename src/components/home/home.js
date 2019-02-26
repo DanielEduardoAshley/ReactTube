@@ -1,4 +1,4 @@
-import  React, {  withRouter}  from 'react'
+import  React, {  withRouter }  from 'react'
 // import axios from 'axios'
 import Homelayout from '../homelayout/homelayout'
 import  axiosFirstCall  from '../../services/axios'
@@ -53,6 +53,7 @@ class Home extends React.Component {
     }
   
   componentDidMount(){
+    console.log('hello')
     const newArr = []
    return axiosFirstCall('orochimaru').then((response)=>{
      console.log('data',response)

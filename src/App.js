@@ -40,16 +40,20 @@ class App extends Component {
   
   
   render() {
-  //  const id = this.state.videoArray[0]
+  console.log(this.props.location.pathname)
+  const path = this.props.location.pathname
+  const p= path.split('/')
+  console.log(p[2])
+  const id = p[2]
     return (
       <div>
-        <h1>React Tube</h1>
+        <h1>React Tube</h1> 
 
 
  <Navbar />
         
         <Route path='/home' exact component={Home}/>
-        <Route path='/video/:video_id' render={()=><VideoPlayer id={'rZbFKKpYApc'}/>}/>
+        <Route path='/video/:video_id' render={()=><VideoPlayer id={id}/>}/>
         <Route path='/search/:search' component={Search}/>
         <Route path='/user' component={Placeholder}/>
         <Route path='/feededitor' component={Placeholder}/>
@@ -94,4 +98,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default withRouter(App);
