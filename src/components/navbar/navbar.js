@@ -7,7 +7,6 @@ class Navbar extends Component {
         searchInput: '',
     }
 
-
     handleClick = (e) => {
         this.props.history.push(`/search/${this.state.searchInput}`);
     }
@@ -29,7 +28,7 @@ class Navbar extends Component {
                 <div className="header">
                     <div className="navbar">
                         <p className="navButton">PRYD</p>
-                        <Link to='/' className="navButton">Home</Link>
+                        <Link to='/home' className="navButton">Home</Link>
                         <Link to='/user' className="navButton">User</Link>
                         <Link to='/feededitor' className="navButton" >Feed Editor</Link>
                     </div>
@@ -41,8 +40,7 @@ class Navbar extends Component {
                     </div>
             </>
         );
-    }
-
+  }
 }
 
 export default withRouter(Navbar);
