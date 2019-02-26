@@ -15,7 +15,7 @@ import axios from 'axios'
         type: 'video',
         videoEmbeddable: 'true',
         key: 'AIzaSyDk4Baz4ZsCIIY-zwzjEgOATbmVwjZVVpc',
-        q: 'orochimaru',
+        q: `${query}`,
         pageToken: ''
       }
     })

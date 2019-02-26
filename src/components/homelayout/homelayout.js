@@ -3,9 +3,11 @@ import { Card, CardImg, CardText, CardBody,
   CardTitle, CardSubtitle } from 'reactstrap';
 
   const Homelayout = (props) => {
+    let str = ''
     return (<>
     <div className='rowsss'>
-        {props.active.map((e,i)=>{
+        {
+          props.active.map((e,i)=>{
          return <div className='col-333' key={i}>
          <div>
           <Card onClick={()=>props.vidsPage(e.id)}>
@@ -16,13 +18,16 @@ import { Card, CardImg, CardText, CardBody,
               <CardText></CardText>
             </CardBody>
           </Card> 
+          {str = e.feedTitle}
            </div>
         </div> 
   
         
         })
+        
       }
-      
+      <button onClick={()=>props.loadmore(str)}>Load More</button>
+
      </div>
      </>
     );
