@@ -8,12 +8,12 @@ class Search extends Component {
     state = {
         searchInput: this.props.match.params.search,
         results: [{
-            video_id: '',
-            vidTitle: '',
-            published: '', // Moment.js
-            thumbnails: '',
-            channel: '',
-            channel_id: '',
+            videoId: '',
+            title: '',
+            publishedAt: '', // Moment.js
+            thumbnailsURL: '',
+            channelTitle: '',
+            channelId: '',
             description: '',
             nextPageToken: '',
         }]
@@ -48,12 +48,23 @@ class Search extends Component {
                 const videoInfo = res.data.items.map((e, i) => {
                     const { id, snippet } = e;
                     const { videoId } = id;
-                    const { publishedAt, channelTitle, channelId, description, thumbnails } = snippet;
+                    const { publishedAt, channelTitle, channelId, description, thumbnails, title } = snippet;
                     const thumbnailsURL = thumbnails.high.url;
                     const resultsInfo = { id, snippet, videoId, publishedAt, channelTitle, channelId, description, thumbnailsURL }
-                    
+                    const published = Moment(`${publishedAt}`, "YYYYMMDD").fromNow();
+                    console.log(published, 'here')
+                    // moment("20120620", "YYYYMMDD").fromNow();
                     return resultsInfo;
                 });
+
+            //     video_id: '',
+            // vidTitle: '',
+            // published: '', // Moment.js
+            // thumbnails: '',
+            // channel: '',
+            // channel_id: '',
+            // description: '',
+            // nextPageToken: '',
                 
             })
             .catch((err) => console.log(err))
