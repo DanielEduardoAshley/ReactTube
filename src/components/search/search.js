@@ -10,10 +10,12 @@ class Search extends Component {
         results: [{
             video_id: '',
             vidTitle: '',
-            views: 0,
             published: '', // Moment.js
-            thumbnail: '',
-            channel: ''
+            thumbnails: '',
+            channel: '',
+            channel_id: '',
+            description: '',
+            nextPageToken: '',
         }]
     }
 
@@ -41,9 +43,22 @@ class Search extends Component {
         */
 
         axiosFirstCall(this.state.searchInput)
-            .then((r) => console.log(r))
+            .then((res) => {
+                console.log(res)
+                const videoInfo = res.data.items.map((e, i) => {
+                    const { id, snippet } = e;
+                    const { videoId } = id;
+                    const { publishedAt, channelTitle, channelId, description, thumbnails } = snippet;
+                    const thumbnailsURL = thumbnails.high.url;
+                    const resultsInfo = { id, snippet, videoId, publishedAt, channelTitle, channelId, description, thumbnailsURL }
+                    
+                    return resultsInfo;
+                });
+                
+            })
             .catch((err) => console.log(err))
     }
+
     /*
     When click on thumbnail, use this function to go to video page
      handleClick = (video_id) => {
