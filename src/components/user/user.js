@@ -16,6 +16,7 @@ class User extends React.Component {
 
   onChange =(e)=>{
     this.setState({input: e.target.value})
+
   }
 
   onClickAdd = ()=>{
@@ -34,8 +35,8 @@ class User extends React.Component {
     const droppeddown = this.state.users.map((e, i) =>{
       return (
         <>
-        {(e.isActiveUser) ? <div className="hvrbox" style={{color:'blue'}} key={i}>{e.name}</div> : 
-        <div className="hvrbox"  key={i} onClick={() => this.onClickUser(i)}>{e.name}</div>}
+        {(e.isActiveUser) ? <div className="list-item item" style={{color:'blue'}} key={i}>{e.name}</div> : 
+        <div className="list-item item"  key={i} onClick={() => this.onClickUser(i)}>{e.name}</div>}
         </>
       )
     })
@@ -96,9 +97,9 @@ class User extends React.Component {
               <div>User List</div>
             </div>
             <div className="list-wrapper">
-              {/* <div className="hvrbox" >Yun</div>
-              <div className="hvrbox-text">selected</div> */}
-              <p>{this.droppedDown()}</p>
+                <div className="list-item">
+                  {this.droppedDown()}
+                </div>
             </div>
           </div>
         </div>
