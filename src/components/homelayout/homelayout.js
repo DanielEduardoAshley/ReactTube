@@ -2,7 +2,7 @@ import React from 'react';
 import { Card, CardImg, CardText, CardBody,
   CardTitle, CardSubtitle } from 'reactstrap';
 
-  const Homelayout = (props) => {
+  const Homelayout = (props) => { 
     let str = ''
     // const feedlistKeys = Object.keys(props.active)
    

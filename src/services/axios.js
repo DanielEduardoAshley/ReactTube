@@ -29,21 +29,18 @@ import axios from 'axios'
 
 
 
-// const getMoreVidInfo=()=>{
-//     const arr = []
-//     console.log(this.state.videoArray)
-//      this.state.videoArray.map((e)=>{
-//       return axios({
-//         method: 'get',
-//         url: 'https://www.googleapis.com/youtube/v3/videos',
-//         params: {
-//           part: 'id,snippet,statistics',
-//           key: 'AIzaSyDk4Baz4ZsCIIY-zwzjEgOATbmVwjZVVpc',
-//           id: e,
-//         }
-//       })
+const axiosSecondCall=(id)=>{
+      return axios({
+        method: 'get',
+        url: 'https://www.googleapis.com/youtube/v3/videos',
+        params: {
+          part: 'id,snippet,statistics',
+          key: 'AIzaSyDk4Baz4ZsCIIY-zwzjEgOATbmVwjZVVpc',
+          id: id,
+        }
+      })
 
-//   })
-// }
+  
+}
 
-export default axiosFirstCall;
+export { axiosFirstCall , axiosSecondCall };
