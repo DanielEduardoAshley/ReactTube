@@ -1,10 +1,18 @@
 import React, { Component } from 'react';
+import Moment from 'moment';
 import './search.css';
 
 class Search extends Component {
 state = {
     searchInput:this.props.match.params.search,
-    test: 'lol',
+    results: [{
+        video_id: '',
+        vidTitle: '',
+        views: 0,
+        published: '', // Moment.js
+        thumbnail: '',
+        channel: ''
+    }]
 }
 
 onClick = (e) => {
@@ -52,9 +60,12 @@ render() {
     // console.log(this.props.match.params.search)
     return (
         <>
-        <div>
+        <div className='searchTitle'>
             <p onClick={this.onClick}>Click me</p>
             <p>Search Results for {this.props.match.params.search}</p>
+        </div>
+        <div className=''>
+
         </div>
         </>
     )
