@@ -29,8 +29,8 @@ class Home extends React.Component {
                        
                        Pam  :  { 
                         
-                                    feedlist: ['music', 'orochimaru'],
-                                    movieInfo: []
+                                    feedlist: [ 'orochimaru'],
+                                    movieInfo: {}
                                   //   {
                                   //  feedTitle: 'music',
                                   //  title : 'abba',
@@ -56,8 +56,11 @@ class Home extends React.Component {
     console.log('hello')
     const newArr = []
     const newObj = {}
+    const addUserData = {...this.state}
+
     const query = 'orochimaru'
-   return axiosFirstCall(query).then((response)=>{
+    const nextPage =  ''
+   return axiosFirstCall(query, nextPage).then((response)=>{
      console.log('data',response)
           response.data.items.map(e=>{
             
@@ -69,7 +72,7 @@ class Home extends React.Component {
               thumbnail: e.snippet.thumbnails.default,
               channelTitle: e.snippet.channelTitle,
               publishedAt : e.snippet.publishedAt,
-              nextPageToken: e.nextPageToken,
+              nextPageToken: response.data.nextPageToken,
 
 
       }
@@ -78,9 +81,10 @@ class Home extends React.Component {
           })
             
             const addUserData = {...this.state}
-            const Pamela = addUserData.Users.Pam.movieInfo
-            const newPamela = (Pamela || []).concat(newArr)
-            addUserData.Users.Pam.movieInfo = newPamela 
+            const Pamela = addUserData.Users[`${this.state.activeUser}`].movieInfo
+             Pamela[query] = newArr
+            // const newPamela = (Pamela || []).concat(newArr)
+            // addUserData.Users.Pam.movieInfo = newPamela 
             console.log('this',addUserData.Users)
           this.setState({
             Users : addUserData.Users
@@ -107,13 +111,50 @@ class Home extends React.Component {
  }
 
  loadmore=(feedTitle)=>{
-  //  console.log(feedTitle)
-   console.log(feedTitle)
-//    return axiosFirstCall(feedTitle).then((data)=>{
+    const newArr = []
+    const newObj = {}
+    const query = feedTitle
+    const addUserData = {...this.state}
+    const nextPageToken = addUserData.Users[`${this.state.activeUser}`].movieInfo[query][addUserData.Users[`${this.state.activeUser}`].movieInfo[query].length-1].nextPageToken
+    console.log('get',nextPageToken)
+    return axiosFirstCall(query, nextPageToken).then((response)=>{
+     console.log('data',response)
+          response.data.items.map(e=>{
+            
+            return newArr.push({
+              feedTitle : 'orochimaru',
+              id: e.id.videoId,
+              title  : e.snippet.title,
+              description: e.snippet.description,
+              thumbnail: e.snippet.thumbnails.default,
+              channelTitle: e.snippet.channelTitle,
+              publishedAt : e.snippet.publishedAt,
+              nextPageToken: response.data.nextPageToken,
 
-// console.log(data)
-//    }
-//    )
+
+      }
+            )
+            
+          })
+            
+            const addUserData = {...this.state}
+            const Pamela = addUserData.Users[`${this.state.activeUser}`].movieInfo
+             Pamela[query] = Pamela[query].concat(newArr)
+            // const newPamela = (Pamela || []).concat(newArr)
+            // addUserData.Users.Pam.movieInfo = newPamela 
+            console.log('this',addUserData.Users)
+          this.setState({
+            Users : addUserData.Users
+          },()=>{
+            console.log(this.state.Users)
+            console.log(this.state.Users[`${this.state.activeUser}`].movieInfo)
+  
+  
+          })
+  
+  
+  
+   })
  }
 
   render(){
@@ -121,7 +162,7 @@ class Home extends React.Component {
   return (
       <>
   <div>Home Page</div>
-  <Homelayout active={this.state.Users[`${this.state.activeUser}`].movieInfo} vidsPage={this.vidPage} loadmore={this.loadmore}/>
+  <Homelayout active={this.state.Users[`${this.state.activeUser}`].movieInfo} feedList={this.state.Users[`${this.state.activeUser}`].feedlist} vidsPage={this.vidPage} loadmore={this.loadmore}/>
   
   </>
   )
