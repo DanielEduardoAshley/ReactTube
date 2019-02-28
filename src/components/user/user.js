@@ -16,7 +16,6 @@ class User extends React.Component {
 
   onChange =(e)=>{
     this.setState({input: e.target.value})
-
   }
 
   onClickAdd = ()=>{
@@ -27,8 +26,9 @@ class User extends React.Component {
     }
     const newUser = {
       name: this.state.input,
-      feedList: ['Naruto'],
+      feedList: [],
       isActiveUser: false,
+      viewHistory: [],
     }
 
     const newUserArr= this.state.users.concat(newUser)
@@ -73,11 +73,11 @@ class User extends React.Component {
   }
 
   componentDidMount() {
-    const activeUser = JSON.parse(localStorage.getItem('activeUser'))
     const SavedUsers = JSON.parse(localStorage.getItem('users')) || [{
       name: 'Default',
-      feedList: ['Naruto'], 
+      feedList: ['Naruto', 'Itachi','Kiki Do U Love Me', 'Jiraiya', 'Naruto Love Story'], 
       isActiveUser: true,
+      viewHistory: [],
    }]
 
     this.setState({users: SavedUsers})
