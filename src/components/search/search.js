@@ -3,10 +3,11 @@ import React, { Component } from 'react';
 import Moment from 'moment';
 import './search.css';
 import axiosFirstCall from '../../services/axios';
+import SearchResultsList from '../../containers/searchResultsList';
 
 class Search extends Component {
     state = {
-        searchInput: this.props.match.params.search,
+        searchInput: '',
         prevSearch: [],
         currentResults: [{
             videoId: '',
@@ -21,17 +22,24 @@ class Search extends Component {
     }
 
     onClick = (e) => {
+        console.log(this.state.searchInput)
+        console.log('onClick state', this.props.match.params.search)
+        this.props.history.push(`/search/${this.state.searchInput}`);
+        this.setState({
+            searchInput: this.state.searchInput
+        },() => console.log('onClick statesss', this.state))
 
         axiosFirstCall(this.state.searchInput)
         .then((res) => {
-            console.log(res)
+            // console.log(res)
             const resultsArr = [];
             res.data.items.map((e, i) => {
                 const { id, snippet } = e;
                 const { videoId } = id;
                 const { publishedAt, channelTitle, channelId, description, thumbnails, title } = snippet;
-                const thumbnailsURL = thumbnails.high.url;
-                const resultsInfo = { id, snippet, videoId, publishedAt, channelTitle, channelId, description, thumbnailsURL }
+                const { high } = thumbnails;
+                const { url } = high;
+                const resultsInfo = { id, snippet, videoId, publishedAt, channelTitle, channelId, description, thumbnails, title, high, url }
                 const published = Moment(`${publishedAt}`, "YYYYMMDD").fromNow();
 
                 return resultsArr.push(resultsInfo);
@@ -43,7 +51,8 @@ class Search extends Component {
                 this.setState({
                     prevSearch: this.state.prevSearch.concat(this.state.results),
                     currentResults: results,
-                }, () => console.log(this.state, 'my state'))
+                // }, () => console.log(this.state, 'my state'))
+                })
             })
         .catch((err) => console.log(err));
 
@@ -52,15 +61,15 @@ class Search extends Component {
         localStorage.setItem('test', JSON.stringify(pam));
     }
 
-    // onChange = (e) => {
-    //     this.setState({searchInput: e.target.value})
-    // }
-
-    onKeyDown = (e) => {
-        if(e.key.toLowerCase() === 'enter'){
-            this.setState({searchInput: e.target.value})
-        }
+    onChange = (e) => {
+        this.setState({searchInput: e.target.value})
     }
+
+    // onKeyDown = (e) => {
+    //     if(e.key.toLowerCase() === 'enter'){
+    //         this.setState({searchInput: e.target.value})
+    //     }
+    // }
 
     componentDidMount() {
         const { searchInput } = this.state;
@@ -87,8 +96,9 @@ class Search extends Component {
                     const { id, snippet } = e;
                     const { videoId } = id;
                     const { publishedAt, channelTitle, channelId, description, thumbnails, title } = snippet;
-                    const thumbnailsURL = thumbnails.high.url;
-                    const resultsInfo = { id, snippet, videoId, publishedAt, channelTitle, channelId, description, thumbnailsURL }
+                    const { high } = thumbnails;
+                    const { url } = high;
+                    const resultsInfo = { id, snippet, videoId, publishedAt, channelTitle, channelId, description, thumbnails, title, high, url }
                     const published = Moment(`${publishedAt}`, "YYYYMMDD").fromNow();
 
                     return resultsArr.push(resultsInfo);
@@ -97,10 +107,12 @@ class Search extends Component {
             })
             .then(
                 (results) => {
+                    console.log('urlcheck',this.state)
                     this.setState({
                         prevSearch: (this.state.prevSearch || []).concat(this.state.results),
                         currentResults: results,
-                    }, () => console.log(this.state, 'my state'))
+                    // }, () => console.log(this.state, 'my state'))
+                    })
                 })
             .catch((err) => console.log(err));
     }
@@ -127,14 +139,17 @@ class Search extends Component {
         return (
             <>
                 <div className="searchBox">
-                        <input placeholder='Search' className='navInput' onChange={this.onChange} onKeyDown={this.onKeyDown}></input>
-                        <button className="searchButton" onClick={this.onClick}>Search</button>
+                    <input placeholder='Search' className='navInput' onChange={this.onChange} onKeyDown={this.onKeyDown}></input>
+                    <button className="searchButton" onClick={(e)=>this.onClick(e)}>Search</button>
                 </div>
                 <div className='searchTitle'>
-                    <p onClick={this.onClick}>Click me</p>
+                    <p onClick={(e)=>this.onClick(e)}>Click me</p>
                     <p>Search Results for {this.props.match.params.search}</p>
                 </div>
-                
+                <div>
+                    <SearchResultsList results={this.state.currentResults}/>
+                </div>
+
             </>
         )
     }
