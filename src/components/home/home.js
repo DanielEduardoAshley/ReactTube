@@ -31,8 +31,10 @@ class Home extends React.Component {
                        
                        Pam  :  { 
                         
+
                                     feedlist: [ 'orochimaru'],
                                     movieInfo: {}
+
                                   //   {
                                   //  feedTitle: 'music',
                                   //  title : 'abba',
@@ -60,7 +62,6 @@ class Home extends React.Component {
     const newArr = []
     const newObj = {}
     const addUserData = {...this.state}
-
     const query = 'orochimaru'
     const nextPage =  ''
    return axiosFirstCall(query, nextPage).then((response)=>{
@@ -78,6 +79,7 @@ class Home extends React.Component {
               nextPageToken: response.data.nextPageToken,
 
 
+
       }
             )
             
@@ -88,6 +90,7 @@ class Home extends React.Component {
              Pamela[query] = newArr
             // const newPamela = (Pamela || []).concat(newArr)
             // addUserData.Users.Pam.movieInfo = newPamela 
+
             console.log('this',addUserData.Users)
           this.setState({
             Users : addUserData.Users
@@ -116,6 +119,7 @@ class Home extends React.Component {
  }
 
  loadmore=(feedTitle)=>{
+
     const newArr = []
     const newObj = {}
     const query = feedTitle
@@ -160,6 +164,7 @@ class Home extends React.Component {
   
   
    })
+
  }
 
   render(){
@@ -171,6 +176,7 @@ class Home extends React.Component {
                 <button className="searchButton" onClick={(e)=>this.onClick(e)}>Search</button>
             </div> */}
   <div>Home Page</div>
+
   <Homelayout active={this.state.Users[`${this.state.activeUser}`].movieInfo} feedList={this.state.Users[`${this.state.activeUser}`].feedlist} vidsPage={this.vidPage} loadmore={this.loadmore}/>
   </>
   )

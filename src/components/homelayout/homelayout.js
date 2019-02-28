@@ -4,6 +4,7 @@ import { Card, CardImg, CardText, CardBody,
 
   const Homelayout = (props) => { 
     let str = ''
+
     // const feedlistKeys = Object.keys(props.active)
    
     console.log(props.feedList,'obj', props.active.orochimaru)
@@ -30,6 +31,7 @@ import { Card, CardImg, CardText, CardBody,
   
         
         })
+
       })
       }
       <button onClick={()=>props.loadmore(str)}>Load More</button>

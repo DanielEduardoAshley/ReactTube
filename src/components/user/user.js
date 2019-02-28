@@ -16,26 +16,34 @@ class User extends React.Component {
 
   onChange =(e)=>{
     this.setState({input: e.target.value})
+
   }
 
   onClickAdd = ()=>{
+    for (let i = 0; i < this.state.users.length; i++){
+      if(this.state.input.toLowerCase() === this.state.users[i].name){
+        return;
+      }
+    }
     const newUser = {
       name: this.state.input,
       feedList: ['Naruto'],
       isActiveUser: false,
-    } 
-    
+    }
+
     const newUserArr= this.state.users.concat(newUser)
     this.setState({users:newUserArr})
     localStorage.setItem('users', JSON.stringify(newUserArr));
   }
   
   droppedDown =()=>{
-    const droppeddown = this.state.users.map((e, i) =>{
+     const droppeddown = this.state.users.map((e, i) =>{
+      console.log('user here',this.state.users, typeof this.state.users)
+   
       return (
         <>
-        {(e.isActiveUser) ? <div className="hvrbox" style={{color:'blue'}} key={i}>{e.name}</div> : 
-        <div className="hvrbox"  key={i} onClick={() => this.onClickUser(i)}>{e.name}</div>}
+        {(e.isActiveUser) ? <div className="list-item item" style={{color:'blue'}} key={i}>{e.name}</div> : 
+        <div className="list-item item"  key={i} onClick={() => this.onClickUser(i)}>{e.name}</div>}
         </>
       )
     })
@@ -96,9 +104,9 @@ class User extends React.Component {
               <div>User List</div>
             </div>
             <div className="list-wrapper">
-              {/* <div className="hvrbox" >Yun</div>
-              <div className="hvrbox-text">selected</div> */}
-              <p>{this.droppedDown()}</p>
+                <div className="list-item">
+                  {this.droppedDown()}
+                </div>
             </div>
           </div>
         </div>

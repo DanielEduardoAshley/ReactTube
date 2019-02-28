@@ -10,6 +10,7 @@ const SearchResultsList = (props) => {
     let str = ''
     console.log('resultsss', props.results)
 
+
     return (<>
         <div className='rowsss'>
             {
