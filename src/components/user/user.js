@@ -32,7 +32,9 @@ class User extends React.Component {
   }
   
   droppedDown =()=>{
-    const droppeddown = this.state.users.map((e, i) =>{
+     const droppeddown = this.state.users.map((e, i) =>{
+      console.log('user here',this.state.users, typeof this.state.users)
+   
       return (
         <>
         {(e.isActiveUser) ? <div className="list-item item" style={{color:'blue'}} key={i}>{e.name}</div> : 

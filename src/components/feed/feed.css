@@ -30,29 +30,49 @@
 
 .card-wrapper{
   display: flex;
-  justify-content: space-between;
-  border: 1px solid #d5d5d5;
-  border-radius: 5px;
-  padding: 5px;
+
 }
 
-.card-wrapper:hover{
+.card-row{
+  width: 100%;
+  
+}
+
+.card-n-btn{
+  display: flex;
+  border: 1px solid #d5d5d5;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.card-item{
+ width: 80%;
+
+}
+
+.card-button{
+  width: 20%;
+}
+
+.card-item:hover{
   background-color: #f4f4f4;
 }
 
-
+/* 
 .card-item{
-  width: 70%;
+  /* width: 80%;
   padding:10px;
-}
+  border-radius: 5px;
+  padding: 5px; 
+} */
 
 
-
+/* 
 .card-button{
-  display: inline;
+  /* display: inline;
   justify-content: center;
   padding-right:10px;
-  padding-top: 8px;
+  padding-top: 8px; 
   
-}
+} */
 
