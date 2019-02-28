@@ -14,11 +14,11 @@ class User extends React.Component {
     }
   }
 
-  onChange =(e)=>{
+  onChange = (e) => {
     this.setState({input: e.target.value})
   }
 
-  onClickAdd = ()=>{
+  onClickAdd = () => {
     for (let i = 0; i < this.state.users.length; i++){
       if(this.state.input.toLowerCase() === this.state.users[i].name){
         return;
@@ -36,9 +36,9 @@ class User extends React.Component {
     localStorage.setItem('users', JSON.stringify(newUserArr));
   }
   
-  droppedDown =()=>{
+  droppedDown = () => {
      const droppeddown = this.state.users.map((e, i) =>{
-      
+    
       return (
         <>
         {(e.isActiveUser) ? <div className="list-item item" style={{color:'blue'}} key={i}>{e.name}</div> : 
@@ -49,7 +49,7 @@ class User extends React.Component {
     return droppeddown;
   }
 
-  onClickUser =(i)=>{
+  onClickUser = (i) => {
     const newObj = {...this.state};
     for (let y = 0; y < this.state.users.length ; y++){
       const userActive = this.state.users[y].isActiveUser
