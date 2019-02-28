@@ -171,6 +171,10 @@ class Home extends React.Component {
     console.log('these', this.props)
   return (
       <>
+    {/* <div className="searchBox">
+                <input placeholder='Search' className='navInput' onChange={this.onChange} onKeyDown={this.onKeyDown}></input>
+                <button className="searchButton" onClick={(e)=>this.onClick(e)}>Search</button>
+            </div> */}
   <div>Home Page</div>
 
   <Homelayout active={this.state.Users[`${this.state.activeUser}`].movieInfo} feedList={this.state.Users[`${this.state.activeUser}`].feedlist} vidsPage={this.vidPage} loadmore={this.loadmore}/>
