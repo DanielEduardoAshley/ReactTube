@@ -16,7 +16,7 @@ import axios from 'axios'
         videoEmbeddable: 'true',
 
         // key: 'AIzaSyDk4Baz4ZsCIIY-zwzjEgOATbmVwjZVVpc',
-        key:'AIzaSyDRq-1-Gog-yzzF5buaQRPHv3IysLOZWNI',
+        key:'AIzaSyAp4QI_v1IXVKwmBfnij-X69jnKQkUv-GE', // PAM'S KEY
         q: `${query}`,
         pageToken: `${nextPageToken}`
       }
