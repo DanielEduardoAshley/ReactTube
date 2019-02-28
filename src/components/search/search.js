@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 // import axios from 'axios';
 import Moment from 'moment';
 import './search.css';
-import axiosFirstCall from '../../services/axios';
+import { axiosFirstCall, axiosSecondCall } from '../../services/axios';
 import SearchResultsList from '../../containers/searchResultsList';
 
 class Search extends Component {
