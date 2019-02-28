@@ -42,6 +42,7 @@ class Home extends React.Component {
                                   //  publishedAt : '4 hrs ago',
                                   //  nextPageToken: 'CAgQAA'
                                   //   }
+                                  // this.state.users[selectedUser].movieInfo[feedName].map()
                                     
                     }
                   },
