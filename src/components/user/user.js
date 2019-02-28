@@ -20,19 +20,26 @@ class User extends React.Component {
   }
 
   onClickAdd = ()=>{
+    for (let i = 0; i < this.state.users.length; i++){
+      if(this.state.input.toLowerCase() === this.state.users[i].name){
+        return;
+      }
+    }
     const newUser = {
       name: this.state.input,
       feedList: ['Naruto'],
       isActiveUser: false,
-    } 
-    
+    }
+
     const newUserArr= this.state.users.concat(newUser)
     this.setState({users:newUserArr})
     localStorage.setItem('users', JSON.stringify(newUserArr));
   }
   
   droppedDown =()=>{
-    const droppeddown = this.state.users.map((e, i) =>{
+     const droppeddown = this.state.users.map((e, i) =>{
+      console.log('user here',this.state.users, typeof this.state.users)
+   
       return (
         <>
         {(e.isActiveUser) ? <div className="list-item item" style={{color:'blue'}} key={i}>{e.name}</div> : 
