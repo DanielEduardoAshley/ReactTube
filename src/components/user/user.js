@@ -26,9 +26,10 @@ class User extends React.Component {
     }
     const newUser = {
       name: this.state.input,
-      feedList: [],
+      feedList: ['Naruto', 'Itachi','Kiki Do U Love Me', 'Jiraiya', 'Naruto Love Story'],
       isActiveUser: false,
       viewHistory: [],
+      movieInfo: {},
     }
 
     const newUserArr= this.state.users.concat(newUser)
@@ -77,6 +78,7 @@ class User extends React.Component {
       feedList: ['Naruto', 'Itachi','Kiki Do U Love Me', 'Jiraiya', 'Naruto Love Story'], 
       isActiveUser: true,
       viewHistory: [],
+      movieInfo: {},
    }]
 
     this.setState({users: SavedUsers})
