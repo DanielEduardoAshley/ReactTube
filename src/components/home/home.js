@@ -1,7 +1,10 @@
-import  React, {  withRouter }  from 'react'
+import  React from 'react'
+import {  withRouter } from 'react-router-dom';
+
 // import axios from 'axios'
 import Homelayout from '../homelayout/homelayout'
-import  axiosFirstCall  from '../../services/axios'
+import  { axiosFirstCall, axiosSecondCall }  from '../../services/axios'
+import VideoPlayer from '../video/video';
 
 
 
@@ -10,7 +13,6 @@ class Home extends React.Component {
     constructor(props){
         super(props)
         this.state={
-               
                 Users : {
                        Default : {
                                 
@@ -42,6 +44,7 @@ class Home extends React.Component {
                                   //  publishedAt : '4 hrs ago',
                                   //  nextPageToken: 'CAgQAA'
                                   //   }
+                                  // this.state.users[selectedUser].movieInfo[feedName].map()
                                     
                     }
                   },
@@ -107,9 +110,11 @@ class Home extends React.Component {
   
   
  vidPage=(id)=>{
-     console.log(id)
+    console.log(id)
     console.log(this.props)
     this.props.history.push(`video/${id}`)
+    
+
 
  }
 
@@ -169,7 +174,6 @@ class Home extends React.Component {
   <div>Home Page</div>
 
   <Homelayout active={this.state.Users[`${this.state.activeUser}`].movieInfo} feedList={this.state.Users[`${this.state.activeUser}`].feedlist} vidsPage={this.vidPage} loadmore={this.loadmore}/>
-  
   </>
   )
   
@@ -183,4 +187,4 @@ class Home extends React.Component {
   
   
 }
-export default Home;
+export default Home ;
