@@ -50,13 +50,15 @@
 
 }
 
+
 .card-button{
   width: 20%;
 }
 
-.card-item:hover{
+.card-n-btn:hover{
   background-color: #f4f4f4;
 }
+
 
 /* 
 .card-item{
