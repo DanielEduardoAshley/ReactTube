@@ -66,16 +66,21 @@ render(){
                     {this.players( this.props.id )}
                 </div>
                 <div className='video-info' >
-                    
-                        <h2>{title}</h2>
-                        <p>{channelTitle}</p>
+                        <h2>{channelTitle} - {title}</h2>
+
+                        <div className='view-container'>
+                            <div>
+                                <p>{viewCount} Views</p>
+                            </div>
+                            <div className='count'>
+                                <p className='count-info'>{commentCount} Comments 💬</p>
+                                <p className='count-info'>{likeCount} Likes ❤️</p>
+                                <p className='count-info'>{dislikeCount} Dislikes 💔</p>
+                            </div>
+                        </div>
                         <p>{date}</p>
-                        <p>{viewCount} Views</p>
+                        <p style={{width:'640px'}}>{description} </p>
                         
-                        <p>{description} </p>
-                        <p>{commentCount} Comments</p>
-                        <p>{dislikeCount} Dislikes</p>
-                        <p>{likeCount} Likes</p>
 
                 </div>
             </div>
