@@ -1,0 +1,159 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0
+  }
+  
+  .top-space{
+    /* border-bottom: 2pt solid black; */
+  }
+  
+  .App{
+    width: 90%;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0  auto;
+  }
+  
+  .navBar{
+    flex: 1;
+    /* border-right: 2pt solid black; */
+    /* border-left: 2pt solid black; */
+  }
+  
+  .pageWindow{
+    flex: 4;
+    /* border-right: 2pt solid black;  */
+  }
+  
+  .sideNavBar{
+    flex: 1;
+    /* border: 2px solid black; */
+  }
+  
+  .logo{
+    /* font-family: Arial, Helvetica, sans-serif; */
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    font-style: normal;
+    font-size: 40.478px;
+  }
+  
+  .searchBox{
+    display: flex;
+    flex-wrap: wrap;
+    min-height: 40.478px;
+  }
+  
+  .searchButton{
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    border-bottom: 2pt solid black; 
+    font-size: 25px;
+    padding: 5px 6px 0 5px;
+  }
+  
+  .searchButton:hover{
+    background-color: yellow;
+  }
+  
+  .searchInput{
+    border: 2pt solid;
+    border-top: 0; 
+    width: 265px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 25px;
+    padding-left: 5px; 
+  }
+  
+  .searchInput:hover{
+    background-color: #dbdbdb;
+  }
+  
+  .navTitle{
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-size: 40.478px;
+  }
+  
+  .navBarContainer{
+    display: flex;
+    flex-wrap: wrap; 
+    flex-direction: column;
+    padding-top: 100px;
+  }
+  
+  .navBarButton{
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    /* border-bottom: 2pt solid black;  */
+    font-size: 25px;
+    padding: 20px 6px 0 5px;
+  }
+  
+  .navBarButton:first-child{
+    padding-top: 0; 
+  }
+  
+  .navBarButton:hover{
+    color: #6284B1;
+  }
+  
+  .pageContainer{
+    padding-top: 100px;
+    display: flex;
+    flex-wrap: wrap; 
+    flex-direction: column;
+  }
+  
+  .feedTitle{
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 25px;
+    padding-top: 40px;
+  }
+  
+  .feedTitle:first-child{
+    padding-top: 0px;
+  }
+  
+  .showMoreButton{
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+  }
+  
+  .showMoreButton:hover{
+    color: #EA482C;
+  }
+  
+  .videofeedContainer{
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .videoThumbnail{
+    width: 200px;
+    height: 200px;
+    border: 2pt solid black;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  
+  .videoThumbnail:hover{
+    background-color: #EA482C;
+    font-weight: 600;
+  }
+  
+  .sideBarButton{
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: oblique;
+    font-weight: 400;
+    font-size: 25px;
+    padding: 20px 6px 0 5px;
+  }
