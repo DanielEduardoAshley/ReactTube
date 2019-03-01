@@ -24,51 +24,7 @@ class Search extends Component {
         }]
     }
 
-    onClick = (e) => {
-        console.log(this.state.searchInput, 'input')
-
-        console.log('onClick state', this.props.match.params.search)
-        this.props.history.push(`/search/${this.state.searchInput}`);
-        this.setState({
-            searchInput: this.state.searchInput
-        },() => console.log('onClick statesss', this.state))
-
-        axiosFirstCall(this.state.searchInput, '').then((res) => {
-            console.log(res)
-
-            const resultsArr = [];
-            res.data.items.map((e, i) => {
-                const { id, snippet } = e;
-                const { videoId } = id;
-                const { publishedAt, channelTitle, channelId, description, thumbnails, title } = snippet;
-                const { high } = thumbnails;
-                const { url } = high;
-                const resultsInfo = { id, snippet, videoId, publishedAt, channelTitle, channelId, description, thumbnails, title, high, url }
-                const published = Moment(`${publishedAt}`, "YYYYMMDD").fromNow();
-
-                return resultsArr.push(resultsInfo);
-            });
-            console.log('done')
-
-            return resultsArr;
-        })
-        .then(
-            (results) => {
-                console.log('urlcheck',this.state)
-                this.setState({
-                    prevSearch: (this.state.prevSearch || []).concat(this.state.results),
-
-                    currentResults: results,
-                // }, () => console.log(this.state, 'my state'))
-                })
-            })
-        .catch((err) => console.log(err));
-
-
-        const pam = { lol: 'rupa', dog: 'dan', cat: 'yun' };
-        this.setState({ test: 'pam' });
-        localStorage.setItem('test', JSON.stringify(pam));
-    }
+    
 
     onChange = (e) => {
         this.setState({searchInput: e.target.value})
@@ -164,8 +120,6 @@ class Search extends Component {
             </>
         )
     }
-
-
 }
 
 export default withRouter(Search);

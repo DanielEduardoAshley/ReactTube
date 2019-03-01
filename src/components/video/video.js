@@ -1,8 +1,8 @@
 import React from 'react';
-import { withRouter } from 'react-router-dom'
-import { axiosSecondCall } from '../../services/axios'
-
-
+import { withRouter } from 'react-router-dom';
+import { axiosSecondCall } from '../../services/axios';
+import Moment from 'moment';
+import './video.css';
 
 class VideoPlayer extends React.Component{
     constructor(props){
@@ -13,63 +13,80 @@ class VideoPlayer extends React.Component{
         
     }
     
-    players=( id )=>{
-        const link = `https://www.youtube.com/embed/${id}?autoplay=1&fs=1&origin=http://localhost:3000`;
+players=( id )=>{
+    const link = `https://www.youtube.com/embed/${id}?autoplay=1&fs=1&origin=http://localhost:3000`;
     
-        return (
-          <iframe title='yt-video' type="text/html" width="640" height="360"
+    return (
+        <iframe title='yt-video' type="text/html" width="640" height="360"
         src={link} frameBorder="0"></iframe>
-        )
-        }
+    )
+}
  
 componentDidMount(){
     const id = this.props.id
     axiosSecondCall(id).then((response)=>{ 
-        this.setState({
-            videoData : response.data.items[0],
-        })         
-          console.log(response)
-  
+        const data = response.data.items[0];
+        const {snippet, statistics} = data;
+        
+        const {publishedAt, channelTitle, title, description} = snippet;
+        const {commentCount, dislikeCount, likeCount, viewCount} = statistics;
+        const date = Moment(`${publishedAt}`, "YYYYMMDD").fromNow();
+        const videoObj = { 
+            date, 
+            channelTitle, 
+            title, 
+            description, 
+            commentCount, 
+            dislikeCount, 
+            likeCount, 
+            viewCount
+        }
+
+        this.setState({videoData : videoObj}) 
+        
       })
 }
 
 render(){
-    let e =  'rZbFKKpYApc' 
-    console.log('props', this.props)
-    console.log('nxtcall',this.state.videoData)
- 
- 
-  
-return <div>{
-     this.players( this.props.id )
-    //  Items: [
-    //     {
-    //     id,
-    //     snippet.publishedAt,
-    //     snippet.channelId,
-    //     snippet.title,
-    //     snippet.description,
-    //     thumbnails.maxres.url,
-    //     thumbnails.maxres.width,
-    //     thumbnails.maxres.url.height,
-    //     channelTitle,
-    //     tags: [‘fiji’, ’best’…],
-    //     statistics.viewCount,
-    //     statistics.likeCount,
-    //     statistics.dislikeCount,
-    //     statistics.favoriteCount,
-    //     statistics.commentCount,
-    //     }
-    // ]
- }
- 
- { JSON.stringify(this.state.videoData.snippet) }
- { JSON.stringify(this.state.videoData.statistics) }
+    const { 
+        date, 
+        channelTitle, 
+        title, 
+        description, 
+        commentCount, 
+        dislikeCount, 
+        likeCount, 
+        viewCount
+    } = this.state.videoData;
 
+    return (
+        <>
+            <div className='video-container'>
+                <div>
+                    {this.players( this.props.id )}
+                </div>
+                <div className='video-info' >
+                        <h2>{channelTitle} - {title}</h2>
 
- </div>
-  
+                        <div className='view-container'>
+                            <div>
+                                <p>{viewCount} Views</p>
+                            </div>
+                            <div className='count'>
+                                <p className='count-info'>{commentCount} Comments 💬</p>
+                                <p className='count-info'>{likeCount} Likes ❤️</p>
+                                <p className='count-info'>{dislikeCount} Dislikes 💔</p>
+                            </div>
+                        </div>
+                        <p>{date}</p>
+                        <p style={{width:'640px'}}>{description} </p>
+                        
 
-}
+                </div>
+            </div>
+        </>
+    )
+
+    }
 }
     export default withRouter(VideoPlayer);

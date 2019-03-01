@@ -14,9 +14,7 @@ import axios from 'axios'
         videoDefinition: 'high',
         type: 'video',
         videoEmbeddable: 'true',
-
-        // key: 'AIzaSyDk4Baz4ZsCIIY-zwzjEgOATbmVwjZVVpc',
-        key:'AIzaSyDsnv_b4Flda9bZwiymg5SrOldp0DpO8ek', // PAM'S KEY
+        key: 'AIzaSyAWWomrb5NRZn7oTqjszqm6f2uYqW39cvc',
         q: `${query}`,
         pageToken: `${nextPageToken}`
       }
@@ -43,5 +41,7 @@ const axiosSecondCall=(id)=>{
 
   
 }
+
+
 
 export { axiosFirstCall , axiosSecondCall };
