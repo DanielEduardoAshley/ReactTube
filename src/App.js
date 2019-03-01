@@ -8,6 +8,7 @@ import Home from './components/home/home';
 import User from './components/user/user';
 import Feed from './components/feed/feed';
 import ViewHistory from './components/viewHistory/viewHistory';
+import SearchBar from './components/searchBar/searchBar';
 
 // extra import here
 // extra import here
@@ -33,15 +34,12 @@ class App extends Component {
   const id = p[2]
     return (
       <>
-      <div>
+      <div className="App">
       <Navbar />
       
       <div className='pageWindow'>
-      {/* <Search /> */}
-      {/* <div className='searchBox'>
-              <p className='searchButton'>Search</p>
-              <input className='searchInput'></input>
-            </div> */}
+          <SearchBar />
+      
           <Route path='/' exact component={Home}/>
           <Route path='/home' exact component={Home}/>
           <Route path='/video/:video_id' render={()=><VideoPlayer id={id}/>}/>
