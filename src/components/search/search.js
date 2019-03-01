@@ -106,10 +106,6 @@ class Search extends Component {
         // console.log('Aid',aid)
         return (
             <>
-                <div className="searchBox">
-                    <input placeholder='Search' className='navInput' onChange={this.onChange} onKeyDown={this.onKeyDown}></input>
-                    <button className="searchButton" onClick={(e)=>this.onClick(e)}>Search</button>
-                </div>
                 <div className='searchTitle'>
                     <p onClick={(e)=>this.onClick(e)}>Click me</p>
                     <p>Search Results for {this.props.match.params.search}</p>
