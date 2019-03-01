@@ -33,17 +33,25 @@ class App extends Component {
   console.log(p[2])
   const id = p[2]
     return (
+      <>
       <div>
       <Navbar />
       
-      {/* <div style={{width:'50%', margin:'0 auto', height:'800px', border:'1px solid black'}}> */}
+      <div className='pageWindow'>
+      {/* <Search /> */}
+      {/* <div className='searchBox'>
+              <p className='searchButton'>Search</p>
+              <input className='searchInput'></input>
+            </div> */}
+
+      </div>
           <Route path='/' exact component={Home}/>
           <Route path='/video/:video_id' render={()=><VideoPlayer id={id}/>}/>
           <Route path='/search/:search' component={Search}/>
           <Route path='/user' component={User}/>
           <Route path='/feededitor' component={Feed}/>
           <Route path='/user/:user_id/history' exact component={ViewHistory}/>
-        {/* </div> */}
+        
         
 
         
@@ -75,6 +83,8 @@ class App extends Component {
           */}
 
       </div>
+
+      </>
     );
   }
 }
