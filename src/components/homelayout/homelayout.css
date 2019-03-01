@@ -12,3 +12,39 @@
 .col-333{
     width : calc(3 * 8.333%);
 }
+
+.feedTitle{
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 25px;
+    padding-top: 40px;
+    text-transform: capitalize;
+  }
+  .feedTitle:first-child{
+    padding-top: 0px;
+  }
+  .videoThumbnail{
+      
+    /* width: 200px; */
+    height: 200px;
+    border: 2pt solid black;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  .videofeedContainer{
+    margin-right: 100px;
+    margin-left: 100px;
+    display: flex;
+    flex-wrap: wrap;
+    width: 80%;
+  }
+  .showMoreButton{
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    /* width: 100%; */
+  }
+  .showMoreButton:hover{
+    color: #EA482C;
+  }
