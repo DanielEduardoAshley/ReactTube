@@ -52,10 +52,19 @@ class App extends Component {
           <Route path='/user/:user_id/history' exact component={ViewHistory}/>
       </div>
 
+      
+        {/* <Sidebar/> */}
+          {/* <div className='sideNavBar'>
+            <h1 className='navTitle'>Explore</h1>
+            <div className='navBarContainer'>
+              <p className='navBarButton'>Feedlist</p>
+              <p className='sideBarButton'>Feed 1</p>
+              <p className='sideBarButton'>Feed 2</p>
+              <p className='sideBarButton'>Feed 2</p>
+            </div>
+          </div> */}      
           
         
-        
-
         
         {/* 
         Pam's workspace
