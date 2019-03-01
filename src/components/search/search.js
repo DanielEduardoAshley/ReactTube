@@ -8,7 +8,7 @@ import SearchResultsList from '../../containers/searchResultsList';
 
 class Search extends Component {
     state = {
-        searchInput: 'girl',
+        searchInput: '',
 
  
         prevSearch: [],
@@ -54,8 +54,7 @@ class Search extends Component {
         */
 
         console.log('findme',this.state.searchInput)
-        const nextPage = ''
-        axiosFirstCall('birds', '').then((res) => {
+        axiosFirstCall(this.props.match.params.search, this.state.nextPageToken).then((res) => {
                 console.log(res)
                 const resultsArr = [];
                 res.data.items.map((e, i) => {
