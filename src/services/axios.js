@@ -14,10 +14,9 @@ import axios from 'axios'
         videoDefinition: 'high',
         type: 'video',
         videoEmbeddable: 'true',
-        // key:'AIzaSyAp4QI_v1IXVKwmBfnij-X69jnKQkUv-GE',
 
         // key: 'AIzaSyDk4Baz4ZsCIIY-zwzjEgOATbmVwjZVVpc',
-        key:'AIzaSyAp4QI_v1IXVKwmBfnij-X69jnKQkUv-GE', // PAM'S KEY
+        key:'AIzaSyDsnv_b4Flda9bZwiymg5SrOldp0DpO8ek', // PAM'S KEY
         q: `${query}`,
         pageToken: `${nextPageToken}`
       }
