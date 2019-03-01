@@ -43,6 +43,7 @@
     display: flex;
     flex-wrap: wrap;
     min-height: 40.478px;
+    justify-content: start;
   }
   
   .searchButton{
