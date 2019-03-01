@@ -71,6 +71,7 @@ class Navbar extends Component {
                         <input placeholder='Search' className='navInput' onChange={this.onChange} onKeyDown={this.onKeyDown}></input>
                         <button className="searchButton" onClick={this.handleClick}>Search</button>
                     </div>
+
                     <div className='searchTitle'>
                         { list[1] === 'search' ? <p>Search Results for {this.state.searchInput}</p>
  : null}
@@ -80,6 +81,17 @@ class Navbar extends Component {
                     </div>
 
                 </div>
+
+
+                    {/* <div className='navBar' style={{height:"800px"}}>
+            <h1 className="logo">PRYD</h1>
+            <div className='navBarContainer'>
+              <p className='navBarButton'>Home</p>
+              <p className='navBarButton'>User</p>
+              <p className='navBarButton'>Feed Editor</p>
+            </div>
+          </div> */}
+
             </>
         );
     }

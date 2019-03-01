@@ -32,15 +32,38 @@ class App extends Component {
   console.log(p[2])
   const id = p[2]
     return (
+      <>
       <div>
       <Navbar />
       
-        <Route path='/home' exact component={Home}/>
-        <Route path='/video/:video_id' render={()=><VideoPlayer id={id}/>}/>
-        <Route path='/search/:search' component={Search}/>
-        <Route path='/user' component={User}/>
-        <Route path='/feededitor' component={Feed}/>
-        <Route path='/user/:user_id/history' exact component={ViewHistory}/>
+      <div className='pageWindow'>
+      {/* <Search /> */}
+      {/* <div className='searchBox'>
+              <p className='searchButton'>Search</p>
+              <input className='searchInput'></input>
+            </div> */}
+          <Route path='/' exact component={Home}/>
+          <Route path='/home' exact component={Home}/>
+          <Route path='/video/:video_id' render={()=><VideoPlayer id={id}/>}/>
+          <Route path='/search/:search' component={Search}/>
+          <Route path='/user' component={User}/>
+          <Route path='/feededitor' component={Feed}/>
+          <Route path='/user/:user_id/history' exact component={ViewHistory}/>
+      </div>
+
+      
+        {/* <Sidebar/> */}
+          {/* <div className='sideNavBar'>
+            <h1 className='navTitle'>Explore</h1>
+            <div className='navBarContainer'>
+              <p className='navBarButton'>Feedlist</p>
+              <p className='sideBarButton'>Feed 1</p>
+              <p className='sideBarButton'>Feed 2</p>
+              <p className='sideBarButton'>Feed 2</p>
+            </div>
+          </div> */}      
+          
+        
         
         {/* 
         Pam's workspace
@@ -70,6 +93,8 @@ class App extends Component {
           */}
 
       </div>
+
+      </>
     );
   }
 }
