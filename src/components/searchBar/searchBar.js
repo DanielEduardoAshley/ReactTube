@@ -73,12 +73,11 @@ class SearchBar extends Component {
                     
 
                     <div className='pageContainer'>
-                    
-                    <div>
-                        {list[1] === 'search' ? <SearchResultsList pop={aid} results={this.state.currentResults} /> : null}
-                    </div>  
+                        <div>
+                            {list[1] === 'search' ? <SearchResultsList pop={aid} results={this.state.currentResults} /> : null}
+                        </div>  
                     </div>
-                                  
+                    <button></button>
             </div>
             </>
         );
