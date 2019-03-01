@@ -68,7 +68,7 @@ class Feed extends React.Component {
              <div className= "card-n-btn">
                 <div className="card-item" key={i}>{e}</div>
                      <div className="card-button">
-                       <button type="button" class="close" aria-label="Close" key={i} onClick={this.onClickRemoved}>
+                       <button type="button" className="close" aria-label="Close" key={i} onClick={this.onClickRemoved}>
                          <div aria-hidden="true">&times;</div>
                        </button>
                 </div>
@@ -111,10 +111,10 @@ class Feed extends React.Component {
             <div className="header">
               <div>Create a New Explore Feed </div>
             </div>
-            <div className="input-group mb-3">
+            <div className="input-group">
               <input type="text" className="form-control" placeholder="Feed Name" aria-describedby="button-addon2" onChange={this.onChange} onKeyDown={this.onKeyDown}></input>
               <div className="input-group-append">
-                <button className="btn btn-outline-secondary" type="button" id="button-addon2" onClick={this.onClickAdd}>Add</button>
+                <button className="btn btn-style" type="button" id="button-addon2" onClick={this.onClickAdd}>Add</button>
               </div>
             </div>
           </div>
