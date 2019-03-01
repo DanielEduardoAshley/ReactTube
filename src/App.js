@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './components/homelayout/homelayout.css'
 import { Route, withRouter } from 'react-router-dom';
-// import axios from 'axios';
 import Navbar from './components/navbar/navbar';
 import Search from './components/search/search';
 import VideoPlayer from './components/video/video';

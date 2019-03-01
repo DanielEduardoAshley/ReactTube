@@ -4,7 +4,7 @@ import axios from 'axios'
  
  
  
- const axiosFirstCall=(query, nextPageToken)=>{
+ const axiosFirstCall=(query, nextPageToken='')=>{
    return axios({
       method: 'get',
       url: 'https://www.googleapis.com/youtube/v3/search',
@@ -14,7 +14,7 @@ import axios from 'axios'
         videoDefinition: 'high',
         type: 'video',
         videoEmbeddable: 'true',
-        key: 'AIzaSyAWWomrb5NRZn7oTqjszqm6f2uYqW39cvc',
+        key: 'AIzaSyCcZMHijbdSvcuTHdRGKWrwsN3j1t0-hoE',
         q: `${query}`,
         pageToken: `${nextPageToken}`
       }
