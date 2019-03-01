@@ -43,8 +43,8 @@ class App extends Component {
               <p className='searchButton'>Search</p>
               <input className='searchInput'></input>
             </div> */}
-
           <Route path='/' exact component={Home}/>
+          <Route path='/home' exact component={Home}/>
           <Route path='/video/:video_id' render={()=><VideoPlayer id={id}/>}/>
           <Route path='/search/:search' component={Search}/>
           <Route path='/user' component={User}/>
