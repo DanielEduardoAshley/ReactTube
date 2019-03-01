@@ -65,19 +65,20 @@ class SearchBar extends Component {
                     <button className="searchButton" onClick={this.handleClick}>Search</button>
                     {/* <input className='searchInput'></input> */}
                     <input placeholder='Search' className='searchInput' onChange={this.onChange} onKeyDown={this.onKeyDown}></input>
-
-                    
-                    
-
                     <div className='searchTitle'>
                         { list[1] === 'search' ? <p>Search Results for {this.state.searchInput}</p>
                         : null}
                     </div>
+                    
+                    
+
+                    <div className='pageContainer'>
+                    
                     <div>
                         {list[1] === 'search' ? <SearchResultsList pop={aid} results={this.state.currentResults} /> : null}
+                    </div>  
                     </div>
-
-                
+                                  
             </div>
             </>
         );
