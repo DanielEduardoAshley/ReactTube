@@ -51,6 +51,13 @@ class SearchBar extends Component {
         }
     }
 
+    loadMore = (query, nextPageToken) => {
+        axiosFirstCall(query, nextPageToken)
+        .then((res) => {
+            
+        })
+    }
+
     render() {
         const aid = { ...this.props }
         let list = this.props.location.pathname.split('/')
