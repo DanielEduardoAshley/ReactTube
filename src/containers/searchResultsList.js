@@ -1,43 +1,56 @@
 import React from 'react';
-import { Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle } from 'reactstrap';  
-import VideoPlayer from '../components/video/video'
+import { withRouter } from 'react-router-dom';
+import { Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle } from 'reactstrap';
 
-const onClick = (videoID) => {
-    this.props.history.push(`/video/${videoID}`);
+const onClick = ({id, fun}) => {
+    // const {id, fun} = obj;
+    const {videoId} = id;
+
+    fun(`/video/${videoId}`);
 }
 
-const SearchResultsList = (props) => {
+const SearchResultsList = ({results, pop}) => {
+    console.log('Is this is props?',pop.history.push)
+    const fun = pop.history.push;
     let str = ''
-    console.log('resultsss', props.results)
+    // console.log('resultsss', props.results)
 
 
-    return (<>
+    return (
+    <>
+        
         <div className='rowsss'>
             {
-              props.results.map((e,i)=>{
-                  console.log('urlss',e.url)
-             return <div className='parent' key={i}>
-             <div>
-              <Card>
-                <CardImg top width="100%" src={e.url} style={{width : 120, height: 90}} alt="Click" onClick={()=>onClick(e.id)}/>
-                <CardBody>
-                  <CardTitle onClick={()=>onClick(e.id)}>{e.title}</CardTitle>
-                  <CardSubtitle>{e.channel} {e.published} {e.channelId} {e.description} {e.nextPageToken}</CardSubtitle>
-                  <CardText></CardText>
-                </CardBody>
-              </Card> 
-              {/* {str = e.title} */}
-               </div>
-            </div> 
-      
-            
-            })
-            
-          }
+                results.map((e, i) => {
+                    console.log('urlss', e.url)
+                    const id = e.id;
+                    
+                    const obj = {
+                        id,
+                        fun
+                    }
+                    return <div className='parent' key={i}>
+                        <div>
+                            <Card>
+                                <CardImg top width="100%" src={e.url} style={{ width: 120, height: 90 }} alt="Click" onClick={() => onClick(obj)} />
+                                <CardBody>
+                                    <CardTitle onClick={() => onClick(obj)}>{e.title}</CardTitle>
+                                    <CardSubtitle>{e.channel} {e.published} {e.channelId} {e.description} {e.nextPageToken}</CardSubtitle>
+                                    <CardText></CardText>
+                                </CardBody>
+                            </Card>
+                            {/* {str = e.title} */}
+                        </div>
+                    </div>
 
-         </div>
-         </>
-        );
+
+                })
+
+            }
+
+        </div>
+    </>
+    );
 }
 
-export default SearchResultsList;
+export default withRouter(SearchResultsList);

@@ -247,24 +247,16 @@ class Home extends React.Component {
     console.log('these', this.props)
   return (
       <>
-    
- 
-              <div className='pageWindow'>
-                  <Homelayout2 active={this.state.Users[`${this.state.activeUser}`].movieInfo} feedList={this.state.Users[`${this.state.activeUser}`].feedlist} vidsPage={this.vidPage} loadmore={this.loadmore}/>
-              </div>
-          
-  </>
+          <div className='pageWindow'>
+                <Homelayout2 active={this.state.Users[`${this.state.activeUser}`].movieInfo} feedList={this.state.Users[`${this.state.activeUser}`].feedlist} vidsPage={this.vidPage} loadmore={this.loadmore}/>
+           </div>      
+      </>
   )
   
   
   
   }
   
-
-        
-     
-  
-
   
 }
 export default Home;

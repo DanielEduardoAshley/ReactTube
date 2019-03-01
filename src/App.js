@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './components/homelayout/homelayout.css'
 import { Route, withRouter } from 'react-router-dom';
-// import axios from 'axios';
 import Navbar from './components/navbar/navbar';
 import Search from './components/search/search';
 import VideoPlayer from './components/video/video';
@@ -9,6 +8,7 @@ import Home from './components/home/home';
 import User from './components/user/user';
 import Feed from './components/feed/feed';
 import ViewHistory from './components/viewHistory/viewHistory';
+import SearchBar from './components/searchBar/searchBar';
 
 // extra import here
 // extra import here
@@ -33,15 +33,35 @@ class App extends Component {
   console.log(p[2])
   const id = p[2]
     return (
-      <div>
+      <>
+      <div className="App">
       <Navbar />
       
-        <Route path='/home' exact component={Home}/>
-        <Route path='/video/:video_id' render={()=><VideoPlayer id={id}/>}/>
-        <Route path='/search/:search' component={Search}/>
-        <Route path='/user' component={User}/>
-        <Route path='/feededitor' component={Feed}/>
-        <Route path='/user/:user_id/history' exact component={ViewHistory}/>
+      <div className='pageWindow'>
+          <SearchBar />
+      
+          <Route path='/' exact component={Home}/>
+          <Route path='/home' exact component={Home}/>
+          <Route path='/video/:video_id' render={()=><VideoPlayer id={id}/>}/>
+          <Route path='/search/:search' component={Search}/>
+          <Route path='/user' component={User}/>
+          <Route path='/feededitor' component={Feed}/>
+          <Route path='/user/:user_id/history' exact component={ViewHistory}/>
+      </div>
+
+      
+        {/* <Sidebar/> */}
+          {/* <div className='sideNavBar'>
+            <h1 className='navTitle'>Explore</h1>
+            <div className='navBarContainer'>
+              <p className='navBarButton'>Feedlist</p>
+              <p className='sideBarButton'>Feed 1</p>
+              <p className='sideBarButton'>Feed 2</p>
+              <p className='sideBarButton'>Feed 2</p>
+            </div>
+          </div> */}      
+          
+        
         
         {/* 
         Pam's workspace
@@ -71,6 +91,8 @@ class App extends Component {
           */}
 
       </div>
+
+      </>
     );
   }
 }

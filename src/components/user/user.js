@@ -42,7 +42,7 @@ class User extends React.Component {
     
       return (
         <>
-        {(e.isActiveUser) ? <div className="list-item item" style={{color:'blue'}} key={i}>{e.name}</div> : 
+        {(e.isActiveUser) ? <div className="list-item item click" key={i}>{e.name}</div> : 
         <div className="list-item item"  key={i} onClick={() => this.onClickUser(i)}>{e.name}</div>}
         </>
       )
@@ -87,15 +87,17 @@ class User extends React.Component {
   render() {
     return (
       <>
+        <div className='pageContainer'>
+
         <div className="user-wrapper">
           <div className="input-field">
             <div className="header">
               <div>Create a New User </div>
             </div>
-            <div className="input-group mb-3">
+            <div className="input-group">
               <input type="text" className="form-control" placeholder="User Name" aria-describedby="button-addon2" onKeyDown={this.onKeyDown} onChange={this.onChange}></input>
               <div className="input-group-append">
-                <button className="btn btn-outline-secondary" type="button" id="button-addon2" onClick={this.onClickAdd}>Add</button>
+                <button className="btn btn-style" type="button" id="button-addon2" onClick={this.onClickAdd}>Add</button>
               </div>
             </div>
           </div>
@@ -110,6 +112,7 @@ class User extends React.Component {
                 </div>
             </div>
           </div>
+        </div>
         </div>
       </>
     )
