@@ -245,10 +245,6 @@ class Home extends React.Component {
     console.log('these', this.props)
   return (
       <>
-    <div className="searchBox">
-                <input placeholder='Search' className='navInput' onChange={this.onChange} onKeyDown={this.onKeyDown}></input>
-                <button className="searchButton" onClick={(e)=>this.onClick(e)}>Search</button>
-            </div>
             <div className='entire-home-container'>
           <div className='header-name'>
             <h1>Mo Personalized Feed</h1>
