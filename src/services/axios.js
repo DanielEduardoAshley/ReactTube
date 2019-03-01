@@ -4,7 +4,7 @@ import axios from 'axios'
  
  
  
- const axiosFirstCall=(query)=>{
+ const axiosFirstCall=(query, nextPageToken)=>{
    return axios({
       method: 'get',
       url: 'https://www.googleapis.com/youtube/v3/search',
@@ -14,9 +14,12 @@ import axios from 'axios'
         videoDefinition: 'high',
         type: 'video',
         videoEmbeddable: 'true',
-        key: 'AIzaSyDk4Baz4ZsCIIY-zwzjEgOATbmVwjZVVpc',
+        key:'AIzaSyAp4QI_v1IXVKwmBfnij-X69jnKQkUv-GE',
+
+        // key: 'AIzaSyDk4Baz4ZsCIIY-zwzjEgOATbmVwjZVVpc',
+        // key:'AIzaSyDRq-1-Gog-yzzF5buaQRPHv3IysLOZWNI',
         q: `${query}`,
-        pageToken: ''
+        pageToken: `${nextPageToken}`
       }
     })
     
@@ -28,21 +31,18 @@ import axios from 'axios'
 
 
 
-// const getMoreVidInfo=()=>{
-//     const arr = []
-//     console.log(this.state.videoArray)
-//      this.state.videoArray.map((e)=>{
-//       return axios({
-//         method: 'get',
-//         url: 'https://www.googleapis.com/youtube/v3/videos',
-//         params: {
-//           part: 'id,snippet,statistics',
-//           key: 'AIzaSyDk4Baz4ZsCIIY-zwzjEgOATbmVwjZVVpc',
-//           id: e,
-//         }
-//       })
+const axiosSecondCall=(id)=>{
+      return axios({
+        method: 'get',
+        url: 'https://www.googleapis.com/youtube/v3/videos',
+        params: {
+          part: 'id,snippet,statistics',
+          key: 'AIzaSyDk4Baz4ZsCIIY-zwzjEgOATbmVwjZVVpc',
+          id: id,
+        }
+      })
 
-//   })
-// }
+  
+}
 
-export default axiosFirstCall;
+export { axiosFirstCall , axiosSecondCall };

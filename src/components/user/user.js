@@ -14,12 +14,11 @@ class User extends React.Component {
     }
   }
 
-  onChange =(e)=>{
+  onChange = (e) => {
     this.setState({input: e.target.value})
-
   }
 
-  onClickAdd = ()=>{
+  onClickAdd = () => {
     for (let i = 0; i < this.state.users.length; i++){
       if(this.state.input.toLowerCase() === this.state.users[i].name){
         return;
@@ -27,8 +26,10 @@ class User extends React.Component {
     }
     const newUser = {
       name: this.state.input,
-      feedList: ['Naruto'],
+      feedList: ['Naruto', 'Itachi','Kiki Do U Love Me', 'Jiraiya', 'Naruto Love Story'],
       isActiveUser: false,
+      viewHistory: [],
+      movieInfo: {},
     }
 
     const newUserArr= this.state.users.concat(newUser)
@@ -36,10 +37,9 @@ class User extends React.Component {
     localStorage.setItem('users', JSON.stringify(newUserArr));
   }
   
-  droppedDown =()=>{
+  droppedDown = () => {
      const droppeddown = this.state.users.map((e, i) =>{
-      console.log('user here',this.state.users, typeof this.state.users)
-   
+    
       return (
         <>
         {(e.isActiveUser) ? <div className="list-item item click" key={i}>{e.name}</div> : 
@@ -50,7 +50,7 @@ class User extends React.Component {
     return droppeddown;
   }
 
-  onClickUser =(i)=>{
+  onClickUser = (i) => {
     const newObj = {...this.state};
     for (let y = 0; y < this.state.users.length ; y++){
       const userActive = this.state.users[y].isActiveUser
@@ -73,11 +73,12 @@ class User extends React.Component {
   }
 
   componentDidMount() {
-    const activeUser = JSON.parse(localStorage.getItem('activeUser'))
     const SavedUsers = JSON.parse(localStorage.getItem('users')) || [{
       name: 'Default',
-      feedList: ['Naruto'], 
+      feedList: ['Naruto', 'Itachi','Kiki Do U Love Me', 'Jiraiya', 'Naruto Love Story'], 
       isActiveUser: true,
+      viewHistory: [],
+      movieInfo: {},
    }]
 
     this.setState({users: SavedUsers})

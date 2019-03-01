@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import './components/homelayout/homelayout.css'
 import { Route, withRouter } from 'react-router-dom';
-import axios from 'axios';
+// import axios from 'axios';
 import Navbar from './components/navbar/navbar';
 import Search from './components/search/search';
 import VideoPlayer from './components/video/video';
 import Home from './components/home/home';
 import User from './components/user/user';
 import Feed from './components/feed/feed';
+import ViewHistory from './components/viewHistory/viewHistory';
 
 // extra import here
 // extra import here
@@ -40,8 +41,7 @@ class App extends Component {
         <Route path='/search/:search' component={Search}/>
         <Route path='/user' component={User}/>
         <Route path='/feededitor' component={Feed}/>
-
-        {/* <Route path='/user/:usesr_id/history' exact component={Placeholder}/> */}
+        <Route path='/user/:user_id/history' exact component={ViewHistory}/>
         
         {/* 
         Pam's workspace

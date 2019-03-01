@@ -2,12 +2,19 @@ import React from 'react';
 import { Card, CardImg, CardText, CardBody,
   CardTitle, CardSubtitle } from 'reactstrap';
 
-  const Homelayout = (props) => {
+  const Homelayout = (props) => { 
     let str = ''
+
+    // const feedlistKeys = Object.keys(props.active)
+   
+    console.log(props.feedList,'obj', props.active.orochimaru)
     return (<>
     <div className='rowsss'>
         {
-          props.active.map((e,i)=>{
+           props.feedList.map(e=>{
+             const feedArr = props.active[e]
+             console.log('fed',props.active[e])
+          return  (feedArr || []).map((e,i)=>{
          return <div className='col-333' key={i}>
          <div>
           <Card onClick={()=>props.vidsPage(e.id)}>
@@ -24,7 +31,8 @@ import { Card, CardImg, CardText, CardBody,
   
         
         })
-        
+
+      })
       }
       <button onClick={()=>props.loadmore(str)}>Load More</button>
 
