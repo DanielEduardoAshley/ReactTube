@@ -249,17 +249,7 @@ class Home extends React.Component {
                 <input placeholder='Search' className='navInput' onChange={this.onChange} onKeyDown={this.onKeyDown}></input>
                 <button className="searchButton" onClick={(e)=>this.onClick(e)}>Search</button>
             </div>
-  <div>Home Page</div>
-
-  </>
-  )
-  
-  
-  
-  }
-  
-=======
-        <div className='entire-home-container'>
+            <div className='entire-home-container'>
           <div className='header-name'>
             <h1>Mo Personalized Feed</h1>
           </div>
