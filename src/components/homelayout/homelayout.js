@@ -15,7 +15,11 @@ import { Card, CardImg, CardText, CardBody,
              const feedArr = props.active[e]
              console.log('fed',props.active[e])
           return  (feedArr || []).map((e,i)=>{
-         return <div className='col-333' key={i}>
+            console.log(e.feedTitle)
+            str = e.feedTitle
+
+         return <>
+          <div className='col-333' key={i}>
          <div>
           <Card onClick={()=>props.vidsPage(e.id)}>
             <CardImg top width="100%" src={`${e.thumbnail.url}`} style={{width : 120, height: 90}} alt="Card image cap" />
@@ -25,16 +29,18 @@ import { Card, CardImg, CardText, CardBody,
               <CardText></CardText>
             </CardBody>
           </Card> 
-          {str = e.feedTitle}
+          
            </div>
+
         </div> 
-  
-        
+        <div >{ i === feedArr.length-1 ? <button   onClick={()=>props.loadmore(str)}>Load More</button> : null }
+</div>
+        </>
         })
 
       })
       }
-      <button onClick={()=>props.loadmore(str)}>Load More</button>
+      {/* <button onClick={()=>props.loadmore(str)}>Load More</button> */}
 
      </div>
      </>
