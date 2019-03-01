@@ -33,8 +33,8 @@ import { Card, CardImg, CardText, CardBody,
            </div>
 
         </div> 
-        <div >{ i === feedArr.length-1 ? <button   onClick={()=>props.loadmore(str)}>Load More</button> : null }
-</div>
+        <ul >{ i === feedArr.length-1 ? <button   onClick={()=>props.loadmore(e.feedTitle)}>Load More</button> : null }
+</ul>
         </>
         })
 

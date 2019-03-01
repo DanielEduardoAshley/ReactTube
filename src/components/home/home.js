@@ -85,6 +85,7 @@ class Home extends React.Component {
                const addUserData = {...this.state}
                const Pamela = addUserData.Users[`${this.state.activeUser}`].movieInfo
                 Pamela[query] = (Pamela[query] || []).concat(newArr)
+                console.log('movies?',Pamela[query])
                // const newPamela = (Pamela || []).concat(newArr)
                // addUserData.Users.Pam.movieInfo = newPamela 
     
@@ -193,13 +194,13 @@ class Home extends React.Component {
  }
 
  loadmore=(feedTitle)=>{
-
+    console.log('searching')
     const newArr = []
     const newObj = {}
     const query = feedTitle
     const addUserData = {...this.state}
     const nextPageToken = addUserData.Users[`${this.state.activeUser}`].movieInfo[query][addUserData.Users[`${this.state.activeUser}`].movieInfo[query].length-1].nextPageToken
-    console.log('get',nextPageToken)
+    console.log('get',feedTitle)
     this.call(query, nextPageToken)
   //   return axiosFirstCall(query, nextPageToken).then((response)=>{
   //    console.log('data',response)
