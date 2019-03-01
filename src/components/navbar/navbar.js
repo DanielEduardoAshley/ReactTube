@@ -60,11 +60,11 @@ class Navbar extends Component {
                         <Link to='/user' className="navButton">User</Link>
                         <Link to='/feededitor' className="navButton" >Feed Editor</Link>
                     </div>
-                    {/* <div className="searchBox">
+                    <div className="searchBox">
                         <input placeholder='Search' className='navInput' onChange={this.onChange} onKeyDown={this.onKeyDown}></input>
                         <button className="searchButton" onClick={this.handleClick}>Search</button>
-                    </div> */}
-                        
+                    </div> 
+                    {/* Fix Functionality    */}
                     </div>
             </>
         );
