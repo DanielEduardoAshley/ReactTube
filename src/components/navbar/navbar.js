@@ -83,14 +83,14 @@ class Navbar extends Component {
                 </div>
 
 
-                    {/* <div className='navBar' style={{height:"800px"}}>
-            <h1 className="logo">PRYD</h1>
-            <div className='navBarContainer'>
-              <p className='navBarButton'>Home</p>
-              <p className='navBarButton'>User</p>
-              <p className='navBarButton'>Feed Editor</p>
-            </div>
-          </div> */}
+                        <div className='navBar' style={{height:"800px"}}>
+                            <h1 className="logo">PRYD</h1>
+                            <div className='navBarContainer'>
+                                <Link to='/' className="navBarButton">Home</Link>
+                                <Link to='/user' className="navBarButton">User</Link>
+                                <Link to='/feededitor' className="navBarButton" >Feed Editor</Link>
+                            </div>
+                        </div>
 
             </>
         );
