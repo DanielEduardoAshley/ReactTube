@@ -35,8 +35,9 @@ class App extends Component {
   const id = p[2]
     return (
       <>
+      <div className='backgroundImg'>
       <div style={{width:'90%', margin:'0 auto'}}>
-        <div class='top-space'>
+        <div className='top-space'>
           <div style={{display:'flex', flexWrap:'wrap', height:'42.594px'}}>
             <div className='navBar'></div>
             <div className='pageWindow'></div>
@@ -61,7 +62,7 @@ class App extends Component {
       </div>
 
       
-        <SideNav />
+        <SideNav path={path}/>
                
         {/* 
         Pam's workspace
@@ -91,7 +92,7 @@ class App extends Component {
           */}
 
       </div>
-
+      </div>
       </>
     );
   }
