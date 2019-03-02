@@ -160,15 +160,16 @@ class Home extends React.Component {
   
   
   componentDidMount(){
-    console.log(getActiveUser())
-    console.log(getFeed())
+    
     console.log('hello')
     const newArr = []
     const newObj = {}
     const addUserData = {...this.state}
+    // Local Storage
+    // const active = getActiveUser()
+    // const query = getFeed(active)
     const query = this.state.Users[this.state.activeUser].feedlist
     const nextPage =  ''
-    //const query
     console.log(query)
     query.map(elem=>{
       return this.call(elem)
@@ -202,6 +203,8 @@ class Home extends React.Component {
     const newObj = {}
     const query = feedTitle
     const addUserData = {...this.state}
+    // Local Storage
+    // const active = getActiveUser()
     const nextPageToken = addUserData.Users[`${this.state.activeUser}`].movieInfo[query][addUserData.Users[`${this.state.activeUser}`].movieInfo[query].length-1].nextPageToken
     console.log('get',feedTitle)
     this.call(query, nextPageToken)
