@@ -5,7 +5,7 @@ class Navbar extends Component {
     render() {
         return (
             <>
-                <div className='navBar' style={{height:"800px"}}>
+                <div className='navBar' >
                     <h1 className="logo">PRYD</h1>
                     <div className='navBarContainer'>
                         <Link to='/home' className="navBarButton">Home</Link>
