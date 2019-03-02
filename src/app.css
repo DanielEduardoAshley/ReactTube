@@ -9,7 +9,9 @@
   }
 
   .backgroundImg{
-    background-image: url("https://media.giphy.com/media/4Z0chP31wyE0Wu25Cx/giphy.gif");
+    background-image: url("https://66.media.tumblr.com/3ada40dd6c90799628435be2ca463e3");
+    min-height: 1151px;
+    background-size: cover;
   }
   
   .App{
