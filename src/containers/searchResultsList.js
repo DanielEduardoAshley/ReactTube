@@ -1,6 +1,5 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
-import { Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle } from 'reactstrap';
 
 
 const onClick = ({id, fun}) => {
@@ -11,41 +10,41 @@ const onClick = ({id, fun}) => {
 }
 
 const SearchResultsList = ({results, pop}) => {
-    console.log('Is this is props?',pop.history.push)
     const fun = pop.history.push;
-    let str = ''
-    // console.log('resultsss', props.results)
-
-
+  
     return (
-    <>
-        <div className='rowsss'>
-            {
+        <>      
+            <div className='videofeedContainer'>
+                {
                 results.map((e, i) => {
-                    console.log('urlss', e.url)
                     const id = e.id;
-                    
                     const obj = {
                         id,
                         fun
                     }
-                    return <div className='parent' key={i}>
-                        <div>
-                            <Card>
+                    return <div key={i} className='videoThumbnail'>
+                                {/* <img src={e.url} style={{ width: 120, height: 90 }} alt="Click" onClick={() => onClick(obj)}> */}
+                                <img src={e.url} alt={e.title} height="120" width="90"></img>
+                                <p onClick={() => onClick(obj)}>{e.title}</p>
+                                <p>{e.channel} {e.published} {e.channelId} {e.description} {e.nextPageToken}</p>
+                                <p>Views</p>
+
+                                {/* <Card>
                                 <CardImg top width="100%" src={e.url} style={{ width: 120, height: 90 }} alt="Click" onClick={() => onClick(obj)} />
                                 <CardBody>
                                     <CardTitle onClick={() => onClick(obj)}>{e.title}</CardTitle>
-                                    <CardSubtitle>{e.channel} {e.published} {e.channelId} {e.description} {e.nextPageToken}</CardSubtitle>
+                                    <CardSubtitle></CardSubtitle>
                                     <CardText></CardText>
                                 </CardBody>
-                            </Card>
-                            {/* {str = e.title} */}
-                        </div>
-                    </div>
+                            </Card> */}
+                                
+                            </div>
+
                 })
             }
         </div>
-    </>
+        
+        </>
     );
 }
 

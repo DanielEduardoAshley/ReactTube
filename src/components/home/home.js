@@ -1,11 +1,13 @@
 import  React from 'react'
 import {  withRouter } from 'react-router-dom';
+// const apiVideo = require('@api.video/nodejs-sdk');
 
 // import axios from 'axios'
-import Homelayout from '../homelayout/homelayout'
+import Homelayout2 from '../homelayout/homelayout'
 import  { axiosFirstCall, axiosSecondCall }  from '../../services/axios'
 import VideoPlayer from '../video/video';
 import './home.css';
+
 
 class Home extends React.Component {
     constructor(props){
@@ -245,35 +247,16 @@ class Home extends React.Component {
     console.log('these', this.props)
   return (
       <>
-            <div className='entire-home-container'>
-          <div className='header-name'>
-            <h1>Mo Personalized Feed</h1>
-          </div>
-
-          <div className='home-container'>
-              <div className='feedHome-container'>
-                <h3>Feed List</h3>
-
-                <div className='feedHome-dropDown'>
-                  <p>ESPN FIRST TAKE</p>
-                </div>
-                <div className='feedHome-dropDown'>
-                  <p>ESPN FIRST TAKE</p>
-                </div>
-                <div className='feedHome-dropDown'>
-                  <p>ESPN FIRST TAKE</p>
-                </div>
-
-              </div>
-              <div className='videoHome-container'>
-                  <Homelayout active={this.state.Users[`${this.state.activeUser}`].movieInfo} feedList={this.state.Users[`${this.state.activeUser}`].feedlist} vidsPage={this.vidPage} loadmore={this.loadmore}/>
-              </div>
-            </div>
-          
-        </div>
+          <div className='pageWindow'>
+                <Homelayout2 active={this.state.Users[`${this.state.activeUser}`].movieInfo} feedList={this.state.Users[`${this.state.activeUser}`].feedlist} vidsPage={this.vidPage} loadmore={this.loadmore}/>
+           </div>      
       </>
   )
-}
+  
+  
+  
+  }
+  
   
 }
 export default Home;
