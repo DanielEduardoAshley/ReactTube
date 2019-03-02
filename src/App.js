@@ -35,6 +35,16 @@ class App extends Component {
   const id = p[2]
     return (
       <>
+      <div style={{width:'90%', margin:'0 auto'}}>
+        <div class='top-space'>
+          <div style={{display:'flex', flexWrap:'wrap', height:'42.594px'}}>
+            <div className='navBar'></div>
+            <div className='pageWindow'></div>
+            <div className='sideNavBar'></div>
+          </div>
+        </div>
+      </div>
+      
       <div className="App">
       <Navbar />
       
