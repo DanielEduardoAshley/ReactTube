@@ -3,10 +3,12 @@ import { withRouter } from 'react-router-dom';
 import { axiosFirstCall } from '../../services/axios';
 import Moment from 'moment';
 import SearchResultsList from '../../containers/searchResultsList';
+import spinner from '../../Triangles-1s-200px.gif'
 
 class SearchBar extends Component {
     state = {
         searchInput: '',
+        savedSearch: '',
         currentResults: [],
         prevSearch: [],
         isLoading: false,
@@ -41,12 +43,16 @@ class SearchBar extends Component {
             .then(
                 (results) => {
                     this.setState({
+                        searchInput: '',
+                        savedSearch: this.state.searchInput,
                         prevSearch: (this.state.prevSearch || []).concat(this.state.results),
                         currentResults: results,
                         isLoading: false
                     })
                 })
             .catch((err) => console.log(err));
+            console.log('LOOK AT THIS', e.target.value)
+
     }
 
     onChange = (e) => {
@@ -55,39 +61,7 @@ class SearchBar extends Component {
 
     onKeyDown = (e) => {
         if (e.key.toLowerCase() === 'enter') {
-            this.props.history.push(`/search/${this.state.searchInput}`);
-            console.log('input', this.state.searchInput)
-
-            this.setState({
-                isLoading: true
-            })
-
-            axiosFirstCall(this.state.searchInput)
-                .then((res) => {
-                    console.log('response', res)
-                    const resultsArr = [];
-                    res.data.items.map((e, i) => {
-                        const { id, snippet } = e;
-                        const { videoId } = id;
-                        const { publishedAt, channelTitle, channelId, description, thumbnails, title } = snippet;
-                        const { high } = thumbnails;
-                        const { url } = high;
-                        const published = Moment(`${publishedAt}`, "YYYYMMDD").fromNow();
-                        const resultsInfo = { id, snippet, videoId, published, channelTitle, channelId, description, thumbnails, title, high, url }
-                        resultsInfo.nToken = res.data.nextPageToken
-                        return resultsArr.push(resultsInfo);
-                    });
-                    return resultsArr;
-                })
-                .then(
-                    (results) => {
-                        this.setState({
-                            prevSearch: (this.state.prevSearch || []).concat(this.state.results),
-                            currentResults: results,
-                            isLoading: false
-                        })
-                    })
-                .catch((err) => console.log(err));
+            this.handleClick(e);
         }
     }
 
@@ -132,25 +106,24 @@ class SearchBar extends Component {
     render() {
         const aid = { ...this.props }
         let list = this.props.location.pathname.split('/')
-        const spinner = "https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif"
 
         return (
             <>
                 <div className='searchBox'>
                     <button className="searchButton" onClick={this.handleClick}>Search</button>
-                    <input className='searchInput' onChange={this.onChange} onKeyDown={this.onKeyDown}></input>
+                    <input className='searchInput' value={this.state.searchInput} onChange={this.onChange} onKeyDown={this.onKeyDown}></input>
                 </div>
 
                 <div className='pageContainer'>
                     <div className=''>
-                        {this.state.isLoading === true ? <div className='spinner'><img src={spinner}></img></div> :
+                        {this.state.isLoading === true ? <div className='spinner'><img src={spinner} alt='Loading...'></img></div> :
                             <>
                                 <div>
                                     {list[1] === 'search' ?
                                         <>
 
-                                            <div className='searchTitle'>
-                                                <p>Search Results for {this.state.searchInput}</p>
+                                            <div className='searchResultText'>
+                                                <p>Search Results for {this.state.savedSearch}</p>
                                                 <br></br>
                                             </div>
 
@@ -164,7 +137,7 @@ class SearchBar extends Component {
 
                                 </div>
                                 <div className='spinner'>
-                                    {this.state.loadingMore === true ? <img src={spinner}></img> : null}
+                                    {this.state.loadingMore === true ? <img src={spinner} alt='Loading...'></img> : null}
                                 </div>
                             </>
                         }
