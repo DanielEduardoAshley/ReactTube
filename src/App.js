@@ -49,7 +49,11 @@ class App extends Component {
       
       {this.props.location.pathname === '/'? <Route path='/' exact component={SplashPage}/> :
 <> <div style={{width:'90%', margin:'0 auto'}}>
+<<<<<<< danielBranch
         <div className='top-space'>
+=======
+        <div class='top-space'>
+>>>>>>> local
           <div style={{display:'flex', flexWrap:'wrap', height:'42.594px'}}>
             <div className='navBar'></div>
             <div className='pageWindow'></div>

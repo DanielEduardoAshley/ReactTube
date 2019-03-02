@@ -7,6 +7,7 @@ import Homelayout2 from '../homelayout/homelayout'
 import  { axiosFirstCall, axiosSecondCall }  from '../../services/axios'
 import VideoPlayer from '../video/video';
 import './home.css';
+import {getActiveUser, getFeed} from '../../services/userService'
 
 
 class Home extends React.Component {
@@ -57,9 +58,8 @@ class Home extends React.Component {
         }
     }
      
-    
-  
     call=(query, nextPage='')=>{
+
       axiosFirstCall(query, nextPage).then((response)=>{
           const newArr = []
         console.log('data',response)
@@ -159,14 +159,18 @@ class Home extends React.Component {
   
   
   componentDidMount(){
-    
+    console.log('activeUser',getActiveUser())
+    console.log('getFeed',getFeed('dan'))
+
     console.log('hello')
     const newArr = []
     const newObj = {}
     const addUserData = {...this.state}
-    const query = this.state.Users[this.state.activeUser].feedlist
+    const active = getActiveUser
+    const query = getFeed(active)
+    // const query = this.state.Users[this.state.activeUser].feedlist
     const nextPage =  ''
-    console.log(query)
+    // console.log(query)
     query.map(elem=>{
       return this.call(elem)
     
