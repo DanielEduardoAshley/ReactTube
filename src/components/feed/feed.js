@@ -67,9 +67,11 @@ class Feed extends React.Component {
              <div className= "card-n-btn">
                 <div className="card-item" key={i}>{e}</div>
                      <div className="card-button">
-                       <button type="button" className="close" aria-label="Close" key={i} onClick={this.onClickRemoved}>
+                     <div>
+                       <p type="button" className="close" aria-label="Close" key={i} onClick={this.onClickRemoved}>
                          <div aria-hidden="true">&times;</div>
-                       </button>
+                       </p>
+                       </div>
                 </div>
               </div>
              </>
@@ -105,32 +107,34 @@ class Feed extends React.Component {
   render() {
     return (
       <>
-      <div className='pageContainer'>
+      {/* <div className='pageContainer'> */}
             <div className="feed-wrapper">
               <div className="input-field">
                 <div className="header">
-                  <div>Create a New Explore Feed </div>
+                  <div className="header-txt">Create a New Explore Feed </div>
                 </div>
                 <div className="input-group">
-                  <input type="text" className="form-control" placeholder="Feed Name" aria-describedby="button-addon2" onChange={this.onChange} onKeyDown={this.onKeyDown}></input>
-                  <div className="input-group-append">
-                    <button className="btn btn-style" type="button" id="button-addon2" onClick={this.onClickAdd}>Add</button>
+                  <textarea className="input-txt" type="text" placeholder="Feed Name" onChange={this.onChange} onKeyDown={this.onKeyDown}></textarea>
+                  <div className="input-group-btn">
+                    <button className="btn-style" type="button" onClick={this.onClickAdd}>Add</button>
                   </div>
                 </div>
               </div>
 
               <div className="feed-row">
                 <div className="header">
-                  <div>Explore Feed List</div>
+                  <div className="header-txt">Explore Feed List</div>
                 </div>
+                <div>
                 <div className="card-wrapper">
                   <div className="card-row">
                 {(this.state.activeUser.feedList) ? this.droppedDown() : <p>Add a Feed!</p>}
                   </div>
+                  </div>
                 </div>
                 </div>
             </div>
-        </div>
+        {/* </div> */}
       </>
     );
   }
