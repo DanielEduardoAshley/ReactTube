@@ -8,7 +8,8 @@ class SearchBar extends Component {
     state = {
         searchInput: '',
         currentResults: [],
-        isLoading: false
+        isLoading: false,
+        loadingMore: false
     }
 
     handleClick = (e) => {
@@ -18,7 +19,7 @@ class SearchBar extends Component {
 
         this.setState({
             isLoading: true
-        }, console.log("changing state to TRUE"))
+        })
 
         axiosFirstCall(this.state.searchInput)
             .then((res) => {
@@ -44,7 +45,7 @@ class SearchBar extends Component {
                         prevSearch: (this.state.prevSearch || []).concat(this.state.results),
                         currentResults: results,
                         isLoading: false
-                    }, () => console.log('changing state back to False', this.state))
+                    })
                 })
             .catch((err) => console.log(err));
     }
@@ -95,10 +96,14 @@ class SearchBar extends Component {
     loadMore = (query) => {
         const index = this.state.currentResults.length - 1
         const nextEightVids = this.state.currentResults[index].nToken
-        console.log('NEXT 8', nextEightVids)
+
+        this.setState({
+            isLoading: false,
+            loadingMore: true
+        }, console.log("loading 8 more"))
+
         axiosFirstCall(this.state.searchInput, nextEightVids)
             .then((res) => {
-                console.log('response', res.data.nextPageToken)
                 const resultsArr = [];
                 console.log('res.data', res)
                 res.data.items.map((e, i) => {
@@ -119,7 +124,9 @@ class SearchBar extends Component {
                     this.setState({
                         prevSearch: (this.state.prevSearch || []).concat(this.state.results),
                         currentResults: this.state.currentResults.concat(results),
-                    }, () => console.log('WORKING??', this.state))
+                        isLoading: false,
+                        loadingMore: false
+                    })
                 })
             .catch((err) => console.log(err));
     }
@@ -127,8 +134,7 @@ class SearchBar extends Component {
     render() {
         const aid = { ...this.props }
         let list = this.props.location.pathname.split('/')
-        console.log('LIST', list)
-        console.log('THIS', this.props)
+        console.log('RENDER THIS', this.props)
         const spinner = "https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif"
 
         return (
@@ -155,6 +161,9 @@ class SearchBar extends Component {
                         {this.state.currentResults.length === 0 ? null
                             : <button className='showMoreButton' onClick={this.loadMore}>Load More</button>}
                     </div>
+                    { this.state.loadingMore === true ? 
+                        <img src={spinner}></img> : null
+                    }
                 </div>
 
             </>
