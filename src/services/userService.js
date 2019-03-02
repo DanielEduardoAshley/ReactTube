@@ -34,7 +34,7 @@ const updateActiveUser = (name) => {
     localStorage.setItem("activeUser", JSON.stringify(newUsers))
 };
 
-const getAllUsers = () => {
+const getAllUsersNames = () => {
 const users = JSON.parse(localStorage.getItem("users")) || [{
     name: "Default",
     feedList: ["Naruto", "Itachi","Kiki Do U Love Me", "Jiraiya", "Naruto Love Story"], 
@@ -82,8 +82,34 @@ const addFeed = (name, feedName) => {
     LocalStorage.setItem("users", JSON.stringfy(updatedUsers))
     
     };
-    
-    }
+
+const getActiveUser = () => {
+    const {name} = JSON.parse(localStorage.getItem("activeUser")) || {
+        name: "Default",
+     }
+
+     return name;
+}
+
+const getFeed = (name) => {
+    const users = JSON.parse(localStorage.getItem("users")) || [{
+        name: "Default",
+        feedList: ["Naruto", "Itachi","Kiki Do U Love Me", "Jiraiya", "Naruto Love Story"], 
+        isActiveUser: true,
+        viewHistory: [],
+        movieInfo: {},
+     }]
+
+     const feed = users.map(e => {
+         if(e.name === name){
+             return e.feedList;
+         }
+     }) 
+
+     return feed;
+}
+
+export {addUser};  
 
 /*
 
@@ -132,5 +158,3 @@ Return movieInfo
 
 
 */
-
-export {addUser};  
