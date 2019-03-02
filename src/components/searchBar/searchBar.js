@@ -26,7 +26,7 @@ class SearchBar extends Component {
                     const { url } = high;
                     const published = Moment(`${publishedAt}`, "YYYYMMDD").fromNow();
                     const resultsInfo = { id, snippet, videoId, published, channelTitle, channelId, description, thumbnails, title, high, url }
-
+                    resultsInfo.nToken = res.data.nextPageToken
                     return resultsArr.push(resultsInfo);
                 });
                 return resultsArr;
@@ -51,6 +51,38 @@ class SearchBar extends Component {
         }
     }
 
+    loadMore = (query) => {
+        const index = this.state.currentResults.length-1
+        const nextEightVids = this.state.currentResults[index].nToken
+        console.log('NEXT 8', nextEightVids)
+        axiosFirstCall(this.state.searchInput, nextEightVids)
+            .then((res) => {
+                console.log('response', res.data.nextPageToken)
+                const resultsArr = [];
+                console.log('res.data', res)
+                res.data.items.map((e, i) => {
+                    const { id, snippet } = e;
+                    const { videoId } = id;
+                    const { publishedAt, channelTitle, channelId, description, thumbnails, title } = snippet;
+                    const { high } = thumbnails;
+                    const { url } = high;
+                    const published = Moment(`${publishedAt}`, "YYYYMMDD").fromNow();
+                    const resultsInfo = { id, snippet, videoId, published, channelTitle, channelId, description, thumbnails, title, high, url,  }
+                    resultsInfo.nToken = res.data.nextPageToken
+                    return resultsArr.push(resultsInfo);
+                });
+                return resultsArr;
+            })
+            .then(
+                (results) => {
+                    this.setState({
+                        prevSearch: (this.state.prevSearch || []).concat(this.state.results),
+                        currentResults: this.state.currentResults.concat(results),
+                    }, () => console.log('WORKING??', this.state))
+                })
+            .catch((err) => console.log(err));
+    }
+
     render() {
         const aid = { ...this.props }
         let list = this.props.location.pathname.split('/')
@@ -69,18 +101,18 @@ class SearchBar extends Component {
 
                     <div className='pageContainer'>
                         <div>
-                            {/* <div className='searchTitle' style={{border:'3px solid green'}}>
-                                { list[1] === 'search' ? <p>Search Results for {this.state.searchInput}</p>
-                                : null}
-                            </div> */}
+                                {/* <div className='searchTitle' style={{border:'3px solid green'}}>
+                                    { list[1] === 'search' ? <p>Search Results for {this.state.searchInput}</p>
+                                    : null}
+                                </div> */}
 
-                            {list[1] === 'search' ? <SearchResultsList pop={aid} results={this.state.currentResults} /> : null}
+                                {list[1] === 'search' ? <SearchResultsList pop={aid} results={this.state.currentResults} /> : null}
 
-                            {/* <p className='showMoreButton'> Show More</p>  */}
-                        </div> 
-                        
+                                { this.state.currentResults.length === 0 ? null 
+                                    : <button className='showMoreButton' onClick={this.loadMore}>Load More</button> }
+                        </div>  
                     </div>
-                                  
+
             </>
         );
     }
