@@ -1,3 +1,4 @@
+
 import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 
@@ -11,6 +12,8 @@ class Navbar extends Component {
                         <Link to='/home' className="navBarButton">Home</Link>
                         <Link to='/user' className="navBarButton">User</Link>
                         <Link to='/feededitor' className="navBarButton" >Feed Editor</Link>
+                        <Link to='/live' className="navBarButton" >Live</Link>
+
                     </div>
                 </div>
             </>

@@ -65,7 +65,7 @@
     margin: 10px;
   }
   
-  h1 {
+  /* h1 {
     position: absolute;
     top: 60%;
     width: 100%;
@@ -74,16 +74,17 @@
     color: #fff;
     font-family: Oswald, sans-serif;
     text-align: center;
-  }
+  } */
   
-  h1 span {
+  /* h1 span {
     font-family: sans-serif;
     letter-spacing: 0;
     font-weight: 300;
     font-size: 16px;
     line-height: 24px;
-  }
+  } */
   
-  h1 span a {
+  /* h1 span a {
     color: #fff;
-  }
+  } */
+  
