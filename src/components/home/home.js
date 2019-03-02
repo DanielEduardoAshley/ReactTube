@@ -7,6 +7,7 @@ import Homelayout2 from '../homelayout/homelayout'
 import  { axiosFirstCall, axiosSecondCall }  from '../../services/axios'
 import VideoPlayer from '../video/video';
 import './home.css';
+import { getActiveUser, getFeed } from '../../services/userService'
 
 
 class Home extends React.Component {
@@ -90,7 +91,7 @@ class Home extends React.Component {
                // addUserData.Users.Pam.movieInfo = newPamela 
     
                console.log('this',addUserData.Users)
-             this.setState({
+               this.setState({
                Users : addUserData.Users
              },()=>{
                console.log(this.state.Users)
@@ -159,13 +160,15 @@ class Home extends React.Component {
   
   
   componentDidMount(){
-    
+    console.log(getActiveUser())
+    console.log(getFeed())
     console.log('hello')
     const newArr = []
     const newObj = {}
     const addUserData = {...this.state}
     const query = this.state.Users[this.state.activeUser].feedlist
     const nextPage =  ''
+    //const query
     console.log(query)
     query.map(elem=>{
       return this.call(elem)
@@ -202,44 +205,7 @@ class Home extends React.Component {
     const nextPageToken = addUserData.Users[`${this.state.activeUser}`].movieInfo[query][addUserData.Users[`${this.state.activeUser}`].movieInfo[query].length-1].nextPageToken
     console.log('get',feedTitle)
     this.call(query, nextPageToken)
-  //   return axiosFirstCall(query, nextPageToken).then((response)=>{
-  //    console.log('data',response)
-  //         response.data.items.map(e=>{
-            
-  //           return newArr.push({
-  //             feedTitle : 'orochimaru',
-  //             id: e.id.videoId,
-  //             title  : e.snippet.title,
-  //             description: e.snippet.description,
-  //             thumbnail: e.snippet.thumbnails.default,
-  //             channelTitle: e.snippet.channelTitle,
-  //             publishedAt : e.snippet.publishedAt,
-  //             nextPageToken: response.data.nextPageToken,
 
-
-  //     }
-  //           )
-            
-  //         })
-            
-  //           const addUserData = {...this.state}
-  //           const Pamela = addUserData.Users[`${this.state.activeUser}`].movieInfo
-  //            Pamela[query] = Pamela[query].concat(newArr)
-  //           // const newPamela = (Pamela || []).concat(newArr)
-  //           // addUserData.Users.Pam.movieInfo = newPamela 
-  //           console.log('this',addUserData.Users)
-  //         this.setState({
-  //           Users : addUserData.Users
-  //         },()=>{
-  //           console.log(this.state.Users)
-  //           console.log(this.state.Users[`${this.state.activeUser}`].movieInfo)
-  
-  
-  //         })
-  
-  
-  
-  //  })
 
  }
 

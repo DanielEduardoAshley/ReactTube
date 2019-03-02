@@ -31,7 +31,7 @@ const addUser = (userName) => {
 }
 
 const updateActiveUser = (name) => {
-    localStorage.setItem("activeUser", JSON.stringify(newUsers))
+    localStorage.setItem("activeUser", JSON.stringify(name))
 };
 
 const getAllUsersNames = () => {
@@ -63,7 +63,7 @@ const removeAllUsers = () => {
 };
 
 const addFeed = (name, feedName) => {
-    const users = JSON.parse(LocalStorage.getItem("users")) || [{
+    const users = JSON.parse(localStorage.getItem("users")) || [{
         name: "Default",
         feedList: ["Naruto", "Itachi","Kiki Do U Love Me", "Jiraiya", "Naruto Love Story"], 
         isActiveUser: true,
@@ -79,7 +79,7 @@ const addFeed = (name, feedName) => {
     return feedL;
     })
     
-    LocalStorage.setItem("users", JSON.stringfy(updatedUsers))
+    localStorage.setItem("users", JSON.stringfy(updatedUsers))
     
     };
 
@@ -109,7 +109,7 @@ const getFeed = (name) => {
      return feed;
 }
 
-export {addUser};  
+export {addUser , getActiveUser, getFeed};  
 
 /*
 
