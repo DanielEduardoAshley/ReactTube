@@ -70,7 +70,7 @@ class Home extends React.Component {
                  id: e.id.videoId,
                  title  : e.snippet.title,
                  description: e.snippet.description,
-                 thumbnail: e.snippet.thumbnails.default,
+                 thumbnail: e.snippet.thumbnails.high,
                  channelTitle: e.snippet.channelTitle,
                  publishedAt : e.snippet.publishedAt,
                  nextPageToken: response.data.nextPageToken,
