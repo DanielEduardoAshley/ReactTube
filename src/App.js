@@ -9,6 +9,7 @@ import User from './components/user/user';
 import Feed from './components/feed/feed';
 import ViewHistory from './components/viewHistory/viewHistory';
 import SearchBar from './components/searchBar/searchBar';
+import SideNav from './components/sideNav/sideNav';
 
 // extra import here
 // extra import here
@@ -50,19 +51,8 @@ class App extends Component {
       </div>
 
       
-        {/* <Sidebar/> */}
-          {/* <div className='sideNavBar'>
-            <h1 className='navTitle'>Explore</h1>
-            <div className='navBarContainer'>
-              <p className='navBarButton'>Feedlist</p>
-              <p className='sideBarButton'>Feed 1</p>
-              <p className='sideBarButton'>Feed 2</p>
-              <p className='sideBarButton'>Feed 2</p>
-            </div>
-          </div> */}      
-          
-        
-        
+        <SideNav />
+               
         {/* 
         Pam's workspace
          */}
