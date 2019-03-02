@@ -8,15 +8,22 @@ class SearchBar extends Component {
     state = {
         searchInput: '',
         currentResults: [],
+        isLoading: false
     }
 
     handleClick = (e) => {
         this.props.history.push(`/search/${this.state.searchInput}`);
         console.log('input', this.state.searchInput)
         console.log('???', this.props)
+
+        this.setState({
+            isLoading: true
+        }, console.log("changing state to TRUE"))
+
         axiosFirstCall(this.state.searchInput)
             .then((res) => {
                 console.log('response', res)
+                
                 const resultsArr = [];
                 res.data.items.map((e, i) => {
                     const { id, snippet } = e;
@@ -36,7 +43,8 @@ class SearchBar extends Component {
                     this.setState({
                         prevSearch: (this.state.prevSearch || []).concat(this.state.results),
                         currentResults: results,
-                    }, () => console.log('my state', this.state))
+                        isLoading: false
+                    }, () => console.log('changing state back to False', this.state))
                 })
             .catch((err) => console.log(err));
     }
@@ -50,6 +58,11 @@ class SearchBar extends Component {
             this.props.history.push(`/search/${this.state.searchInput}`);
             console.log('input', this.state.searchInput)
             console.log('???', this.props)
+
+            this.setState({
+                isLoading: true
+            }, console.log("changing state to TRUE"))
+    
             axiosFirstCall(this.state.searchInput)
                 .then((res) => {
                     console.log('response', res)
@@ -72,6 +85,7 @@ class SearchBar extends Component {
                         this.setState({
                             prevSearch: (this.state.prevSearch || []).concat(this.state.results),
                             currentResults: results,
+                            isLoading: false
                         }, () => console.log('my state', this.state))
                     })
                 .catch((err) => console.log(err));
@@ -115,10 +129,10 @@ class SearchBar extends Component {
         let list = this.props.location.pathname.split('/')
         console.log('LIST', list)
         console.log('THIS', this.props)
+        const spinner = "https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif"
+
         return (
             <>
-
-
                 <div className='searchBox'>
                     <button className="searchButton" onClick={this.handleClick}>Search</button>
                     <input className='searchInput' onChange={this.onChange} onKeyDown={this.onKeyDown}></input>
@@ -126,12 +140,15 @@ class SearchBar extends Component {
 
 
 
-                <div className='pageContainer'>
+                <div className='pageContainer'>    
+                    { this.state.isLoading === true ? <img src={spinner}></img>
+                        : null
+                    }                     
                     <div>
                         {/* <div className='searchTitle' style={{border:'3px solid green'}}>
-                                    { list[1] === 'search' ? <p>Search Results for {this.state.searchInput}</p>
-                                    : null}
-                                </div> */}
+                                { list[1] === 'search' ? <p>Search Results for {this.state.searchInput}</p>
+                                : null}
+                            </div> */}
 
                         {list[1] === 'search' ? <SearchResultsList pop={aid} results={this.state.currentResults} /> : null}
 
