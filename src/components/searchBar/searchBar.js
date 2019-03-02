@@ -57,39 +57,7 @@ class SearchBar extends Component {
 
     onKeyDown = (e) => {
         if (e.key.toLowerCase() === 'enter') {
-            this.props.history.push(`/search/${this.state.searchInput}`);
-            console.log('input', this.state.searchInput)
-
-            this.setState({
-                isLoading: true
-            })
-
-            axiosFirstCall(this.state.searchInput)
-                .then((res) => {
-                    console.log('response', res)
-                    const resultsArr = [];
-                    res.data.items.map((e, i) => {
-                        const { id, snippet } = e;
-                        const { videoId } = id;
-                        const { publishedAt, channelTitle, channelId, description, thumbnails, title } = snippet;
-                        const { high } = thumbnails;
-                        const { url } = high;
-                        const published = Moment(`${publishedAt}`, "YYYYMMDD").fromNow();
-                        const resultsInfo = { id, snippet, videoId, published, channelTitle, channelId, description, thumbnails, title, high, url }
-                        resultsInfo.nToken = res.data.nextPageToken
-                        return resultsArr.push(resultsInfo);
-                    });
-                    return resultsArr;
-                })
-                .then(
-                    (results) => {
-                        this.setState({
-                            prevSearch: (this.state.prevSearch || []).concat(this.state.results),
-                            currentResults: results,
-                            isLoading: false
-                        })
-                    })
-                .catch((err) => console.log(err));
+            this.handleClick(e);
         }
     }
 
