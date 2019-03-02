@@ -87,17 +87,18 @@ class User extends React.Component {
   render() {
     return (
       <>
-        <div className='pageContainer'>
-
+        {/* <div className='pageContainer'> */}
         <div className="user-wrapper">
+        
           <div className="input-field">
             <div className="header">
               <div>Create a New User </div>
             </div>
+            <from></from>
             <div className="input-group">
               <input type="text" className="form-control" placeholder="User Name" aria-describedby="button-addon2" onKeyDown={this.onKeyDown} onChange={this.onChange}></input>
-              <div className="input-group-append">
-                <button className="btn btn-style" type="button" id="button-addon2" onClick={this.onClickAdd}>Add</button>
+                  <div className="input-btn">
+                <button className="btn btn-style" type="button" onClick={this.onClickAdd}>Add</button>
               </div>
             </div>
           </div>
@@ -113,7 +114,7 @@ class User extends React.Component {
             </div>
           </div>
         </div>
-        </div>
+        {/* </div> */}
       </>
     )
   }
