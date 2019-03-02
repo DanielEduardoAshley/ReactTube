@@ -47,12 +47,39 @@ class SearchBar extends Component {
 
     onKeyDown = (e) => {
         if (e.key.toLowerCase() === 'enter') {
-            this.setState({ searchInput: e.target.value })
+            this.props.history.push(`/search/${this.state.searchInput}`);
+            console.log('input', this.state.searchInput)
+            console.log('???', this.props)
+            axiosFirstCall(this.state.searchInput)
+                .then((res) => {
+                    console.log('response', res)
+                    const resultsArr = [];
+                    res.data.items.map((e, i) => {
+                        const { id, snippet } = e;
+                        const { videoId } = id;
+                        const { publishedAt, channelTitle, channelId, description, thumbnails, title } = snippet;
+                        const { high } = thumbnails;
+                        const { url } = high;
+                        const published = Moment(`${publishedAt}`, "YYYYMMDD").fromNow();
+                        const resultsInfo = { id, snippet, videoId, published, channelTitle, channelId, description, thumbnails, title, high, url }
+                        resultsInfo.nToken = res.data.nextPageToken
+                        return resultsArr.push(resultsInfo);
+                    });
+                    return resultsArr;
+                })
+                .then(
+                    (results) => {
+                        this.setState({
+                            prevSearch: (this.state.prevSearch || []).concat(this.state.results),
+                            currentResults: results,
+                        }, () => console.log('my state', this.state))
+                    })
+                .catch((err) => console.log(err));
         }
     }
 
     loadMore = (query) => {
-        const index = this.state.currentResults.length-1
+        const index = this.state.currentResults.length - 1
         const nextEightVids = this.state.currentResults[index].nToken
         console.log('NEXT 8', nextEightVids)
         axiosFirstCall(this.state.searchInput, nextEightVids)
@@ -67,7 +94,7 @@ class SearchBar extends Component {
                     const { high } = thumbnails;
                     const { url } = high;
                     const published = Moment(`${publishedAt}`, "YYYYMMDD").fromNow();
-                    const resultsInfo = { id, snippet, videoId, published, channelTitle, channelId, description, thumbnails, title, high, url,  }
+                    const resultsInfo = { id, snippet, videoId, published, channelTitle, channelId, description, thumbnails, title, high, url, }
                     resultsInfo.nToken = res.data.nextPageToken
                     return resultsArr.push(resultsInfo);
                 });
@@ -90,28 +117,28 @@ class SearchBar extends Component {
         console.log('THIS', this.props)
         return (
             <>
-                
+
 
                 <div className='searchBox'>
                     <button className="searchButton" onClick={this.handleClick}>Search</button>
                     <input className='searchInput' onChange={this.onChange} onKeyDown={this.onKeyDown}></input>
                 </div>
-                    
-                    
 
-                    <div className='pageContainer'>
-                        <div>
-                                {/* <div className='searchTitle' style={{border:'3px solid green'}}>
+
+
+                <div className='pageContainer'>
+                    <div>
+                        {/* <div className='searchTitle' style={{border:'3px solid green'}}>
                                     { list[1] === 'search' ? <p>Search Results for {this.state.searchInput}</p>
                                     : null}
                                 </div> */}
 
-                                {list[1] === 'search' ? <SearchResultsList pop={aid} results={this.state.currentResults} /> : null}
+                        {list[1] === 'search' ? <SearchResultsList pop={aid} results={this.state.currentResults} /> : null}
 
-                                { this.state.currentResults.length === 0 ? null 
-                                    : <button className='showMoreButton' onClick={this.loadMore}>Load More</button> }
-                        </div>  
+                        {this.state.currentResults.length === 0 ? null
+                            : <button className='showMoreButton' onClick={this.loadMore}>Load More</button>}
                     </div>
+                </div>
 
             </>
         );
