@@ -35,6 +35,7 @@ class App extends Component {
   const id = p[2]
     return (
       <>
+      <div className='backgroundImg'>
       <div style={{width:'90%', margin:'0 auto'}}>
         <div className='top-space'>
           <div style={{display:'flex', flexWrap:'wrap', height:'42.594px'}}>
@@ -91,7 +92,7 @@ class App extends Component {
           */}
 
       </div>
-
+      </div>
       </>
     );
   }
