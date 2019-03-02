@@ -8,12 +8,12 @@ import spinner from '../../Triangles-1s-200px.gif'
 class SearchBar extends Component {
     state = {
         searchInput: '',
+        savedSearch: '',
         currentResults: [],
         prevSearch: [],
         isLoading: false,
         loadingMore: false
     }
-
 
     handleClick = (e) => {
         this.props.history.push(`/search/${this.state.searchInput}`);
@@ -43,12 +43,16 @@ class SearchBar extends Component {
             .then(
                 (results) => {
                     this.setState({
+                        searchInput: '',
+                        savedSearch: this.state.searchInput,
                         prevSearch: (this.state.prevSearch || []).concat(this.state.results),
                         currentResults: results,
                         isLoading: false
                     })
                 })
             .catch((err) => console.log(err));
+            console.log('LOOK AT THIS', e.target.value)
+
     }
 
     onChange = (e) => {
@@ -107,7 +111,7 @@ class SearchBar extends Component {
             <>
                 <div className='searchBox'>
                     <button className="searchButton" onClick={this.handleClick}>Search</button>
-                    <input className='searchInput' onChange={this.onChange} onKeyDown={this.onKeyDown}></input>
+                    <input className='searchInput' value={this.state.searchInput} onChange={this.onChange} onKeyDown={this.onKeyDown}></input>
                 </div>
 
                 <div className='pageContainer'>
@@ -119,7 +123,7 @@ class SearchBar extends Component {
                                         <>
 
                                             <div className='searchResultText'>
-                                                <p>Search Results for {this.state.searchInput}</p>
+                                                <p>Search Results for {this.state.savedSearch}</p>
                                                 <br></br>
                                             </div>
 
