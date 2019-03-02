@@ -29,17 +29,14 @@ class App extends Component {
 
 
   render() {
-    console.log('!!!', this.props.location.pathname)
+
     const path = this.props.location.pathname
     const p = path.split('/')
-    console.log(p[2])
+    
     const id = p[2]
     return (
       
       <>
-      
-      
-      
         <div className='backgroundImg'>
           <div style={{ width: '90%', margin: '0 auto' }}>
             <div className='top-space'>
@@ -69,7 +66,6 @@ class App extends Component {
               </Switch>
             </div>
 
-
             <SideNav path={path} />
             
             {/* 
@@ -86,8 +82,6 @@ class App extends Component {
                 console.log('this is e', typeof e)
                 const id = e
                 return <div key={i}>{this.VideoPlayer({ id })}</div>
-
-
               })
             }
 
@@ -100,14 +94,8 @@ class App extends Component {
           */}
 
           </div>
-          
-           
         </div>
-        
-        
-        
       </>
-      
     );
   }
 }
