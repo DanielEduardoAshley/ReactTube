@@ -11,6 +11,7 @@ import ViewHistory from './components/viewHistory/viewHistory';
 import SearchBar from './components/searchBar/searchBar';
 import SideNav from './components/sideNav/sideNav';
 import SplashPage from './components/splashpage/splashpage';
+import Live from './components/live/live';
 
 // extra import here
 // extra import here
@@ -69,6 +70,7 @@ class App extends Component {
                 <Route path='/user' component={User}/>
                 <Route path='/feededitor' component={Feed}/>
                 <Route path='/user/:user_id/history' exact component={ViewHistory}/>
+                <Route path='/live' exact component={Live}/>
             </div>
           <SideNav path={path}/>
           </div>
