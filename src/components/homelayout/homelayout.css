@@ -86,10 +86,6 @@
   
   /* h1 span a {
     color: #fff;
-<<<<<<< danielBranch
-  } */
-  
-=======
   }
   .img__wrap {
     position: relative;
@@ -109,8 +105,8 @@
     opacity: 0;
   
     /* transition effect. not necessary */
-    transition: opacity .2s, visibility .2s;
-  }
+    /* transition: opacity .2s, visibility .2s;
+  } */
   
   .img__wrap:hover .img__description {
     visibility: visible;
@@ -130,4 +126,3 @@
     font-size: 13px;
     padding: 10px 10px 10px 10px;
   }
->>>>>>> local
