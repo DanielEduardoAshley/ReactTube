@@ -2,6 +2,7 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 import { Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle } from 'reactstrap';
 
+
 const onClick = ({id, fun}) => {
     // const {id, fun} = obj;
     const {videoId} = id;
@@ -18,7 +19,6 @@ const SearchResultsList = ({results, pop}) => {
 
     return (
     <>
-        
         <div className='rowsss'>
             {
                 results.map((e, i) => {
@@ -42,12 +42,8 @@ const SearchResultsList = ({results, pop}) => {
                             {/* {str = e.title} */}
                         </div>
                     </div>
-
-
                 })
-
             }
-
         </div>
     </>
     );
