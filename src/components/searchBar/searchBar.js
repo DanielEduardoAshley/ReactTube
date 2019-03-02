@@ -3,6 +3,7 @@ import { withRouter } from 'react-router-dom';
 import { axiosFirstCall } from '../../services/axios';
 import Moment from 'moment';
 import SearchResultsList from '../../containers/searchResultsList';
+import spinner from '../../Triangles-1s-200px.gif'
 
 class SearchBar extends Component {
     state = {
@@ -12,6 +13,7 @@ class SearchBar extends Component {
         isLoading: false,
         loadingMore: false
     }
+
 
     handleClick = (e) => {
         this.props.history.push(`/search/${this.state.searchInput}`);
@@ -132,7 +134,6 @@ class SearchBar extends Component {
     render() {
         const aid = { ...this.props }
         let list = this.props.location.pathname.split('/')
-        const spinner = "https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif"
 
         return (
             <>
@@ -143,13 +144,13 @@ class SearchBar extends Component {
 
                 <div className='pageContainer'>
                     <div className=''>
-                        {this.state.isLoading === true ? <div className='spinner'><img src={spinner}></img></div> :
+                        {this.state.isLoading === true ? <div className='spinner'><img src={spinner} alt='Loading...'></img></div> :
                             <>
                                 <div>
                                     {list[1] === 'search' ?
                                         <>
 
-                                            <div className='searchTitle'>
+                                            <div className='searchResultText'>
                                                 <p>Search Results for {this.state.searchInput}</p>
                                                 <br></br>
                                             </div>
@@ -164,7 +165,7 @@ class SearchBar extends Component {
 
                                 </div>
                                 <div className='spinner'>
-                                    {this.state.loadingMore === true ? <img src={spinner}></img> : null}
+                                    {this.state.loadingMore === true ? <img src={spinner} alt='Loading...'></img> : null}
                                 </div>
                             </>
                         }
