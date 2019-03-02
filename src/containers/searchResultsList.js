@@ -1,6 +1,7 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 
+
 const onClick = ({id, fun}) => {
     // const {id, fun} = obj;
     const {videoId} = id;
