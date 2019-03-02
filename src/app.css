@@ -7,6 +7,10 @@
   .top-space{
     /* border-bottom: 2pt solid black; */
   }
+
+  .backgroundImg{
+    background-image: url("https://media.giphy.com/media/4Z0chP31wyE0Wu25Cx/giphy.gif");
+  }
   
   .App{
     width: 90%;
