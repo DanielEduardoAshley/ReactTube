@@ -164,12 +164,62 @@ a:active */
     border: 2pt solid black;
     font-family: Arial, Helvetica, sans-serif;
   }
-  
+
   .videoThumbnail:hover{
     background-color: #EA482C;
     font-weight: 600;
   }
-  
+
+  .videoSearchContainer{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+  }
+
+  .videoSearchThumbnail{
+    display: flex;
+    flex-wrap: wrap;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+  .leftMargin{
+    margin-left: 200px;
+  }
+
+  .searchImageBox{
+    object-fit: contain;
+    width: 200px;
+    height: 200px;
+  }
+
+  .searchInfoBox{
+    width: 200px;
+    height: 200px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+  }
+
+  .searchImage{
+    object-fit: cover;
+    width: 200px;
+    height: 200px;
+  }
+
+  .searchText{
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 900;
+    font-size: 20px;
+    padding: 0px 0px 0 10px;
+  }
+
+  .searchPublish{
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 400;
+    font-size: 20px;
+    padding: 10px 0px 0 10px;
+  }
+ 
   .sideBarButton{
     font-family: Arial, Helvetica, sans-serif;
     font-style: oblique;
