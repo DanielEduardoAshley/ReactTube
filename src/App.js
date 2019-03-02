@@ -39,6 +39,7 @@ class App extends Component {
   // Route for app /home
     return (
       <>
+<<<<<<< HEAD
  
 
 {/* <Route path='/' exact component={SplashPage}/> */}
@@ -48,6 +49,11 @@ class App extends Component {
       {this.props.location.pathname === '/'? <Route path='/' exact component={SplashPage}/> :
 <> <div style={{width:'90%', margin:'0 auto'}}>
         <div class='top-space'>
+=======
+      <div className='backgroundImg'>
+      <div style={{width:'90%', margin:'0 auto'}}>
+        <div className='top-space'>
+>>>>>>> e0fe62ed00af5277848a8ed9590c445de08afaf4
           <div style={{display:'flex', flexWrap:'wrap', height:'42.594px'}}>
             <div className='navBar'></div>
             <div className='pageWindow'></div>
@@ -74,6 +80,26 @@ class App extends Component {
      
      
       
+<<<<<<< HEAD
+=======
+        <SideNav path={path}/>
+               
+        {/* 
+        Pam's workspace
+         */}
+
+        {/* 
+        Daniel's workspace
+        
+         */}
+
+        {
+          this.state.videoArray.map((e,i)=>{
+            console.log('this is e', typeof e)
+            const id = e
+            return <div key={i}>{this.VideoPlayer({ id })}</div>
+
+>>>>>>> e0fe62ed00af5277848a8ed9590c445de08afaf4
 
 
 
@@ -100,10 +126,14 @@ class App extends Component {
           <Route path='/feededitor' component={Feed}/>
           <Route path='/user/:user_id/history' exact component={ViewHistory}/>
       </div>
+<<<<<<< HEAD
       <SideNav />
      
       </div> */}
 
+=======
+      </div>
+>>>>>>> e0fe62ed00af5277848a8ed9590c445de08afaf4
       </>
     );
   }

@@ -8,15 +8,22 @@ class SearchBar extends Component {
     state = {
         searchInput: '',
         currentResults: [],
+        prevSearch: [],
+        isLoading: false,
+        loadingMore: false
     }
 
     handleClick = (e) => {
         this.props.history.push(`/search/${this.state.searchInput}`);
         console.log('input', this.state.searchInput)
-        console.log('???', this.props)
+
+        this.setState({
+            isLoading: true
+        })
+
         axiosFirstCall(this.state.searchInput)
             .then((res) => {
-                console.log('response', res)
+
                 const resultsArr = [];
                 res.data.items.map((e, i) => {
                     const { id, snippet } = e;
@@ -36,7 +43,8 @@ class SearchBar extends Component {
                     this.setState({
                         prevSearch: (this.state.prevSearch || []).concat(this.state.results),
                         currentResults: results,
-                    }, () => console.log('my state', this.state))
+                        isLoading: false
+                    })
                 })
             .catch((err) => console.log(err));
     }
@@ -49,7 +57,11 @@ class SearchBar extends Component {
         if (e.key.toLowerCase() === 'enter') {
             this.props.history.push(`/search/${this.state.searchInput}`);
             console.log('input', this.state.searchInput)
-            console.log('???', this.props)
+
+            this.setState({
+                isLoading: true
+            })
+
             axiosFirstCall(this.state.searchInput)
                 .then((res) => {
                     console.log('response', res)
@@ -72,7 +84,8 @@ class SearchBar extends Component {
                         this.setState({
                             prevSearch: (this.state.prevSearch || []).concat(this.state.results),
                             currentResults: results,
-                        }, () => console.log('my state', this.state))
+                            isLoading: false
+                        })
                     })
                 .catch((err) => console.log(err));
         }
@@ -81,12 +94,16 @@ class SearchBar extends Component {
     loadMore = (query) => {
         const index = this.state.currentResults.length - 1
         const nextEightVids = this.state.currentResults[index].nToken
-        console.log('NEXT 8', nextEightVids)
+
+        this.setState({
+            isLoading: false,
+            loadingMore: true
+        })
+
         axiosFirstCall(this.state.searchInput, nextEightVids)
             .then((res) => {
-                console.log('response', res.data.nextPageToken)
                 const resultsArr = [];
-                console.log('res.data', res)
+
                 res.data.items.map((e, i) => {
                     const { id, snippet } = e;
                     const { videoId } = id;
@@ -105,7 +122,9 @@ class SearchBar extends Component {
                     this.setState({
                         prevSearch: (this.state.prevSearch || []).concat(this.state.results),
                         currentResults: this.state.currentResults.concat(results),
-                    }, () => console.log('WORKING??', this.state))
+                        isLoading: false,
+                        loadingMore: false
+                    })
                 })
             .catch((err) => console.log(err));
     }
@@ -113,44 +132,49 @@ class SearchBar extends Component {
     render() {
         const aid = { ...this.props }
         let list = this.props.location.pathname.split('/')
-        console.log('LIST', list)
-        console.log('THIS', this.props)
+        const spinner = "https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif"
+
         return (
             <>
-
-
                 <div className='searchBox'>
                     <button className="searchButton" onClick={this.handleClick}>Search</button>
                     <input className='searchInput' onChange={this.onChange} onKeyDown={this.onKeyDown}></input>
                 </div>
 
-
-
                 <div className='pageContainer'>
-                    <div>
-                        {/* <div className='searchTitle' style={{border:'3px solid green'}}>
-                                    { list[1] === 'search' ? <p>Search Results for {this.state.searchInput}</p>
-                                    : null}
-                                </div> */}
+                    <div className=''>
+                        {this.state.isLoading === true ? <div className='spinner'><img src={spinner}></img></div> :
+                            <>
+                                <div>
+                                    {list[1] === 'search' ?
+                                        <>
 
-                        {list[1] === 'search' ? 
-                        <>
-                            <SearchResultsList pop={aid} results={this.state.currentResults} /> 
-                            
-                            {this.state.currentResults.length === 0 ? null
-                            : <p className='showMoreButton' onClick={this.loadMore}>Load More</p>}
-                        </>
-                        : null}
+                                            <div className='searchTitle'>
+                                                <p>Search Results for {this.state.searchInput}</p>
+                                                <br></br>
+                                            </div>
 
-                       
+                                            <SearchResultsList pop={aid} results={this.state.currentResults} />
+
+                                            {this.state.currentResults.length === 0 ? null
+                                                : <p className='showMoreButton' onClick={this.loadMore}>Load More</p>}
+                                        </>
+
+                                        : null}
+
+                                </div>
+                                <div className='spinner'>
+                                    {this.state.loadingMore === true ? <img src={spinner}></img> : null}
+                                </div>
+                            </>
+                        }
+
                     </div>
                 </div>
 
             </>
         );
     }
-
-
 }
 
 export default withRouter(SearchBar);
