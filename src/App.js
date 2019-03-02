@@ -36,7 +36,7 @@ class App extends Component {
     return (
       <>
       <div style={{width:'90%', margin:'0 auto'}}>
-        <div class='top-space'>
+        <div className='top-space'>
           <div style={{display:'flex', flexWrap:'wrap', height:'42.594px'}}>
             <div className='navBar'></div>
             <div className='pageWindow'></div>
@@ -61,7 +61,7 @@ class App extends Component {
       </div>
 
       
-        <SideNav />
+        <SideNav path={path}/>
                
         {/* 
         Pam's workspace
