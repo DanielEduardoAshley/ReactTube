@@ -18,30 +18,27 @@ class SideNav extends Component {
       
       const currentRouteArr = this.props.path.split('/');
       const currentRouteName = currentRouteArr[1];
+      console.log('This is the current route',currentRouteName)
 
       if(currentRouteName.toLowerCase() === 'feededitor'){
-        this.setState({routeName: 'Feed Editor'})
+        this.setState({routeName: 'Feed Editor'}) 
       } else if(currentRouteName === '' || currentRouteName === 'home'){
-        this.setState({routeName: 'Explore'})
-      } else {
-        this.setState({routeName: currentRouteName})
+        this.setState({routeName: 'Explore'}) 
+      } else if (currentRouteName.toLowerCase() === 'search') {
+        this.setState({routeName: "Search"})
+      }
+      else if (currentRouteName.toLowerCase() === 'video') {
+        // this.setState({routeName: ""})
       }
     }
-    // const activeUserLS = JSON.parse(localStorage.getItem('activeUser')) || {
-    //   name: 'Default',
-    //   feedList: ["Naruto", "Itachi", "Kiki Do U Love Me", "Jiraiya", "Naruto Love Story"]
-    // }
-    // if (this.state.activeName.toLowerCase() === 'default') {
-    //   this.setState({activeName: activeUserLS.name, feedlist: activeUserLS.feedList})
-    // }
   }
 
   feedListDrop () {
-    const dropDowns = this.state.feedlist.map((v, i) => {
-      return <p key={i} className='sideBarButton'>{v}</p>
-    })
+    // const dropDowns = this.state.feedlist.map((v, i) => {
+    //   return <p key={i} className='sideBarButton'>{v}</p>
+    // })
 
-    return dropDowns;
+    // return dropDowns;
   }
 
     render() {
@@ -57,7 +54,7 @@ class SideNav extends Component {
               :
               <>
                 <p className='navBarButton'>Feedlist</p>
-                {this.feedListDrop()}
+                {/* {this.feedListDrop()} */}
                 <p className='sideBarButton'>Feed 1</p>
                 <p className='sideBarButton'>Feed 2</p>
                 <p className='sideBarButton'>Feed 2</p>
