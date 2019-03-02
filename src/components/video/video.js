@@ -61,29 +61,30 @@ render(){
 
     return (
         <>
-            <div className='video-container'>
+        <div className='pageContainer pageContainerVideo'>
+        <div className='video-container'>
                 <div>
                     {this.players( this.props.id )}
                 </div>
                 <div className='video-info' >
-                        <h2>{channelTitle} - {title}</h2>
+                        <h2 className='videoTitle'>{channelTitle} - {title}</h2>
 
                         <div className='view-container'>
-                            <div>
-                                <p>{viewCount} Views</p>
-                            </div>
                             <div className='count'>
+                                <p className='count-info'>{viewCount} Views</p>
                                 <p className='count-info'>{commentCount} Comments 💬</p>
                                 <p className='count-info'>{likeCount} Likes ❤️</p>
                                 <p className='count-info'>{dislikeCount} Dislikes 💔</p>
                             </div>
                         </div>
-                        <p>{date}</p>
-                        <p style={{width:'640px'}}>{description} </p>
+                        <p className='date'>{date}</p>
+                        <p className='videoDescription'>{description} </p>
                         
 
                 </div>
             </div>
+        </div>
+            
         </>
     )
 

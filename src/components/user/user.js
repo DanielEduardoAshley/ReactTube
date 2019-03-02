@@ -87,6 +87,8 @@ class User extends React.Component {
   render() {
     return (
       <>
+        <div className='pageContainer'>
+
         <div className="user-wrapper">
           <div className="input-field">
             <div className="header">
@@ -110,6 +112,7 @@ class User extends React.Component {
                 </div>
             </div>
           </div>
+        </div>
         </div>
       </>
     )
