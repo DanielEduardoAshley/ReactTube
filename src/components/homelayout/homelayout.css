@@ -24,6 +24,7 @@
   .videofeedContainer{
     display: flex;
     flex-wrap: wrap;
+    
   }
 
   .showMoreButton{
