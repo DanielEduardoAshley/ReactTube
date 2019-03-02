@@ -4,9 +4,9 @@
     padding: 0
   }
   
-  .top-space{
+  /* .top-space{
     /* border-bottom: 2pt solid black; */
-  }
+  
   
   .App{
     width: 90%;
@@ -259,7 +259,6 @@ a:active */
     color: #fff;
     cursor: pointer;
   }
-  
   .pageContainerVideo{
     padding-top: 5px;
     
