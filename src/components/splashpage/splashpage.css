@@ -18,7 +18,7 @@ videoBgWrapper {
 
 
 
-@media (min-aspect-ratio: 16/9) {
+/* @media (min-aspect-ratio: 16/9) {
     .videoBg{
       width: 100%;
       height: auto;
@@ -30,4 +30,4 @@ videoBgWrapper {
       width: auto;
       height: 100%;
     }
-  }
+  } */
