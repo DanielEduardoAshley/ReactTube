@@ -133,10 +133,16 @@ class SearchBar extends Component {
                                     : null}
                                 </div> */}
 
-                        {list[1] === 'search' ? <SearchResultsList pop={aid} results={this.state.currentResults} /> : null}
+                        {list[1] === 'search' ? 
+                        <>
+                            <SearchResultsList pop={aid} results={this.state.currentResults} /> 
+                            
+                            {this.state.currentResults.length === 0 ? null
+                            : <p className='showMoreButton' onClick={this.loadMore}>Load More</p>}
+                        </>
+                        : null}
 
-                        {this.state.currentResults.length === 0 ? null
-                            : <button className='showMoreButton' onClick={this.loadMore}>Load More</button>}
+                       
                     </div>
                 </div>
 
