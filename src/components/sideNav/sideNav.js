@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
 class SideNav extends Component {
   state = {
@@ -9,29 +9,6 @@ class SideNav extends Component {
     routeName: 'Explore',
   }
 
-  componentDidMount () {
-
-  }
-
-  componentDidUpdate (prevProps) {
-    if (this.props.path.toLowerCase() !== prevProps.path) {
-      
-      const currentRouteArr = this.props.path.split('/');
-      const currentRouteName = currentRouteArr[1];
-      console.log('This is the current route',currentRouteName)
-
-      if(currentRouteName.toLowerCase() === 'feededitor'){
-        this.setState({routeName: 'Feed Editor'}) 
-      } else if(currentRouteName === '' || currentRouteName === 'home'){
-        this.setState({routeName: 'Explore'}) 
-      } else if (currentRouteName.toLowerCase() === 'search') {
-        this.setState({routeName: "Search"})
-      }
-      else if (currentRouteName.toLowerCase() === 'video') {
-        // this.setState({routeName: ""})
-      }
-    }
-  }
 
   feedListDrop () {
     // const dropDowns = this.state.feedlist.map((v, i) => {
@@ -41,15 +18,34 @@ class SideNav extends Component {
     // return dropDowns;
   }
 
+
     render() {
+      let title = ''
+      const currentRouteArr = this.props.location.pathname.split('/');
+      const currentRouteName = currentRouteArr[1];
+
+      if(currentRouteName.toLowerCase() === 'feededitor'){
+        title = 'Feed Editor'; 
+      } else if(currentRouteName === '' || currentRouteName === 'home'){
+        title = 'Explore';
+      } else if (currentRouteName.toLowerCase() === 'search') {
+        title = 'Search';
+      } else if (currentRouteName.toLowerCase() === 'video') {
+        title = 'Video';
+      } else if (currentRouteName.toLowerCase() === 'live') {
+        title = 'Live';
+      }
+
+      title = currentRouteName;
+      
         return (
             <>  
           <div className='sideNavBar'>
-            <h1 className='navTitle' style={{fontWeight:'bold', textTransform:'capitalize'}}>{this.state.routeName}</h1>
+            <h1 className='navTitle' style={{fontWeight:'bold', textTransform:'capitalize'}}>{title}</h1>
             <div className='navBarContainer'>
             {
               (this.state.activeName.toLowerCase() === 'default') ?
-              <p></p>
+              null
 
               :
               <>
@@ -59,6 +55,12 @@ class SideNav extends Component {
                 <p className='sideBarButton'>Feed 2</p>
                 <p className='sideBarButton'>Feed 2</p>
               </>
+            }
+
+            {
+              (title.toLowerCase() === 'live') ? 
+              <div style={{width:'20px', height:'20px', marginLeft:'10px',marginTop:'190px',backgroundColor:'red', borderRadius:'100px'}}></div> 
+              : null
             }
               
             </div>

@@ -9,9 +9,10 @@
   }
 
   .backgroundImg{
-    background-image: url("https://66.media.tumblr.com/3ada40dd6c90799628435be2ca463e3");
+    background-image: url("https://66.media.tumblr.com/3ada40dd6c90799628435be2ca463e32/tumblr_owzhyy71gX1uzwgsuo1_400.gif");
     min-height: 1151px;
     background-size: cover;
+    cursor: url('./components/assets/pryd_cursor.png'), auto;
   }
   
   .App{
@@ -245,6 +246,24 @@ a:active */
     padding: 20px 6px 0 5px;
   }
 
+  .content {
+    position: fixed;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    color: #f1f1f1;
+    width: 100%;
+    padding: 20px;
+  }
+
+   #myBtn {
+    width: 200px;
+    font-size: 18px;
+    padding: 10px;
+    border: none;
+    background: #000;
+    color: #fff;
+    cursor: pointer;
+  }
   .pageContainerVideo{
     padding-top: 5px;
     
