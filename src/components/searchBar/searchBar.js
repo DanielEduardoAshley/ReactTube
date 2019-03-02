@@ -26,7 +26,7 @@ class SearchBar extends Component {
                     const { url } = high;
                     const published = Moment(`${publishedAt}`, "YYYYMMDD").fromNow();
                     const resultsInfo = { id, snippet, videoId, published, channelTitle, channelId, description, thumbnails, title, high, url }
-
+                    resultsInfo.nToken = res.data.nextPageToken
                     return resultsArr.push(resultsInfo);
                 });
                 return resultsArr;
@@ -51,11 +51,36 @@ class SearchBar extends Component {
         }
     }
 
-    loadMore = (query, nextPageToken) => {
-        axiosFirstCall(query, nextPageToken)
-        .then((res) => {
-            
-        })
+    loadMore = (query) => {
+        const index = this.state.currentResults.length-1
+        const nextEightVids = this.state.currentResults[index].nToken
+        console.log('NEXT 8', nextEightVids)
+        axiosFirstCall(this.state.searchInput, nextEightVids)
+            .then((res) => {
+                console.log('response', res.data.nextPageToken)
+                const resultsArr = [];
+                console.log('res.data', res)
+                res.data.items.map((e, i) => {
+                    const { id, snippet } = e;
+                    const { videoId } = id;
+                    const { publishedAt, channelTitle, channelId, description, thumbnails, title } = snippet;
+                    const { high } = thumbnails;
+                    const { url } = high;
+                    const published = Moment(`${publishedAt}`, "YYYYMMDD").fromNow();
+                    const resultsInfo = { id, snippet, videoId, published, channelTitle, channelId, description, thumbnails, title, high, url,  }
+                    resultsInfo.nToken = res.data.nextPageToken
+                    return resultsArr.push(resultsInfo);
+                });
+                return resultsArr;
+            })
+            .then(
+                (results) => {
+                    this.setState({
+                        prevSearch: (this.state.prevSearch || []).concat(this.state.results),
+                        currentResults: this.state.currentResults.concat(results),
+                    }, () => console.log('WORKING??', this.state))
+                })
+            .catch((err) => console.log(err));
     }
 
     render() {
@@ -84,7 +109,9 @@ class SearchBar extends Component {
                             {list[1] === 'search' ? <SearchResultsList pop={aid} results={this.state.currentResults} /> : null}
                         </div>  
                     </div>
-                    <button></button>
+                        { this.state.currentResults.length === 0 ? null 
+                        : <button onClick={this.loadMore}>Load More</button> }
+                        
             </div>
             </>
         );
