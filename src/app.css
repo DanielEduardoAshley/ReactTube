@@ -17,6 +17,7 @@
   
   .navBar{
     flex: 1;
+    /* position: fixed; */
     /* border-right: 2pt solid black; */
     /* border-left: 2pt solid black; */
   }
@@ -191,6 +192,14 @@ a:active */
     /* object-fit: contain; */
     width: 200px;
     height: 200px;
+    overflow: hidden;
+  }
+
+  .searchImage{
+    /* object-fit: contain; */
+    width: 275px;
+    height: 275px;
+    margin-top: -40px;
   }
 
   .searchInfoBox{
@@ -199,12 +208,6 @@ a:active */
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
-  }
-
-  .searchImage{
-    object-fit: cover;
-    width: 200px;
-    height: 200px;
   }
 
   .searchText{
@@ -235,3 +238,10 @@ a:active */
     font-size: 25px;
     padding: 20px 6px 0 5px;
   }
+
+  .pageContainerVideo{
+    padding-top: 5px;
+    
+  }
+
+
