@@ -17,6 +17,7 @@
   
   .navBar{
     flex: 1;
+    /* position: fixed; */
     /* border-right: 2pt solid black; */
     /* border-left: 2pt solid black; */
   }
