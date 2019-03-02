@@ -24,6 +24,7 @@
   .pageWindow{
     flex: 4;
     /* border-right: 2pt solid black;  */
+    margin-bottom:50px; 
   }
   
   .sideNavBar{
@@ -155,7 +156,7 @@ a:active */
   .videofeedContainer{
     display: flex;
     flex-wrap: wrap;
-    border: 1px solid red;
+    /* border: 1px solid red; */
   }
   
   .videoThumbnail{
@@ -187,7 +188,7 @@ a:active */
   }
 
   .searchImageBox{
-    object-fit: contain;
+    /* object-fit: contain; */
     width: 200px;
     height: 200px;
   }
@@ -211,6 +212,13 @@ a:active */
     font-weight: 900;
     font-size: 20px;
     padding: 0px 0px 0 10px;
+  }
+
+  .searchResultText{
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 900;
+    font-size: 20px;
+    padding: 0px 0px 10px 0px;
   }
 
   .searchPublish{
