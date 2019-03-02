@@ -21,8 +21,8 @@ class Splashpage extends React.Component{
 render(){
   return(<>
       
-        <video ref="vidRef" id="myVideo" loop autoPlay>
-    <source src="https://player.vimeo.com/external/158148793.hd.mp4?s=8e8741dbee251d5c35a759718d4b0976fbf38b6f&profile_id=119&oauth2_token_id=57447761" type="video/mp4" />
+        <video style={{width:'100%', height:'100%'}}ref="vidRef" id="myVideo" loop autoPlay>
+    <source src="https://r3---sn-ab5szn7e.googlevideo.com/videoplayback?key=cms1&mime=video%2Fmp4&gir=yes&requiressl=yes&ratebypass=yes&dur=236.634&c=WEB&fvip=3&lmt=1543864104149583&source=youtube&clen=20528379&id=o-AOPvJvE8wkW99iAhbysWK2bbjuTrZ5hQ4_I1trKGmohX&expire=1551577049&ei=edt6XIjjHcvqgAe_wZOYAw&pl=21&ipbits=0&ip=85.17.156.76&sparams=clen,dur,ei,expire,gir,id,ip,ipbits,ipbypass,itag,lmt,mime,mip,mm,mn,ms,mv,pl,ratebypass,requiressl,source&txp=5531432&itag=18&signature=15EECEA337E1475B42C02C80EF174133F300DE36.678D688E6CEACA8C7B73C028727C3AA58C42E0D6&redirect_counter=1&rm=sn-5hnelz7s&req_id=22763eee9192a3ee&cms_redirect=yes&ipbypass=yes&mip=69.164.130.248&mm=31&mn=sn-ab5szn7e&ms=au&mt=1551555416&mv=m" type="video/mp4" />
     {/* <source src="http://www.sample-videos.com/video/mp4/720/big_buck_bunny_720p_1mb.mp4" type="video/ogg" /> */}
 </video>
     <div className="content">
