@@ -5,7 +5,6 @@ import './components/homelayout/homelayout.css'
 import Home from './components/home/home';
 import Navbar from './components/navbar/navbar';
 import SideNav from './components/sideNav/sideNav';
-import Search from './components/search/search';
 import SearchBar from './components/searchBar/searchBar';
 import VideoPlayer from './components/video/video';
 import Feed from './components/feed/feed';
@@ -61,7 +60,7 @@ class App extends Component {
                     <Switch>
                       <Route path='/home' exact component={Home} />
                       <Route path='/video/:video_id' render={() => <VideoPlayer id={id} />} />
-                      <Route path='/search/:search' component={Search} />
+                      <Route path='/search/:search' component={SearchBar} />
                       <Route path='/user' component={User} />
                       <Route path='/feededitor' component={Feed} />
                       <Route path='/user/:user_id/history' exact component={ViewHistory} />
