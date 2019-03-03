@@ -1,18 +1,21 @@
 import React, { Component } from 'react';
+import { Route, Switch, withRouter } from 'react-router-dom';
 import './components/homelayout/homelayout.css'
-import { Route, withRouter, Switch } from 'react-router-dom';
-import Navbar from './components/navbar/navbar';
-import Search from './components/search/search';
-import VideoPlayer from './components/video/video';
+
 import Home from './components/home/home';
-import User from './components/user/user';
-import Feed from './components/feed/feed';
-import ViewHistory from './components/viewHistory/viewHistory';
-import SearchBar from './components/searchBar/searchBar';
+import Navbar from './components/navbar/navbar';
 import SideNav from './components/sideNav/sideNav';
+import Search from './components/search/search';
+import SearchBar from './components/searchBar/searchBar';
+import VideoPlayer from './components/video/video';
+import Feed from './components/feed/feed';
+import User from './components/user/user';
+
+// Pages
 import NotFound from './components/notfound/notfound';
-import SplashPage from './components/splashpage/splashpage';
 import Live from './components/live/live';
+import SplashPage from './components/splashpage/splashpage';
+import ViewHistory from './components/viewHistory/viewHistory';
 
 
 class App extends Component {
