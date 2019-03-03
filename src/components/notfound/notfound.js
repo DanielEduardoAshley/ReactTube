@@ -1,19 +1,19 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-
+import './notfound.css';
 
 const NotFound = (props) => {
     return (
         <>
-            <div>
-                <h1>Error: Path Not Found</h1>
+            <div className="text-wrapper">
+                <div className="error-text">Error: Path Not Found!</div>
                 <br></br>
-                <h2>Check path name</h2>
-                <br></br>
-                <br></br>
+                <div className="error-msg">Check path name</div>
                 <br></br>
             </div>
-            <Link to="/" className='navBarButton'>Home</Link>
+                <div className="home-btn">
+                <Link to="/" className='navBarButton'>Home</Link>
+            </div>
         </>
     )
 
