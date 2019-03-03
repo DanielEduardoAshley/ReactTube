@@ -32,7 +32,7 @@ const getActiveUser = () => {
 const getFeed = (name) => {
     const users = JSON.parse(localStorage.getItem("users")) || [{
         name: "Default",
-        feedList: ["Naruto", "Itachi","Kiki Do U Love Me", "Jiraiya", "Naruto Love Story"], 
+        feedList: ["Jiraiya meets Naruko","Triple Integrals","Alice in Wonderland","Otters", "Ellen Degeneres","Itachi","Cardi B", "Saiki K"], 
         isActiveUser: true,
         viewHistory: [],
         movieInfo: {},
@@ -83,7 +83,7 @@ const removeAllUsers = () => {
         movieInfo: {},
         viewHistory:[],
         
-          }]))
+//           }]))
     
 };
 
@@ -96,43 +96,43 @@ const addFeed = (name, feedName) => {
         movieInfo: {},
      }]
     
-    const updatedUsers = users.map((e) => {
-     const feedL = e.feedList;
-    if(e.name === name){
-    const newFeedList = e.feedList.push(feedName);
-    }
-    return feedL;
-    })
+//     const updatedUsers = users.map((e) => {
+//      const feedL = e.feedList;
+//     if(e.name === name){
+//     const newFeedList = e.feedList.push(feedName);
+//     }
+//     return feedL;
+//     })
     
     localStorage.setItem("users", JSON.stringfy(updatedUsers))
     
-    };
+//     };
 
-const getActiveUser = () => {
-    const {name} = JSON.parse(localStorage.getItem("activeUser")) || {
-        name: "Default",
-     }
+// const getActiveUser = () => {
+//     const {name} = JSON.parse(localStorage.getItem("activeUser")) || {
+//         name: "Default",
+//      }
 
-     return name;
-}
+//      return name;
+// }
 
-const getFeed = (name) => {
-    const users = JSON.parse(localStorage.getItem("users")) || [{
-        name: "Default",
-        feedList: ["Naruto", "Itachi","Kiki Do U Love Me", "Jiraiya", "Naruto Love Story"], 
-        isActiveUser: true,
-        viewHistory: [],
-        movieInfo: {},
-     }]
+// const getFeed = (name) => {
+//     const users = JSON.parse(localStorage.getItem("users")) || [{
+//         name: "Default",
+//         feedList: ["Naruto", "Itachi","Kiki Do U Love Me", "Jiraiya", "Naruto Love Story"], 
+//         isActiveUser: true,
+//         viewHistory: [],
+//         movieInfo: {},
+//      }]
 
-     const feed = users.map(e => {
-         if(e.name === name){
-             return e.feedList;
-         }
-     }) 
+//      const feed = users.map(e => {
+//          if(e.name === name){
+//              return e.feedList;
+//          }
+//      }) 
 
-     return feed;
-}
+//      return feed;
+// }
 
 export {addUser , getActiveUser, getFeed};  
 
@@ -143,43 +143,43 @@ export {addUser , getActiveUser, getFeed};
 
 
 
-deleteFeed = (name, feedName) => {
-const users = JSON.parse(LocalStorage.getItem("users"))
+// deleteFeed = (name, feedName) => {
+// const users = JSON.parse(LocalStorage.getItem("users"))
 
-const updatedUsers = users.map((e) => {
- Const feedL = e.feedList;
-if(e.name === name){
-const newFeedList = e.feedList.splice();
-}
-return feedL;
-})
+// const updatedUsers = users.map((e) => {
+//  Const feedL = e.feedList;
+// if(e.name === name){
+// const newFeedList = e.feedList.splice();
+// }
+// return feedL;
+// })
 
-LocalStorage.setItem("users", JSON.stringfy(updatedUsers))
+// LocalStorage.setItem("users", JSON.stringfy(updatedUsers))
 
-};
-}
+// };
+// }
 
-getFeed = (name) => {
-const users = JSON.parse(LocalStorage.getItem("users"))
+// getFeed = (name) => {
+// const users = JSON.parse(LocalStorage.getItem("users"))
 
-const feedList = users.map(e => e.name === name ? e.feedList : [])
+// const feedList = users.map(e => e.name === name ? e.feedList : [])
 
-Return feedList;
-}
+// Return feedList;
+// }
 
-getMovieInfo = (name) => {
-LocalStorage.getItem(JSON.parse("users"))
-Const movieInfo = {}
+// getMovieInfo = (name) => {
+// LocalStorage.getItem(JSON.parse("users"))
+// Const movieInfo = {}
 
-If e.name === name {
-Const movieObj = e.movieInfo
-return movieInfo[movieObj]
+// If e.name === name {
+// Const movieObj = e.movieInfo
+// return movieInfo[movieObj]
 
-Return movieInfo
+// Return movieInfo
 
-}
+// }
 
-}
+// }
 
 
-*/
+// */

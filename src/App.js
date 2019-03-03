@@ -18,6 +18,7 @@ import SplashPage from './components/splashpage/splashpage';
 import ViewHistory from './components/viewHistory/viewHistory';
 
 
+
 class App extends Component {
 
   constructor(props) {
@@ -26,7 +27,6 @@ class App extends Component {
       videoArray: []
     }
   }
-
 
   render() {
 
