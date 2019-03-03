@@ -12,6 +12,7 @@ import SearchBar from './components/searchBar/searchBar';
 import SideNav from './components/sideNav/sideNav';
 import SplashPage from './components/splashpage/splashpage';
 import Live from './components/live/live';
+// import { addUser, changeActiveUser } from './services/userService';
 
 // extra import here
 // extra import here
@@ -27,7 +28,11 @@ class App extends Component {
       videoArray : []
     }
   }
-  
+
+  // componentDidMount () {
+  //   changeActiveUser('Default');
+  //   addUser('Default');
+  // }
   
   render() {
   console.log(this.props.location.pathname)
