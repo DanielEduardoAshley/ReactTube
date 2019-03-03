@@ -3,10 +3,10 @@ import { withRouter } from 'react-router-dom';
 
 
 const onClick = ({id, fun}) => {
-    // const {id, fun} = obj;
     const {videoId} = id;
 
     fun(`/video/${videoId}`);
+    // Pushing videoId to URL
 }
 
 const SearchResultsList = ({results, pop}) => {
