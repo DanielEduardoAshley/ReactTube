@@ -30,12 +30,12 @@ render(){
     {/* <source src="http://www.sample-videos.com/video/mp4/720/big_buck_bunny_720p_1mb.mp4" type="video/ogg" /> */}
  </video> 
 
-    <div className="content">
+    <div className="content" style={{background : 'none'}}>
       <h4></h4>
       <p className='position'></p>
-      <button id="" onClick={this.myFunctionPlay.bind(this)}>Play</button>
-      <button style={{fontSize : 12, }} onClick={this.myFunction.bind(this)}>Pause</button>
-      <button style={{fontSize:'50px', backgroundColor:'none', marginBottom:'20%', marginLeft:'40%' ,justifyContent:'center', backgroundColor:'none'}} className='logo' onClick={this.myFunctionEnter.bind(this)}>Enter</button>
+      {/* <button onClick={this.myFunctionPlay.bind(this)}>Play</button> */}
+      {/* <button style={{fontSize : 12, marginTop:'80%' }} onClick={this.myFunction.bind(this)}>Pause</button> */}
+      <button style={{fontSize:'50px', backgroundColor:'none', marginBottom:'20%', marginLeft:'45%' ,justifyContent:'center', backgroundColor:'none'}} className='logo' onClick={this.myFunctionEnter.bind(this)}>Enter</button>
 
    </div>
   

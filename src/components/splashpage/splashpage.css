@@ -12,7 +12,7 @@
   .content {
     position: relative;
     bottom: 100px;
-    background: rgba(0, 0, 0, 0.5);
+    background: none;
     color: #f1f1f1;
     width: 100%;
     padding: 299px;
