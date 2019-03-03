@@ -31,7 +31,13 @@ render(){
       <button id="myBtn" onClick={this.myFunctionPlay.bind(this)}>Play</button>
       <button id="myBtn" onClick={this.myFunction.bind(this)}>Pause</button>
       <button id="myBtn" onClick={this.myFunctionEnter.bind(this)}>Enter</button>
-
+</div>
+    <div className="content" style={{background : 'none'}}>
+      <h4></h4>
+      <p className='position'></p>
+      {/* <button onClick={this.myFunctionPlay.bind(this)}>Play</button> */}
+      {/* <button style={{fontSize : 12, marginTop:'80%' }} onClick={this.myFunction.bind(this)}>Pause</button> */}
+      <button style={{fontSize:'50px', backgroundColor:'none', marginBottom:'20%', marginLeft:'45%' ,justifyContent:'center'}} className='logo' onClick={this.myFunctionEnter.bind(this)}>Enter</button>
 
     </div>
   
