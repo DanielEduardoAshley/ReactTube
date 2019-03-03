@@ -3,7 +3,7 @@ import { withRouter } from 'react-router-dom';
 import { axiosFirstCall } from '../../services/axios';
 import Moment from 'moment';
 import SearchResultsList from '../../containers/searchResultsList';
-import spinner from '../../Triangles-1s-200px.gif'
+import spinner from '../../assets/Triangles-1s-200px.gif'
 
 class SearchBar extends Component {
     state = {
@@ -17,7 +17,6 @@ class SearchBar extends Component {
 
     handleClick = (e) => {
         this.props.history.push(`/search/${this.state.searchInput}`);
-        console.log('input', this.state.searchInput)
 
         this.setState({
             isLoading: true
@@ -51,7 +50,6 @@ class SearchBar extends Component {
                     })
                 })
             .catch((err) => console.log(err));
-            console.log('LOOK AT THIS', e.target.value)
 
     }
 
@@ -141,7 +139,6 @@ class SearchBar extends Component {
                                 </div>
                             </>
                         }
-
                     </div>
                 </div>
 
