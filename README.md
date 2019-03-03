@@ -26,12 +26,12 @@
 5. Have fun with it!
 
 ## Extra Resources:
-* ReactWebCam: https://www.npmjs.com/package/react-webcam
-* Loading.io: https://loading.io/
-* GIPHY: https://giphy.com/explore/link
+* [ReactWebCam](https://www.npmjs.com/package/react-webcam)
+* [Loading.io] (https://loading.io)
+* [GIPHY](https://giphy.com)
 
 ## Collaborators:
 * @pampamelaabreu [Pam](https://www.linkedin.com/in/pamela-abreu)
 * @Rupa1216 [Rupa](https://www.linkedin.com/in/sdatta87)
 * @chuyunhuang [Yun](https://www.linkedin.com/in/chuyun-yun-huang)
-* @DanielEduardoAshley)[Dan](https://www.linkedin.com/in/daniel-ashley-2907bb146)
+* @DanielEduardoAshley[Dan](https://www.linkedin.com/in/daniel-ashley-2907bb146)
