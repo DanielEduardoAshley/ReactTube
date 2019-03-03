@@ -20,20 +20,24 @@ class Splashpage extends React.Component{
       }
 render(){
   return(<>
-      
+
+<div style={{position : 'fixed' , top: '0', bottom: '0', right:'0', left:'0', width:'50%', margin:'0 auto', marginTop:'200px' , marginBottom:'100px', textAlign:'center' }} className='overlay'>
+<p style={{fontSize:'200px'}}className='logo'>PRYD</p>
+
+</div>
         <video style={{width:'100%', height:'100%'}}ref="vidRef" id="myVideo" loop autoPlay>
-    <source src="https://r3---sn-ab5szn7e.googlevideo.com/videoplayback?key=cms1&mime=video%2Fmp4&gir=yes&requiressl=yes&ratebypass=yes&dur=236.634&c=WEB&fvip=3&lmt=1543864104149583&source=youtube&clen=20528379&id=o-AOPvJvE8wkW99iAhbysWK2bbjuTrZ5hQ4_I1trKGmohX&expire=1551577049&ei=edt6XIjjHcvqgAe_wZOYAw&pl=21&ipbits=0&ip=85.17.156.76&sparams=clen,dur,ei,expire,gir,id,ip,ipbits,ipbypass,itag,lmt,mime,mip,mm,mn,ms,mv,pl,ratebypass,requiressl,source&txp=5531432&itag=18&signature=15EECEA337E1475B42C02C80EF174133F300DE36.678D688E6CEACA8C7B73C028727C3AA58C42E0D6&redirect_counter=1&rm=sn-5hnelz7s&req_id=22763eee9192a3ee&cms_redirect=yes&ipbypass=yes&mip=69.164.130.248&mm=31&mn=sn-ab5szn7e&ms=au&mt=1551555416&mv=m" type="video/mp4" />
+    <source src="https://r5---sn-ab5l6nzs.googlevideo.com/videoplayback?itag=18&clen=20528379&key=cms1&gir=yes&mime=video%2Fmp4&txp=5531432&expire=1551598925&ratebypass=yes&fvip=3&dur=236.634&ipbits=0&pl=21&id=o-AEyzpZT3N46o8ylQZFKuXMuTko_m14T9oPgL_lzzBfuZ&sparams=clen,dur,ei,expire,gir,id,ip,ipbits,ipbypass,itag,lmt,mime,mip,mm,mn,ms,mv,pl,ratebypass,requiressl,source&requiressl=yes&ip=95.211.148.225&c=WEB&ei=7DB7XIa5PJCggQfYk6-IDg&source=youtube&lmt=1543864104149583&signature=262DB62B6A4C76BD995C8C4C5B161C7176DADBE5.2F5DB980E73D112E33D5E865F95606A36F7E29AA&redirect_counter=1&rm=sn-aigesy7s&req_id=977a37e32458a3ee&cms_redirect=yes&ipbypass=yes&mip=69.164.130.248&mm=31&mn=sn-ab5l6nzs&ms=au&mt=1551577197&mv=m&ir=1&rr=12" type="video/mp4" />
     {/* <source src="http://www.sample-videos.com/video/mp4/720/big_buck_bunny_720p_1mb.mp4" type="video/ogg" /> */}
-</video>
+ </video> 
+
     <div className="content">
-      <h4>Pyrd</h4>
-      <p>Our Latest Social Video Player</p>
-      <button id="myBtn" onClick={this.myFunctionPlay.bind(this)}>Play</button>
-      <button id="myBtn" onClick={this.myFunction.bind(this)}>Pause</button>
-      <button id="myBtn" onClick={this.myFunctionEnter.bind(this)}>Enter</button>
+      <h4></h4>
+      <p className='position'></p>
+      <button id="" onClick={this.myFunctionPlay.bind(this)}>Play</button>
+      <button style={{fontSize : 12, }} onClick={this.myFunction.bind(this)}>Pause</button>
+      <button style={{fontSize:'50px', backgroundColor:'none', marginBottom:'20%', marginLeft:'40%' ,justifyContent:'center', backgroundColor:'none'}} className='logo' onClick={this.myFunctionEnter.bind(this)}>Enter</button>
 
-
-    </div>
+   </div>
   
     
 
