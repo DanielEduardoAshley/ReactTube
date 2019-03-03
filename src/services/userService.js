@@ -32,7 +32,7 @@ const getActiveUser = () => {
 const getFeed = (name) => {
     const users = JSON.parse(localStorage.getItem("users")) || [{
         name: "Default",
-        feedList: ["Naruto", "Itachi","Kiki Do U Love Me", "Jiraiya", "Naruto Love Story"], 
+        feedList: ["Jiraiya meets Naruko","Triple Integrals","Alice in Wonderland","Otters", "Ellen Degeneres","Itachi","Cardi B", "Saiki K"], 
         isActiveUser: true,
         viewHistory: [],
         movieInfo: {},
