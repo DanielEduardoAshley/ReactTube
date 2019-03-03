@@ -7,6 +7,13 @@
   .top-space{
     /* border-bottom: 2pt solid black; */
   }
+
+  .backgroundImg{
+    background-image: url("https://66.media.tumblr.com/3ada40dd6c90799628435be2ca463e32/tumblr_owzhyy71gX1uzwgsuo1_400.gif");
+    min-height: 1151px;
+    background-size: cover;
+    cursor: url('./components/assets/pryd_cursor.png'), auto;
+  }
   
   .App{
     width: 90%;
@@ -17,6 +24,7 @@
   
   .navBar{
     flex: 1;
+    /* position: fixed; */
     /* border-right: 2pt solid black; */
     /* border-left: 2pt solid black; */
   }
@@ -24,6 +32,7 @@
   .pageWindow{
     flex: 4;
     /* border-right: 2pt solid black;  */
+    margin-bottom:50px; 
   }
   
   .sideNavBar{
@@ -155,7 +164,7 @@ a:active */
   .videofeedContainer{
     display: flex;
     flex-wrap: wrap;
-    border: 1px solid red;
+    /* border: 1px solid red; */
   }
   
   .videoThumbnail{
@@ -164,12 +173,71 @@ a:active */
     border: 2pt solid black;
     font-family: Arial, Helvetica, sans-serif;
   }
-  
+
   .videoThumbnail:hover{
     background-color: #EA482C;
     font-weight: 600;
   }
-  
+
+  .videoSearchContainer{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+  }
+
+  .videoSearchThumbnail{
+    display: flex;
+    flex-wrap: wrap;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+  .leftMargin{
+    margin-left: 200px;
+  }
+
+  .searchImageBox{
+    /* object-fit: contain; */
+    width: 200px;
+    height: 200px;
+    overflow: hidden;
+  }
+
+  .searchImage{
+    /* object-fit: contain; */
+    width: 275px;
+    height: 275px;
+    margin-top: -40px;
+  }
+
+  .searchInfoBox{
+    width: 200px;
+    height: 200px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+  }
+
+  .searchText{
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 900;
+    font-size: 20px;
+    padding: 0px 0px 0 10px;
+  }
+
+  .searchResultText{
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 900;
+    font-size: 20px;
+    padding: 0px 0px 10px 0px;
+  }
+
+  .searchPublish{
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 400;
+    font-size: 20px;
+    padding: 10px 0px 0 10px;
+  }
+ 
   .sideBarButton{
     font-family: Arial, Helvetica, sans-serif;
     font-style: oblique;
@@ -177,3 +245,28 @@ a:active */
     font-size: 25px;
     padding: 20px 6px 0 5px;
   }
+
+  .content {
+    position: fixed;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    color: #f1f1f1;
+    width: 100%;
+    padding: 20px;
+  }
+
+   #myBtn {
+    width: 200px;
+    font-size: 18px;
+    padding: 10px;
+    border: none;
+    background: #000;
+    color: #fff;
+    cursor: pointer;
+  }
+  .pageContainerVideo{
+    padding-top: 5px;
+    
+  }
+
+

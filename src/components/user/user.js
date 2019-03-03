@@ -92,20 +92,20 @@ class User extends React.Component {
         
           <div className="input-field">
             <div className="header">
-              <div>Create a New User </div>
+              <div className="header-txt">Create a New User </div>
             </div>
-            <from></from>
-            <div className="input-group">
-              <input type="text" className="form-control" placeholder="User Name" aria-describedby="button-addon2" onKeyDown={this.onKeyDown} onChange={this.onChange}></input>
-                  <div className="input-btn">
-                <button className="btn btn-style" type="button" onClick={this.onClickAdd}>Add</button>
+    
+          <div className="input-group">
+              <textarea className="input-txt" placeholder="User Name"  onKeyDown={this.onKeyDown} onChange={this.onChange}></textarea>
+             <div className="input-group-btn">
+               <button className="btn-style" type="button" onClick={this.onClickAdd}>Add</button>
               </div>
             </div>
           </div>
 
           <div className="user-row">
             <div className="header">
-              <div>User List</div>
+              <div className="header-txt">User List</div>
             </div>
             <div className="list-wrapper">
                 <div className="list-item">

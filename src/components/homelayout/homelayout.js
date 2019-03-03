@@ -1,6 +1,5 @@
 import React from 'react';
-import { Card, CardImg, CardText, CardBody,
-  CardTitle, CardSubtitle } from 'reactstrap';
+
 
   const Homelayout = (props) => { 
     let str = ''
@@ -74,8 +73,8 @@ const Homelayout2 =(props)=>{
     const feedArr = props.active[e]
              console.log('fed',props.active[e])
       const videoThumbnail = (feedArr || []).map((e,i)=>{
-        return <div className='videoThumbnail col-333' onClick={()=>props.vidsPage(e.id)} key={i}>
-                <img src={`${e.thumbnail.url}`} style={{width : 120, height: 100}}></img>
+        return <div className='searchImageBox' onClick={()=>props.vidsPage(e.id)} key={i}>
+                <img src={`${e.thumbnail.url}`} className='searchImage'></img>
                 {/* <p>{e.title}</p>
                 <p>{e.publishedAt} {e.channelTitle}</p> */}
               </div>

@@ -1,6 +1,7 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 
+
 const onClick = ({id, fun}) => {
     // const {id, fun} = obj;
     const {videoId} = id;
@@ -10,10 +11,11 @@ const onClick = ({id, fun}) => {
 
 const SearchResultsList = ({results, pop}) => {
     const fun = pop.history.push;
+    let count = 0;
   
     return (
         <>      
-            <div className='videofeedContainer'>
+            <div className='videoSearchContainer'>
                 {
                 results.map((e, i) => {
                     const id = e.id;
@@ -21,23 +23,39 @@ const SearchResultsList = ({results, pop}) => {
                         id,
                         fun
                     }
-                    return <div key={i} className='videoThumbnail'>
-                                {/* <img src={e.url} style={{ width: 120, height: 90 }} alt="Click" onClick={() => onClick(obj)}> */}
-                                <img src={e.url} alt={e.title} height="120" width="90"></img>
-                                <p onClick={() => onClick(obj)}>{e.title}</p>
-                                <p>{e.channel} {e.published} {e.channelId} {e.description} {e.nextPageToken}</p>
-                                <p>Views</p>
+                    if(count === 0){
+                        count += 1;
+                        return(
+                        <div key={i} className='videoSearchThumbnail' >
+                        <div className='searchImageBox'>
+                            <img className='searchImage'src={e.url} alt={e.title} height="120" width="90"></img>
+                        </div>
 
-                                {/* <Card>
-                                <CardImg top width="100%" src={e.url} style={{ width: 120, height: 90 }} alt="Click" onClick={() => onClick(obj)} />
-                                <CardBody>
-                                    <CardTitle onClick={() => onClick(obj)}>{e.title}</CardTitle>
-                                    <CardSubtitle></CardSubtitle>
-                                    <CardText></CardText>
-                                </CardBody>
-                            </Card> */}
-                                
+                        <div className='searchInfoBox'>
+                                <p className='searchText' onClick={() => onClick(obj)}>{e.title}</p>
+                                <p className='searchText'>{e.channel}</p>
+                                <p className='searchPublish'>{e.published}</p>
+                        </div> 
+                    </div>
+                    )
+                    }
+
+                    if(count === 1){
+                        count = 0;
+                        return(
+                            <div key={i} className='videoSearchThumbnail leftMargin' >
+                            <div className='searchImageBox'>
+                                <img className='searchImage'src={e.url} alt={e.title} height="120" width="90"></img>
                             </div>
+    
+                            <div className='searchInfoBox'>
+                                <p className='searchText' onClick={() => onClick(obj)}>{e.title}</p>
+                                <p className='searchText'>{e.channel}</p>
+                                <p className='searchPublish'>{e.published}</p>
+                            </div> 
+                        </div>
+                        )
+                    }
 
                 })
             }
