@@ -4,6 +4,7 @@ import { axiosFirstCall } from '../../services/axios';
 import Moment from 'moment';
 import SearchResultsList from '../../containers/searchResultsList';
 import spinner from '../../Triangles-1s-200px.gif'
+import './searchBar.css'
 
 class SearchBar extends Component {
     state = {
@@ -115,7 +116,7 @@ class SearchBar extends Component {
                 </div>
 
                 <div className='pageContainer'>
-                    <div className=''>
+                    <div className='search-wrapper'>
                         {this.state.isLoading === true ? <div className='spinner'><img src={spinner} alt='Loading...'></img></div> :
                             <>
                                 <div>
