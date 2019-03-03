@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './components/homelayout/homelayout.css'
-import { Route, withRouter } from 'react-router-dom';
+import { Route, withRouter, Switch } from 'react-router-dom';
 import Navbar from './components/navbar/navbar';
 import Search from './components/search/search';
 import VideoPlayer from './components/video/video';
@@ -10,6 +10,7 @@ import Feed from './components/feed/feed';
 import ViewHistory from './components/viewHistory/viewHistory';
 import SearchBar from './components/searchBar/searchBar';
 import SideNav from './components/sideNav/sideNav';
+import NotFound from './components/notfound/notfound';
 import SplashPage from './components/splashpage/splashpage';
 import Live from './components/live/live';
 
@@ -18,17 +19,17 @@ import Live from './components/live/live';
 
 class App extends Component {
 
-   /* 
-        Daniel's workspace
-         */
-  constructor(props){
+  /* 
+       Daniel's workspace
+        */
+  constructor(props) {
     super(props)
-    this.state={
-      videoArray : []
+    this.state = {
+      videoArray: []
     }
   }
-  
-  
+
+
   render() {
   console.log(this.props.location.pathname)
   const path = this.props.location.pathname
@@ -39,6 +40,7 @@ class App extends Component {
   // ROute for splash page
   // Route for app /home
     return (
+      
       <>
       
       {
@@ -64,6 +66,7 @@ class App extends Component {
           <Navbar />
             <div className='pageWindow'>
                 <SearchBar />
+                <Switch>
                 <Route path='/home' exact component={Home}/>
                 <Route path='/video/:video_id' render={()=><VideoPlayer id={id}/>}/>
                 <Route path='/search/:search' component={Search}/>
@@ -71,6 +74,8 @@ class App extends Component {
                 <Route path='/feededitor' component={Feed}/>
                 <Route path='/user/:user_id/history' exact component={ViewHistory}/>
                 <Route path='/live' exact component={Live}/>
+                <Route component={NotFound} />
+              </Switch>
             </div>
           <SideNav path={path}/>
           </div>
