@@ -1,12 +1,9 @@
 import  React from 'react'
 import {  withRouter } from 'react-router-dom';
-// const apiVideo = require('@api.video/nodejs-sdk');
-
-// import axios from 'axios'
 import Homelayout2 from '../homelayout/homelayout'
 import  { axiosFirstCall, axiosSecondCall }  from '../../services/axios'
-import VideoPlayer from '../video/video';
 import './home.css';
+import { getActiveUser, getFeed } from '../../services/userService'
 
 
 class Home extends React.Component {
@@ -32,7 +29,7 @@ class Home extends React.Component {
                        Pam  :  { 
                         
 
-                                    feedlist: [ 'orochimaru', 'harry Potter', 'pokemon'],
+                                    feedlist: [ 'jiraya', 'harry Potter', 'pokemon'],
                                     movieInfo: {}
 
                                   //   {
@@ -83,7 +80,12 @@ class Home extends React.Component {
              })
                
                const addUserData = {...this.state}
+               
+              //  const active = getActiveUser();
+              //  console.log('Active User',active)
                const Pamela = addUserData.Users[`${this.state.activeUser}`].movieInfo
+              // const Pamela = addUserData.Users[active]
+              // console.log('Pamela',Pamela)
                 Pamela[query] = (Pamela[query] || []).concat(newArr)
                 console.log('movies?',Pamela[query])
                // const newPamela = (Pamela || []).concat(newArr)
@@ -159,19 +161,37 @@ class Home extends React.Component {
   
   
   componentDidMount(){
-    
+    // console.logI
     console.log('hello')
     const newArr = []
     const newObj = {}
     const addUserData = {...this.state}
-    const query = this.state.Users[this.state.activeUser].feedlist
-    const nextPage =  ''
-    console.log(query)
-    query.map(elem=>{
-      return this.call(elem)
+    const active = getActiveUser()
+    const stateFeed = {...this.state.Users}
     
     
-    })
+    
+    const feedlist = getFeed(active);
+    stateFeed.Pam.feedlist = feedlist;
+
+    this.setState({Users: stateFeed})
+    
+    
+    
+    // const query = this.state.Users[this.state.activeUser].feedlist
+    // const feedlist = getFeed(active)
+    // stateFeed = 
+
+    // this.setState({
+    //     Users : acti})
+    // feedlist.map(elem=>{
+    //   return this.call(elem)
+    
+    
+    // })
+    //const query
+    // console.log(query)
+    
 
     // query.map(elem=>{
     // })
@@ -202,44 +222,7 @@ class Home extends React.Component {
     const nextPageToken = addUserData.Users[`${this.state.activeUser}`].movieInfo[query][addUserData.Users[`${this.state.activeUser}`].movieInfo[query].length-1].nextPageToken
     console.log('get',feedTitle)
     this.call(query, nextPageToken)
-  //   return axiosFirstCall(query, nextPageToken).then((response)=>{
-  //    console.log('data',response)
-  //         response.data.items.map(e=>{
-            
-  //           return newArr.push({
-  //             feedTitle : 'orochimaru',
-  //             id: e.id.videoId,
-  //             title  : e.snippet.title,
-  //             description: e.snippet.description,
-  //             thumbnail: e.snippet.thumbnails.default,
-  //             channelTitle: e.snippet.channelTitle,
-  //             publishedAt : e.snippet.publishedAt,
-  //             nextPageToken: response.data.nextPageToken,
 
-
-  //     }
-  //           )
-            
-  //         })
-            
-  //           const addUserData = {...this.state}
-  //           const Pamela = addUserData.Users[`${this.state.activeUser}`].movieInfo
-  //            Pamela[query] = Pamela[query].concat(newArr)
-  //           // const newPamela = (Pamela || []).concat(newArr)
-  //           // addUserData.Users.Pam.movieInfo = newPamela 
-  //           console.log('this',addUserData.Users)
-  //         this.setState({
-  //           Users : addUserData.Users
-  //         },()=>{
-  //           console.log(this.state.Users)
-  //           console.log(this.state.Users[`${this.state.activeUser}`].movieInfo)
-  
-  
-  //         })
-  
-  
-  
-  //  })
 
  }
 

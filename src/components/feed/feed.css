@@ -1,31 +1,35 @@
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
 
 .feed-wrapper{
   display: flex;
   justify-content: space-around;
-  margin: 10px;
-  padding: 20px;
-
-  
+  font-family: Arial, Helvetica, sans-serif;
+  font-style: normal;
+  font-weight:600;
 }
 
-.input-field{
-  width:30%;
+.input-group{
+  display: flex;
+  width: 100%;
+}
+
+.input-txt{
+  font-size: 20px; 
+  width: 217px;
+  height: 39px;
+  border: 2px solid black;
 }
 
 .feed-row{
-  width: 30%;
+  width: 40%;
 }
 
 .header{
   display: inline;
-  font-size: 16px;
   font-weight: bold;
+}
+
+.header-txt{
+  font-size: 25px;
 }
 
 .card-wrapper{
@@ -55,12 +59,24 @@
 }
 
 .card-n-btn:hover{
-  box-shadow: 0px 10px black;
+  box-shadow: 10px 0px black;
+  color: #ff3d00;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close:hover{
+  cursor: pointer;
+}
+
+.btn-style{
+  width: 100px;
+  height: 39px;
+  border: 2px solid black;
+  font-size: 24px;
   font-weight: bold;
 }
 
-
-
-.btn-style{
-  border: 2px solid black;
+.btn-style:hover{
+  background-color: #ff3d00;
 }

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
+// import { addUser } from '../../services/userService';
 
 class SideNav extends Component {
   state = {
@@ -20,6 +21,11 @@ class SideNav extends Component {
 
 
     render() {
+      //TEST
+      // console.log('THIS IS SIDENAV TEST')
+      // addUser('Rupa')
+      //TEST
+
       let title = ''
       const currentRouteArr = this.props.location.pathname.split('/');
       const currentRouteName = currentRouteArr[1];
