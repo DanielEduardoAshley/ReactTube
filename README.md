@@ -27,11 +27,11 @@
 
 ## Extra Resources:
 * [ReactWebCam](https://www.npmjs.com/package/react-webcam)
-* [Loading.io] (https://loading.io)
+* [Loading.io](https://loading.io)
 * [GIPHY](https://giphy.com)
 
 ## Collaborators:
-* @pampamelaabreu [Pam](https://www.linkedin.com/in/pamela-abreu)
-* @Rupa1216 [Rupa](https://www.linkedin.com/in/sdatta87)
-* @chuyunhuang [Yun](https://www.linkedin.com/in/chuyun-yun-huang)
-* @DanielEduardoAshley[Dan](https://www.linkedin.com/in/daniel-ashley-2907bb146)
+* [Pam](https://www.linkedin.com/in/pamela-abreu) @pampamelaabreu
+* [Rupa](https://www.linkedin.com/in/sdatta87) @Rupa1216 
+* [Yun](https://www.linkedin.com/in/chuyun-yun-huang) @chuyunhuang 
+* [Dan](https://www.linkedin.com/in/daniel-ashley-2907bb146) @DanielEduardoAshley
