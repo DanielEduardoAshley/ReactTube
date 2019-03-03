@@ -1,5 +1,5 @@
 # Just like youtube, but better looking and built on React!
-![Image](src/components/assets/homepage.png)
+![Image](src/components/assets/homepage2.png)
 
 ## PRYD is a video app that allows you to:
 1. Search for videos
