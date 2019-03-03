@@ -33,7 +33,7 @@ class Home extends React.Component {
                        Pam  :  { 
                         
 
-                                    feedlist: [ 'orochimaru', 'harry Potter', 'pokemon'],
+                                    feedlist: [ 'jiraya', 'harry Potter', 'pokemon'],
                                     movieInfo: {}
 
                                   //   {
@@ -84,14 +84,19 @@ class Home extends React.Component {
              })
                
                const addUserData = {...this.state}
+               
+              //  const active = getActiveUser();
+              //  console.log('Active User',active)
                const Pamela = addUserData.Users[`${this.state.activeUser}`].movieInfo
+              // const Pamela = addUserData.Users[active]
+              // console.log('Pamela',Pamela)
                 Pamela[query] = (Pamela[query] || []).concat(newArr)
                 console.log('movies?',Pamela[query])
                // const newPamela = (Pamela || []).concat(newArr)
                // addUserData.Users.Pam.movieInfo = newPamela 
     
                console.log('this',addUserData.Users)
-               this.setState({
+             this.setState({
                Users : addUserData.Users
              },()=>{
                console.log(this.state.Users)
@@ -160,22 +165,37 @@ class Home extends React.Component {
   
   
   componentDidMount(){
-    
+    // console.logI
     console.log('hello')
     const newArr = []
     const newObj = {}
     const addUserData = {...this.state}
-    // Local Storage
-    // const active = getActiveUser()
-    // const query = getFeed(active)
-    const query = this.state.Users[this.state.activeUser].feedlist
-    const nextPage =  ''
-    console.log(query)
-    query.map(elem=>{
-      return this.call(elem)
+    const active = getActiveUser()
+    const stateFeed = {...this.state.Users}
     
     
-    })
+    
+    const feedlist = getFeed(active);
+    stateFeed.Pam.feedlist = feedlist;
+
+    this.setState({Users: stateFeed})
+    
+    
+    
+    // const query = this.state.Users[this.state.activeUser].feedlist
+    // const feedlist = getFeed(active)
+    // stateFeed = 
+
+    // this.setState({
+    //     Users : acti})
+    // feedlist.map(elem=>{
+    //   return this.call(elem)
+    
+    
+    // })
+    //const query
+    // console.log(query)
+    
 
     // query.map(elem=>{
     // })
@@ -203,8 +223,6 @@ class Home extends React.Component {
     const newObj = {}
     const query = feedTitle
     const addUserData = {...this.state}
-    // Local Storage
-    // const active = getActiveUser()
     const nextPageToken = addUserData.Users[`${this.state.activeUser}`].movieInfo[query][addUserData.Users[`${this.state.activeUser}`].movieInfo[query].length-1].nextPageToken
     console.log('get',feedTitle)
     this.call(query, nextPageToken)

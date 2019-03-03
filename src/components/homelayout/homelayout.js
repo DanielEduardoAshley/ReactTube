@@ -1,5 +1,5 @@
 import React from 'react';
-import Moment from 'moment';
+
 
   const Homelayout = (props) => { 
     let str = ''
@@ -41,11 +41,11 @@ import Moment from 'moment';
 </ul> */}
         {/* <div className="rowsss"> */}
 
-        <div className='videoThumbnail img__wrap' onClick={()=>props.vidsPage(e.id)} key={i}>
-          <img className='img__img' src={`${e.thumbnail.url}`} style={{width : 120, height: 90}}></img>
-            {/* <p className='img__description'>{e.title}</p> */}
-            {/* <p className='img__description'>{e.publishedAt} {e.channelTitle}</p> */}
-            {/* <p className='img__description'>Views</p> */}
+        <div className='videoThumbnail col-333' onClick={()=>props.vidsPage(e.id)} key={i}>
+          <img src={`${e.thumbnail.url}`} style={{width : 120, height: 90}}></img>
+            <p>{e.title}</p>
+            <p>{e.publishedAt} {e.channelTitle}</p>
+            <p>Views</p>
           </div>
           {/* </div> */}
         <p className='showMoreButton'>{ i === feedArr.length-1 ? <button   onClick={()=>props.loadmore(e.feedTitle)}>Show More</button> : null }</p>
@@ -73,15 +73,10 @@ const Homelayout2 =(props)=>{
     const feedArr = props.active[e]
              console.log('fed',props.active[e])
       const videoThumbnail = (feedArr || []).map((e,i)=>{
-       
-        return <div className='searchImageBox img__wrap' onClick={()=>props.vidsPage(e.id)} key={i}>
-                  <img src={`${e.thumbnail.url}`} className='searchImage'></img>
-
-                  <div className='searchInfoBox img__description'>
-                      <p className='homeVideoText'>{e.title}</p>
-                      <p className='homeVideoText'>{e.channelTitle}</p>
-                      <p className='homeVideoPublish'>{ Moment(`${e.publishedAt}`, "YYYYMMDD").fromNow()}</p>
-                  </div> 
+        return <div className='searchImageBox' onClick={()=>props.vidsPage(e.id)} key={i}>
+                <img src={`${e.thumbnail.url}`} className='searchImage'></img>
+                {/* <p>{e.title}</p>
+                <p>{e.publishedAt} {e.channelTitle}</p> */}
               </div>
           
       })
