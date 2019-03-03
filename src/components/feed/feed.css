@@ -59,8 +59,10 @@
 }
 
 .card-n-btn:hover{
-  box-shadow: 0px 10px black;
+  box-shadow: 10px 0px black;
+  color: #ff3d00;
   font-weight: bold;
+  cursor: pointer;
 }
 
 .close:hover{
@@ -73,4 +75,8 @@
   border: 2px solid black;
   font-size: 24px;
   font-weight: bold;
+}
+
+.btn-style:hover{
+  background-color: #ff3d00;
 }

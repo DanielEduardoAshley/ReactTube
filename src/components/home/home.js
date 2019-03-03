@@ -1,11 +1,7 @@
 import  React from 'react'
 import {  withRouter } from 'react-router-dom';
-// const apiVideo = require('@api.video/nodejs-sdk');
-
-// import axios from 'axios'
 import Homelayout2 from '../homelayout/homelayout'
 import  { axiosFirstCall, axiosSecondCall }  from '../../services/axios'
-import VideoPlayer from '../video/video';
 import './home.css';
 import { getActiveUser, getFeed } from '../../services/userService'
 
