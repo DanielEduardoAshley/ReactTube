@@ -1,117 +1,100 @@
-// // addUser("Pam"), setsItem in LS
-// const addUser = (userName) => {
-//     const defaultArr = [{
-//         name: "Default", 
-//         feedList: ["Naruto", "Itachi","Kiki Do U Love Me", "Jiraiya", "Naruto Love Story"], 
-//         isActiveUser: true, 
-//         viewHistory:[]
-//     }];
+// addUser("Pam"), setsItem in LS
+const addUser = (userName) => {
+    const getUsers = JSON.parse(localStorage.getItem("users")) || [{
+        name: "Default",
+        feedList: ["Naruto", "Itachi","Kiki Do U Love Me", "Jiraiya", "Naruto Love Story"], 
+        isActiveUser: true,
+        viewHistory: [],
+        movieInfo: {},
+     }]
 
-//     const getUsers = JSON.parse(localStorage.getItem("users")) || defaultArr;
-//     let doesUserExist = false;
-//     getUsers.forEach(e => {
-//         if(e.name === userName){
-//             doesUserExist = true;
-//         }
-//     });
+    const newUser = {
+        name: userName,
+        feedList: ["Naruto", "Itachi","Kiki Do U Love Me", "Jiraiya", "Naruto Love Story"],
+        isActiveUser: false,
+        viewHistory: [],
+        movieInfo: {},
+    }
 
-//     if(doesUserExist)
+    const newUsers = getUsers.concat(newUser);
+   
+    localStorage.setItem("users",JSON.stringify(newUsers))
+}
 
-//         const newUser = {
-//             name: userName,
-//             feedList: ["Naruto", "Itachi","Kiki Do U Love Me", "Jiraiya", "Naruto Love Story"],
-//             isActiveUser: false,
-//             viewHistory: [],
-//             movieInfo: {},
-//         }
-    
-//         const newUsers = getUsers.concat(newUser);
-       
-//         localStorage.setItem("users",JSON.stringify(newUsers))
-     
-    
-// }
+const getActiveUser = () => {
+    const userName = JSON.parse(localStorage.getItem("activeUser")) || {
+        name: "Default",
+    }
 
-// const getActiveUser = () => {
-//     const userName = JSON.parse(localStorage.getItem("activeUser")) || {
-//         name: "Default",
-//     }
+    return userName.name;
+}
 
-//     return userName.name;
-// }
+const getFeed = (name) => {
+    const users = JSON.parse(localStorage.getItem("users")) || [{
+        name: "Default",
+        feedList: ["Naruto", "Itachi","Kiki Do U Love Me", "Jiraiya", "Naruto Love Story"], 
+        isActiveUser: true,
+        viewHistory: [],
+        movieInfo: {},
+     }]
 
-// const getFeed = (name) => {
-//     const users = JSON.parse(localStorage.getItem("users")) || [{
-//         name: "Default",
-//         feedList: ["Naruto", "Itachi","Kiki Do U Love Me", "Jiraiya", "Naruto Love Story"], 
-//         isActiveUser: true,
-//         viewHistory: [],
-//         movieInfo: {},
-//      }]
+     let arr = [];
+     users.map((e) => {
+         if(e.name === name){
+            arr = e.feedList; 
+         }
+     })
 
-//      let arr = [];
-//      users.map((e) => {
-//          if(e.name === name){
-//             arr = e.feedList; 
-//          }
-//      })
+     return arr;
+}
 
-//      return arr;
-// }
+export {
+    getFeed, 
+    getActiveUser
+};  
 
-// const changeActiveUser = (name) => {
-//     localStorage.setItem('activeUser', JSON.stringify({name}))
-// }
+/*
 
-// export {
-//     getFeed, 
-//     getActiveUser, 
-//     addUser,
-//     changeActiveUser
-// };  
+const updateActiveUser = (name) => {
+    localStorage.setItem("activeUser", JSON.stringify(name))
+};
 
-// /*
+const getAllUsersNames = () => {
+const users = JSON.parse(localStorage.getItem("users")) || [{
+    name: "Default",
+    feedList: ["Naruto", "Itachi","Kiki Do U Love Me", "Jiraiya", "Naruto Love Story"], 
+    isActiveUser: true,
+    viewHistory: [],
+    movieInfo: {},
+ }]
 
-// const updateActiveUser = (name) => {
-//     localStorage.setItem("activeUser", JSON.stringify(newUsers))
-// };
+const userNames = users.map(e =>  e.name)
 
-// const getAllUsersNames = () => {
-// const users = JSON.parse(localStorage.getItem("users")) || [{
-//     name: "Default",
-//     feedList: ["Naruto", "Itachi","Kiki Do U Love Me", "Jiraiya", "Naruto Love Story"], 
-//     isActiveUser: true,
-//     viewHistory: [],
-//     movieInfo: {},
-//  }]
+return userNames;
 
-// const userNames = users.map(e =>  e.name)
+};
 
-// return userNames;
-
-// };
-
-// const removeAllUsers = () => {
-//     // feedList: ["Naruto", "Itachi","Kiki Do U Love Me", "Jiraiya", "Naruto Love Story"], 
-//     localStorage.setItem("activeUser", JSON.stringify({name: "Default"}))
-//     localStorage.setItem("users", JSON.stringify([{
-//         name: "Default",
-//         feedList: [""],
-//         movieInfo: {},
-//         viewHistory:[],
+const removeAllUsers = () => {
+    // feedList: ["Naruto", "Itachi","Kiki Do U Love Me", "Jiraiya", "Naruto Love Story"], 
+    localStorage.setItem("activeUser", JSON.stringify({name: "Default"}))
+    localStorage.setItem("users", JSON.stringify([{
+        name: "Default",
+        feedList: [""],
+        movieInfo: {},
+        viewHistory:[],
         
 //           }]))
     
-// };
+};
 
-// const addFeed = (name, feedName) => {
-//     const users = JSON.parse(LocalStorage.getItem("users")) || [{
-//         name: "Default",
-//         feedList: ["Naruto", "Itachi","Kiki Do U Love Me", "Jiraiya", "Naruto Love Story"], 
-//         isActiveUser: true,
-//         viewHistory: [],
-//         movieInfo: {},
-//      }]
+const addFeed = (name, feedName) => {
+    const users = JSON.parse(localStorage.getItem("users")) || [{
+        name: "Default",
+        feedList: ["Naruto", "Itachi","Kiki Do U Love Me", "Jiraiya", "Naruto Love Story"], 
+        isActiveUser: true,
+        viewHistory: [],
+        movieInfo: {},
+     }]
     
 //     const updatedUsers = users.map((e) => {
 //      const feedL = e.feedList;
@@ -121,7 +104,7 @@
 //     return feedL;
 //     })
     
-//     LocalStorage.setItem("users", JSON.stringfy(updatedUsers))
+    localStorage.setItem("users", JSON.stringfy(updatedUsers))
     
 //     };
 
@@ -150,6 +133,11 @@
 
 //      return feed;
 // }
+
+export {addUser , getActiveUser, getFeed};  
+
+/*
+
 
 
 
