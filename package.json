@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "@api.video/nodejs-sdk": "^1.0.3",
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "bootstrap": "^4.3.1",
     "express": "^4.16.4",
     "moment": "^2.24.0",
